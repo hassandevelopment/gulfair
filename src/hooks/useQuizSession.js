@@ -45,14 +45,19 @@ export function useQuizSession(sectionKey, mode, settings) {
     (picked) => {
       if (state.phase !== 'answering') return
       const ms = Date.now() - startRef.current
+      const showsFeedback = state.feedbackMode === 'immediate'
+      // Silent-advance spam needs the next question in place BEFORE the
+      // reducer moves the index forward.
+      if (!showsFeedback && state.mode === 'spam') {
+        dispatch({ type: 'APPEND_QUESTION', question: source.next() })
+      }
       dispatch({ type: 'ANSWER', picked, ms })
       const correct = picked === question?.correctIndex
-      const showsFeedback = state.mode === 'spam' || state.feedbackMode === 'immediate'
       if (showsFeedback && correct) {
         autoRef.current = setTimeout(() => next(), 700)
       }
     },
-    [state.phase, state.mode, state.feedbackMode, question, next],
+    [state.phase, state.mode, state.feedbackMode, question, next, source],
   )
 
   const finish = useCallback(() => {

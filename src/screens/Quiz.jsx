@@ -58,9 +58,11 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
           <p className="text-sm font-medium tabular-nums text-mut mt-0.5">
             {mode === 'set'
               ? `${state.index + 1} / ${state.questions.length}`
-              : `${stats.answered} answered${stats.answered ? ` / ${stats.accuracy}%` : ''}${
-                  stats.answered ? ` / ${(stats.avgMs / 1000).toFixed(1)}s avg` : ''
-                }`}
+              : settings.feedbackMode === 'immediate'
+                ? `${stats.answered} answered${stats.answered ? ` / ${stats.accuracy}%` : ''}${
+                    stats.answered ? ` / ${(stats.avgMs / 1000).toFixed(1)}s avg` : ''
+                  }`
+                : `${stats.answered} answered${stats.answered ? ` / ${(stats.avgMs / 1000).toFixed(1)}s avg` : ''}`}
           </p>
         </div>
         <TimerRing remaining={remaining} fraction={fraction} />

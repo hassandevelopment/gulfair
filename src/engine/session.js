@@ -1,6 +1,6 @@
 // Pure session reducer. Phases: answering -> feedback -> answering ... -> done.
-// In feedbackMode 'end' the feedback phase is skipped for Set mode; Spam mode
-// always shows immediate feedback.
+// In feedbackMode 'end' the feedback phase is skipped entirely (Set and Spam);
+// everything is revealed in the end review.
 
 export function initSession({ questions, mode, feedbackMode }) {
   return {
@@ -33,7 +33,7 @@ export function sessionReducer(state, action) {
         timedOut: action.picked === -1,
       }
       const answers = [...state.answers, record]
-      const showFeedback = state.mode === 'spam' || state.feedbackMode === 'immediate'
+      const showFeedback = state.feedbackMode === 'immediate'
       if (showFeedback) return { ...state, answers, phase: 'feedback' }
       return advance({ ...state, answers })
     }

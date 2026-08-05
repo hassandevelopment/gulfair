@@ -130,7 +130,8 @@ export default function Settings({ settings, onChange, onBack }) {
           </Row>
         </div>
         <p className="mt-4 text-sm text-dim">
-          Spam mode always shows immediate feedback; its live accuracy needs it.
+          At end applies to Spam too: answer freely, then end the session to see every question,
+          your answer, and the worked solution in the review.
         </p>
       </div>
     </div>
