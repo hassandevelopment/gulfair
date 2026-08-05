@@ -70,7 +70,7 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
 
       <main key={question.id} className="flex-1 flex flex-col justify-center max-w-3xl w-full mx-auto px-5 md:px-8 pb-10 animate-fade-up">
         <QuestionCard question={question} />
-        <div className="grid gap-2.5 md:grid-cols-2">
+        <div className="grid gap-3 md:grid-cols-2">
           {question.options.map((opt, i) => (
             <OptionButton key={i} index={i} state={optionState(i)} mono={mono} onClick={() => answer(i)}>
               {opt}
