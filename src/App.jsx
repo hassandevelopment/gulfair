@@ -8,6 +8,8 @@ import Settings from './screens/Settings.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
 import PersonalityBriefing from './screens/PersonalityBriefing.jsx'
 import PersonalityDrill from './screens/PersonalityDrill.jsx'
+import Stats from './screens/Stats.jsx'
+import { recordSession } from './storage/stats.js'
 
 // The whole app is one page; this state object is the "router".
 export default function App() {
@@ -34,8 +36,12 @@ export default function App() {
             setView(key === 'personality' ? { screen: 'personality' } : { screen: 'mode', sectionKey: key })
           }
           onSettings={() => setView({ screen: 'settings' })}
+          onStats={() => setView({ screen: 'stats' })}
         />
       )
+      break
+    case 'stats':
+      screen = <Stats onBack={goHome} />
       break
     case 'personality':
       screen = (
@@ -65,7 +71,10 @@ export default function App() {
           sectionKey={view.sectionKey}
           mode={view.mode}
           settings={settings}
-          onDone={(result) => setView({ screen: 'review', result })}
+          onDone={(result) => {
+            recordSession(result)
+            setView({ screen: 'review', result })
+          }}
           onExit={goHome}
         />
       )

@@ -1,6 +1,8 @@
 import { SECTIONS } from '../engine/registry.js'
+import { getStats, displayStreak } from '../storage/stats.js'
 
-export default function Home({ onSection, onSettings }) {
+export default function Home({ onSection, onSettings, onStats }) {
+  const streak = displayStreak(getStats().streak)
   return (
     <div className="min-h-dvh app-atmosphere">
       <div className="max-w-3xl mx-auto px-5 md:px-8 py-12 md:py-16">
@@ -11,13 +13,30 @@ export default function Home({ onSection, onSettings }) {
               <h1 className="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">Psych Drill</h1>
               <p className="mt-3 text-mut">Exam day: 17 August. Train sharp, land it.</p>
             </div>
-            <button
-              type="button"
-              onClick={onSettings}
-              className="text-sm text-mut hover:text-ink transition-colors mt-2 cursor-pointer"
-            >
-              Settings
-            </button>
+            <div className="flex items-center gap-4 mt-2">
+              {streak > 0 && (
+                <span
+                  className="px-2.5 py-1 rounded-full border border-accent/40 bg-accent/10 text-accent text-xs font-bold tabular-nums"
+                  title={`${streak} day streak`}
+                >
+                  {streak} day{streak > 1 ? 's' : ''}
+                </span>
+              )}
+              <button
+                type="button"
+                onClick={onStats}
+                className="text-sm text-mut hover:text-ink transition-colors cursor-pointer"
+              >
+                Stats
+              </button>
+              <button
+                type="button"
+                onClick={onSettings}
+                className="text-sm text-mut hover:text-ink transition-colors cursor-pointer"
+              >
+                Settings
+              </button>
+            </div>
           </div>
         </header>
 
