@@ -6,7 +6,7 @@ export default function ThemeToggle({ theme, onToggle }) {
       type="button"
       onClick={onToggle}
       title={dark ? 'Switch to day mode' : 'Switch to night mode'}
-      className="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full hairline bg-surface card-shadow card-shadow-hover flex items-center justify-center text-mut hover:text-ink active:scale-95 transition cursor-pointer"
+      className="btn-glass fixed bottom-5 right-5 z-50 !p-0 w-12 h-12"
     >
       {dark ? (
         <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">

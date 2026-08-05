@@ -1,5 +1,6 @@
 import { SECTION_LABELS } from '../engine/registry.js'
 import { useKeyboard } from '../hooks/useKeyboard.js'
+import Btn from '../components/Btn.jsx'
 
 export default function ModeSelect({ sectionKey, settings, onMode, onBack }) {
   useKeyboard({
@@ -13,9 +14,9 @@ export default function ModeSelect({ sectionKey, settings, onMode, onBack }) {
   return (
     <div className="min-h-dvh app-atmosphere flex flex-col">
       <div className="max-w-3xl mx-auto w-full px-5 md:px-8 py-12 flex-1 flex flex-col justify-center">
-        <button type="button" onClick={onBack} className="self-start text-sm text-mut hover:text-ink transition-colors cursor-pointer">
-          Back (Esc)
-        </button>
+        <Btn onClick={onBack} kbd="Esc" className="self-start">
+          Back
+        </Btn>
         <p className="mt-8 text-xs uppercase tracking-[0.18em] text-dim animate-fade-up">
           {SECTION_LABELS[sectionKey]}
         </p>

@@ -8,6 +8,7 @@ import TimerRing from '../components/TimerRing.jsx'
 import QuestionCard from '../components/QuestionCard.jsx'
 import OptionButton from '../components/OptionButton.jsx'
 import SvgFigure from '../components/SvgFigure.jsx'
+import Btn from '../components/Btn.jsx'
 
 export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
   const { state, question, answer, next, finish } = useQuizSession(sectionKey, mode, settings)
@@ -48,13 +49,9 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
     <div className="min-h-dvh app-atmosphere flex flex-col">
       <header className="flex items-center justify-between px-5 md:px-8 pt-5">
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={mode === 'spam' ? finish : onExit}
-            className="text-mut hover:text-ink text-sm transition-colors cursor-pointer"
-          >
+          <Btn onClick={mode === 'spam' ? finish : onExit} kbd="Esc">
             {mode === 'spam' ? 'End session' : 'Exit'}
-          </button>
+          </Btn>
         </div>
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-dim">{SECTION_LABELS[sectionKey]}</p>

@@ -2,6 +2,7 @@ import { getStats, displayStreak } from '../storage/stats.js'
 import { SECTIONS, SECTION_LABELS } from '../engine/registry.js'
 import { RULE_LABELS } from '../data/verbalBank.js'
 import { useKeyboard } from '../hooks/useKeyboard.js'
+import Btn from '../components/Btn.jsx'
 
 const pct = (correct, attempts) => (attempts ? Math.round((correct / attempts) * 100) : 0)
 const accColor = (p) => (p >= 80 ? 'text-good' : p >= 50 ? 'text-accent' : 'text-bad')
@@ -22,9 +23,9 @@ export default function Stats({ onBack }) {
   return (
     <div className="min-h-dvh app-atmosphere">
       <div className="max-w-3xl mx-auto px-5 md:px-8 py-12">
-        <button type="button" onClick={onBack} className="text-sm text-mut hover:text-ink transition-colors cursor-pointer">
-          Back (Esc)
-        </button>
+        <Btn onClick={onBack} kbd="Esc">
+          Back
+        </Btn>
 
         <div className="mt-8 flex items-end justify-between animate-fade-up">
           <h2 className="text-3xl font-semibold tracking-tight">Stats</h2>
@@ -36,8 +37,8 @@ export default function Stats({ onBack }) {
           </div>
         </div>
 
-        <section className="mt-8 rounded-2xl hairline bg-surface card-shadow overflow-hidden animate-fade-up">
-          <table className="w-full text-[15px]">
+        <section className="mt-8 rounded-2xl hairline bg-surface card-shadow overflow-x-auto animate-fade-up">
+          <table className="w-full min-w-[480px] text-[15px]">
             <thead>
               <tr className="text-left text-xs font-semibold uppercase tracking-[0.08em] text-dim border-b border-line">
                 <th className="px-5 py-3 font-semibold">Section</th>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { personalityItems, LIKERT } from '../data/personalityItems.js'
 import { useKeyboard } from '../hooks/useKeyboard.js'
+import Btn from '../components/Btn.jsx'
 
 export default function PersonalityDrill({ onDone }) {
   const [index, setIndex] = useState(0)
@@ -30,13 +31,9 @@ export default function PersonalityDrill({ onDone }) {
           <p className="mt-3 text-mut max-w-md mx-auto">
             Steady, honest, consistent. Nothing was recorded.
           </p>
-          <button
-            type="button"
-            onClick={onDone}
-            className="mt-6 px-5 py-2.5 rounded-lg bg-accent text-onsignal font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition cursor-pointer"
-          >
-            Home (Enter)
-          </button>
+          <Btn variant="primary" onClick={onDone} kbd="Enter" className="mt-6">
+            Home
+          </Btn>
         </div>
       </div>
     )
@@ -45,9 +42,9 @@ export default function PersonalityDrill({ onDone }) {
   return (
     <div className="min-h-dvh app-atmosphere flex flex-col">
       <header className="flex items-center justify-between px-5 md:px-8 pt-5">
-        <button type="button" onClick={onDone} className="text-mut hover:text-ink text-sm transition-colors cursor-pointer">
+        <Btn onClick={onDone} kbd="Esc">
           Exit
-        </button>
+        </Btn>
         <p className="text-sm font-medium tabular-nums text-mut">
           {index + 1} / {personalityItems.length}
         </p>

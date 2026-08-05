@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { saveSettings } from '../storage/storage.js'
 import { useKeyboard } from '../hooks/useKeyboard.js'
+import Btn from '../components/Btn.jsx'
 
 function Row({ label, hint, children }) {
   return (
@@ -32,9 +33,9 @@ export default function Settings({ settings, onChange, onBack }) {
   return (
     <div className="min-h-dvh app-atmosphere">
       <div className="max-w-2xl mx-auto px-5 md:px-8 py-12">
-        <button type="button" onClick={onBack} className="text-sm text-mut hover:text-ink transition-colors cursor-pointer">
-          Back (Esc)
-        </button>
+        <Btn onClick={onBack} kbd="Esc">
+          Back
+        </Btn>
         <h2 className="mt-8 text-3xl font-semibold tracking-tight animate-fade-up">Settings</h2>
 
         <div className="mt-8 rounded-2xl hairline bg-surface px-6 animate-fade-up">
@@ -45,8 +46,8 @@ export default function Settings({ settings, onChange, onBack }) {
                   key={s}
                   type="button"
                   onClick={() => update({ perQuestionSeconds: s })}
-                  className={`px-3 py-1.5 rounded-lg text-sm tabular-nums transition cursor-pointer ${
-                    local.perQuestionSeconds === s ? 'bg-accent text-onsignal font-semibold' : 'hairline text-mut hover:text-ink'
+                  className={`!px-3.5 !py-1.5 !text-sm tabular-nums ${
+                    local.perQuestionSeconds === s ? 'btn-primary' : 'btn-glass'
                   }`}
                 >
                   {s}
@@ -61,8 +62,8 @@ export default function Settings({ settings, onChange, onBack }) {
                   key={n}
                   type="button"
                   onClick={() => update({ setLength: n })}
-                  className={`px-3 py-1.5 rounded-lg text-sm tabular-nums transition cursor-pointer ${
-                    local.setLength === n ? 'bg-accent text-onsignal font-semibold' : 'hairline text-mut hover:text-ink'
+                  className={`!px-3.5 !py-1.5 !text-sm tabular-nums ${
+                    local.setLength === n ? 'btn-primary' : 'btn-glass'
                   }`}
                 >
                   {n}
@@ -80,8 +81,8 @@ export default function Settings({ settings, onChange, onBack }) {
                   key={v}
                   type="button"
                   onClick={() => update({ feedbackMode: v })}
-                  className={`px-3 py-1.5 rounded-lg text-sm transition cursor-pointer ${
-                    local.feedbackMode === v ? 'bg-accent text-onsignal font-semibold' : 'hairline text-mut hover:text-ink'
+                  className={`!px-3.5 !py-1.5 !text-sm ${
+                    local.feedbackMode === v ? 'btn-primary' : 'btn-glass'
                   }`}
                 >
                   {label}

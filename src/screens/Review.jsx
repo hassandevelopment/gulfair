@@ -1,6 +1,7 @@
 import { SECTION_LABELS } from '../engine/registry.js'
 import { useKeyboard } from '../hooks/useKeyboard.js'
 import SvgFigure from '../components/SvgFigure.jsx'
+import Btn from '../components/Btn.jsx'
 
 function Opt({ value }) {
   if (typeof value === 'string') return value
@@ -28,7 +29,7 @@ export default function Review({ result, onHome, onRetry }) {
           <p className="text-xs uppercase tracking-[0.18em] text-dim">
             {SECTION_LABELS[sectionKey]} / {mode === 'set' ? 'Set complete' : 'Session ended'}
           </p>
-          <div className="mt-4 flex items-end gap-8">
+          <div className="mt-4 flex flex-wrap items-end gap-x-8 gap-y-4">
             <div>
               <p className="text-6xl font-bold tabular-nums tracking-tight text-ink">
                 {correct}
@@ -48,20 +49,12 @@ export default function Review({ result, onHome, onRetry }) {
             </div>
           </div>
           <div className="mt-6 flex gap-3">
-            <button
-              type="button"
-              onClick={onRetry}
-              className="px-4 py-2 rounded-lg bg-accent text-onsignal font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition cursor-pointer"
-            >
-              Go again (Enter)
-            </button>
-            <button
-              type="button"
-              onClick={onHome}
-              className="px-4 py-2 rounded-lg hairline text-mut hover:text-ink text-sm transition cursor-pointer"
-            >
-              Home (Esc)
-            </button>
+            <Btn variant="primary" onClick={onRetry} kbd="Enter">
+              Go again
+            </Btn>
+            <Btn onClick={onHome} kbd="Esc">
+              Home
+            </Btn>
           </div>
         </header>
 
