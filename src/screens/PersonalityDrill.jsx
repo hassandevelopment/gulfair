@@ -41,20 +41,20 @@ export default function PersonalityDrill({ onDone }) {
 
   return (
     <div className="min-h-dvh app-atmosphere flex flex-col">
-      <header className="flex items-center justify-between px-5 md:px-8 pt-5">
-        <Btn onClick={onDone} kbd="Esc">
+      <header className="grid grid-cols-3 items-center px-5 md:px-8 pt-5">
+        <Btn onClick={onDone} kbd="Esc" className="justify-self-start">
           Exit
         </Btn>
-        <p className="text-sm font-medium tabular-nums text-mut">
+        <p className="text-sm font-medium tabular-nums text-mut text-center">
           {index + 1} / {personalityItems.length}
         </p>
-        <span className="w-10" />
+        <span />
       </header>
-      <main key={index} className="flex-1 flex flex-col justify-center max-w-3xl w-full mx-auto px-5 md:px-8 pb-10 animate-fade-up">
-        <p className="text-2xl md:text-3xl font-medium text-ink leading-relaxed">
+      <main key={index} className="flex-1 flex flex-col justify-center items-center max-w-3xl w-full mx-auto px-5 md:px-8 pb-10 animate-fade-up">
+        <p className="text-2xl md:text-3xl font-medium text-ink leading-relaxed text-center max-w-2xl">
           {personalityItems[index]}
         </p>
-        <div className="mt-10 flex flex-col gap-3 max-w-xl">
+        <div className="mt-10 flex flex-col gap-3 w-full max-w-xl">
           {LIKERT.map((label, i) => (
             <button
               key={i}
@@ -73,7 +73,7 @@ export default function PersonalityDrill({ onDone }) {
             </button>
           ))}
         </div>
-        <p className="mt-6 text-xs text-dim">Keys 1 to 5 answer. No scoring, no feedback.</p>
+        <p className="mt-6 text-xs text-dim text-center">Keys 1 to 5 answer. No scoring, no feedback.</p>
       </main>
     </div>
   )

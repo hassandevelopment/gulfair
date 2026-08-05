@@ -41,7 +41,7 @@ export default function Home({ onSection, onSettings, onStats }) {
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">Gulf Air prep</p>
               <h1 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight">
-                Psychometric Exam Preparation <span className="text-dim font-normal">~</span> Hassan Alnajjar
+                Psychometric Exam Preparation
               </h1>
               <p className="mt-3 text-mut">Exam day: 17 August.</p>
             </div>
