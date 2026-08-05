@@ -22,7 +22,8 @@ export function genSdt(rng) {
   } while (!Number.isInteger(d) || d < 10)
 
   const ask = rng.pick(['speed', 'distance', 'time'])
-  const vehicle = rng.pick(['A plane', 'An aircraft', 'A bus', 'A car'])
+  const vehicle =
+    s >= 200 ? rng.pick(['A plane', 'An aircraft']) : s >= 140 ? 'A train' : rng.pick(['A bus', 'A car'])
 
   if (ask === 'speed') {
     const candidates = [d, Math.round(d * t.h), s * 2, Math.round(s / 2), s + 20, s - 20]
@@ -53,7 +54,7 @@ export function genSdt(rng) {
       id: nextId('quant-sdt'),
       section: 'quant',
       type: 'sdt',
-      prompt: `${vehicle.toLowerCase() === 'a plane' ? 'A plane' : vehicle} travels at ${s} km/h for ${t.label}. How far does it go?`,
+      prompt: `${vehicle} travels at ${s} km/h for ${t.label}. How far does it go?`,
       options,
       correctIndex,
       explanation: `Distance = speed x time = ${s} x ${t.h} = ${d} km.`,

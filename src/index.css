@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+
+  --color-bg: #0a0e16;
+  --color-surface: #111827;
+  --color-raised: #18213396;
+  --color-line: #232e45;
+  --color-ink: #e9edf5;
+  --color-mut: #8b95a9;
+  --color-dim: #5b6478;
+  --color-accent: #f0b429;
+  --color-good: #34d399;
+  --color-bad: #f87171;
+
+  --animate-fade-up: fade-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-pop: pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-shake: shake 0.32s ease-in-out both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    45% { transform: scale(1.035); }
+    100% { transform: scale(1); }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    55% { transform: translateX(4px); }
+    80% { transform: translateX(-2px); }
+  }
+}
+
+html {
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Faint instrument glow behind the app, one soft amber pool up top */
+.app-atmosphere {
+  background:
+    radial-gradient(60rem 30rem at 50% -12rem, rgba(240, 180, 41, 0.07), transparent 60%),
+    radial-gradient(40rem 26rem at 85% 110%, rgba(52, 100, 180, 0.06), transparent 60%),
+    var(--color-bg);
+}
+
+.hairline {
+  border: 1px solid var(--color-line);
+}
+
+.stagger > * {
+  animation: var(--animate-fade-up);
+}
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 40ms; }
+.stagger > *:nth-child(3) { animation-delay: 80ms; }
+.stagger > *:nth-child(4) { animation-delay: 120ms; }
+.stagger > *:nth-child(5) { animation-delay: 160ms; }
+.stagger > *:nth-child(6) { animation-delay: 200ms; }
+.stagger > *:nth-child(7) { animation-delay: 240ms; }
+.stagger > *:nth-child(8) { animation-delay: 280ms; }
