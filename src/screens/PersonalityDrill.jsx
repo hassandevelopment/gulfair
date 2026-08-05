@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { personalityItems, LIKERT } from '../data/personalityItems.js'
 import { useKeyboard } from '../hooks/useKeyboard.js'
+import { createRng } from '../engine/rng.js'
 import Btn from '../components/Btn.jsx'
 
-export default function PersonalityDrill({ onDone }) {
+export default function PersonalityDrill({ settings, onDone }) {
+  // Shuffled run of the requested length. Past the bank size, statements
+  // reappear in a new order, which mirrors how real profilers re-ask
+  // similar items to check consistency.
+  const items = useMemo(() => {
+    const rng = createRng()
+    const target = settings.personalityLength ?? 30
+    let list = []
+    while (list.length < target) {
+      list = list.concat(rng.shuffle(personalityItems))
+    }
+    return list.slice(0, target)
+  }, [settings.personalityLength])
+
   const [index, setIndex] = useState(0)
   const [picked, setPicked] = useState(null)
-  const finished = index >= personalityItems.length
+  const finished = index >= items.length
 
   function choose(i) {
     if (picked !== null || finished) return
@@ -46,13 +60,13 @@ export default function PersonalityDrill({ onDone }) {
           Exit
         </Btn>
         <p className="text-sm font-medium tabular-nums text-mut text-center">
-          {index + 1} / {personalityItems.length}
+          {index + 1} / {items.length}
         </p>
         <span />
       </header>
       <main key={index} className="flex-1 flex flex-col justify-center items-center max-w-3xl w-full mx-auto px-5 md:px-8 pb-10 animate-fade-up">
         <p className="text-2xl md:text-3xl font-medium text-ink leading-relaxed text-center max-w-2xl">
-          {personalityItems[index]}
+          {items[index]}
         </p>
         <div className="mt-10 flex flex-col gap-3 w-full max-w-xl">
           {LIKERT.map((label, i) => (

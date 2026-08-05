@@ -18,14 +18,16 @@ export default function PersonalityBriefing({ onStart, onBack }) {
         </h2>
         <div className="mt-6 space-y-4 text-mut leading-relaxed animate-fade-up">
           <p>
-            The real profiler shows you trait statements and asks how strongly you agree, from
-            Strongly disagree up to Strongly agree. It is not scored like the other sections. It
-            measures two things:
+            The real profiler shows you around 114 trait statements and asks how strongly you
+            agree, from Strongly disagree up to Strongly agree. It is not scored like the other
+            sections. It measures two things:
             consistency (similar statements should get similar answers) and self-awareness.
           </p>
           <p>
             Answer honestly and steadily. Do not overthink individual items, and avoid painting
             an unrealistic picture; profilers flag people who claim the maximum on everything.
+            Watch the wording: many statements are phrased so that agreeing is NOT the flattering
+            answer, so spamming Agree gives an inconsistent profile.
           </p>
           <p>
             Below is a short practice run so the format feels familiar. Nothing is recorded and

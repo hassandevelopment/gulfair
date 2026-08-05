@@ -49,7 +49,7 @@ export default function App() {
       )
       break
     case 'personality-drill':
-      screen = <PersonalityDrill onDone={goHome} />
+      screen = <PersonalityDrill settings={settings} onDone={goHome} />
       break
     case 'settings':
       screen = <Settings settings={settings} onChange={setSettings} onBack={goHome} />

@@ -28,7 +28,8 @@ export default function Settings({ settings, onChange, onBack }) {
   useKeyboard({ onEscape: onBack })
 
   const secondsChoices = [30, 45, 60, 90]
-  const lengthChoices = [10, 15, 20]
+  const lengthChoices = [10, 15, 20, 30, 50]
+  const personalityChoices = [30, 60, 114]
 
   return (
     <div className="min-h-dvh app-atmosphere">
@@ -56,7 +57,7 @@ export default function Settings({ settings, onChange, onBack }) {
             </div>
           </Row>
           <Row label="Set length" hint="Questions per fixed set">
-            <div className="flex gap-1.5">
+            <div className="flex flex-wrap justify-end gap-1.5">
               {lengthChoices.map((n) => (
                 <button
                   key={n}
@@ -64,6 +65,22 @@ export default function Settings({ settings, onChange, onBack }) {
                   onClick={() => update({ setLength: n })}
                   className={`!px-3.5 !py-1.5 !text-sm tabular-nums ${
                     local.setLength === n ? 'btn-primary' : 'btn-glass'
+                  }`}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+          </Row>
+          <Row label="Personality statements" hint="The real exam runs about 114">
+            <div className="flex flex-wrap justify-end gap-1.5">
+              {personalityChoices.map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => update({ personalityLength: n })}
+                  className={`!px-3.5 !py-1.5 !text-sm tabular-nums ${
+                    (local.personalityLength ?? 30) === n ? 'btn-primary' : 'btn-glass'
                   }`}
                 >
                   {n}
