@@ -1,5 +1,15 @@
 import { SECTION_LABELS } from '../engine/registry.js'
 import { useKeyboard } from '../hooks/useKeyboard.js'
+import SvgFigure from '../components/SvgFigure.jsx'
+
+function Opt({ value }) {
+  if (typeof value === 'string') return value
+  return (
+    <span className="inline-block align-middle">
+      <SvgFigure spec={value} size={40} />
+    </span>
+  )
+}
 
 export default function Review({ result, onHome, onRetry }) {
   const { questions, answers, sectionKey, mode } = result
@@ -73,10 +83,12 @@ export default function Review({ result, onHome, onRetry }) {
                 <div className="mt-2 text-sm space-y-0.5">
                   {!a.correct && (
                     <p className="text-bad font-medium">
-                      Your answer: {a.timedOut ? 'none (time expired)' : q.options[a.picked]}
+                      Your answer: {a.timedOut ? 'none (time expired)' : <Opt value={q.options[a.picked]} />}
                     </p>
                   )}
-                  <p className="text-good font-medium">Correct: {q.options[q.correctIndex]}</p>
+                  <p className="text-good font-medium">
+                    Correct: <Opt value={q.options[q.correctIndex]} />
+                  </p>
                   {q.explanation && <p className="text-mut mt-1.5">{q.explanation}</p>}
                 </div>
               </li>

@@ -1,16 +1,19 @@
 import { quantPool } from '../generators/quant/index.js'
+import { logicalPool } from '../generators/logical/index.js'
+import { attentionPool } from '../generators/attention/index.js'
+import { abstractPool } from '../generators/abstract/index.js'
 import { verbalBank } from '../data/verbalBank.js'
 import { makeGeneratorSource, makeBankSource, makeMockSource } from './sources.js'
 import { getVerbalCycle, saveVerbalCycle } from '../storage/storage.js'
 
 // Section metadata drives the home screen. Order matches the real exam.
 export const SECTIONS = [
-  { key: 'personality', num: 1, name: 'Personality Profiler', blurb: 'Likert statements, unscored', scored: false, ready: false },
+  { key: 'personality', num: 1, name: 'Personality Profiler', blurb: 'Likert statements, unscored', scored: false, ready: true },
   { key: 'quant', num: 2, name: 'Quantitative Aptitude', blurb: 'Percentages, tables, speed and distance', scored: true, ready: true },
-  { key: 'logical', num: 3, name: 'Logical Reasoning', blurb: 'Series, alphabetizing, odd one out', scored: true, ready: false },
+  { key: 'logical', num: 3, name: 'Logical Reasoning', blurb: 'Series, alphabetizing, odd one out', scored: true, ready: true },
   { key: 'verbal', num: 4, name: 'Verbal Ability', blurb: 'Grammar, confusables, vocabulary', scored: true, ready: true },
-  { key: 'abstract', num: 5, name: 'General Intelligence', blurb: 'Abstract shape sequences', scored: true, ready: false },
-  { key: 'attention', num: 6, name: 'Attention to Detail', blurb: 'Spot the difference, count, match', scored: true, ready: false },
+  { key: 'abstract', num: 5, name: 'General Intelligence', blurb: 'Abstract shape sequences', scored: true, ready: true },
+  { key: 'attention', num: 6, name: 'Attention to Detail', blurb: 'Spot the difference, count, match', scored: true, ready: true },
 ]
 
 export const SECTION_LABELS = Object.fromEntries(SECTIONS.map((s) => [s.key, s.name]))
@@ -18,6 +21,9 @@ SECTION_LABELS.mock = 'Mixed Mock'
 
 const builders = {
   quant: (rng) => makeGeneratorSource(quantPool, rng),
+  logical: (rng) => makeGeneratorSource(logicalPool, rng),
+  attention: (rng) => makeGeneratorSource(attentionPool, rng),
+  abstract: (rng) => makeGeneratorSource(abstractPool, rng),
   verbal: (rng) => makeBankSource(verbalBank, rng, getVerbalCycle(), saveVerbalCycle),
 }
 

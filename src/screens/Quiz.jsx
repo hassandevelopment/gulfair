@@ -7,6 +7,7 @@ import { SECTION_LABELS } from '../engine/registry.js'
 import TimerRing from '../components/TimerRing.jsx'
 import QuestionCard from '../components/QuestionCard.jsx'
 import OptionButton from '../components/OptionButton.jsx'
+import SvgFigure from '../components/SvgFigure.jsx'
 
 export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
   const { state, question, answer, next, finish } = useQuizSession(sectionKey, mode, settings)
@@ -28,7 +29,7 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
   }, [state.phase]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useKeyboard({
-    onDigit: (i) => answering && answer(i),
+    onDigit: (i) => answering && i < 4 && answer(i),
     onEnter: () => feedback && next(),
     onEscape: () => (mode === 'spam' ? finish() : onExit()),
   })
@@ -73,7 +74,7 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
         <div className="grid gap-3 md:grid-cols-2">
           {question.options.map((opt, i) => (
             <OptionButton key={i} index={i} state={optionState(i)} mono={mono} onClick={() => answer(i)}>
-              {opt}
+              {typeof opt === 'string' ? opt : <SvgFigure spec={opt} size={64} />}
             </OptionButton>
           ))}
         </div>

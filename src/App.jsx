@@ -6,6 +6,8 @@ import Quiz from './screens/Quiz.jsx'
 import Review from './screens/Review.jsx'
 import Settings from './screens/Settings.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
+import PersonalityBriefing from './screens/PersonalityBriefing.jsx'
+import PersonalityDrill from './screens/PersonalityDrill.jsx'
 
 // The whole app is one page; this state object is the "router".
 export default function App() {
@@ -28,10 +30,20 @@ export default function App() {
     case 'home':
       screen = (
         <Home
-          onSection={(key) => setView({ screen: 'mode', sectionKey: key })}
+          onSection={(key) =>
+            setView(key === 'personality' ? { screen: 'personality' } : { screen: 'mode', sectionKey: key })
+          }
           onSettings={() => setView({ screen: 'settings' })}
         />
       )
+      break
+    case 'personality':
+      screen = (
+        <PersonalityBriefing onStart={() => setView({ screen: 'personality-drill' })} onBack={goHome} />
+      )
+      break
+    case 'personality-drill':
+      screen = <PersonalityDrill onDone={goHome} />
       break
     case 'settings':
       screen = <Settings settings={settings} onChange={setSettings} onBack={goHome} />

@@ -11,7 +11,7 @@ export function useKeyboard(handlers) {
       if (e.metaKey || e.ctrlKey || e.altKey) return
       const tag = e.target?.tagName
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
-      if (e.key >= '1' && e.key <= '4') {
+      if (e.key >= '1' && e.key <= '9') {
         ref.current.onDigit?.(Number(e.key) - 1)
       } else if (e.key === 'Enter') {
         ref.current.onEnter?.()
