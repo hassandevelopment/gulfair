@@ -57,20 +57,22 @@ export default function PersonalityDrill({ onDone }) {
         <p className="text-2xl md:text-3xl font-medium text-ink leading-relaxed">
           {personalityItems[index]}
         </p>
-        <div className="mt-10 grid gap-3 md:grid-cols-5">
+        <div className="mt-10 flex flex-col gap-3 max-w-xl">
           {LIKERT.map((label, i) => (
             <button
               key={i}
               type="button"
               onClick={() => choose(i)}
-              className={`rounded-2xl border px-3 py-5 text-center transition-all duration-150 cursor-pointer ${
+              className={`group flex items-center gap-4 rounded-2xl border px-6 py-4 text-left transition-all duration-150 cursor-pointer ${
                 picked === i
                   ? 'border-accent bg-accent/10 animate-pop'
-                  : 'border-line bg-surface card-shadow card-shadow-hover hover:border-dim/50 active:scale-[0.97]'
+                  : 'border-line bg-surface card-shadow card-shadow-hover hover:border-dim/50 active:scale-[0.985]'
               }`}
             >
-              <span className="block text-2xl font-bold tabular-nums text-ink">{i + 1}</span>
-              <span className="mt-1 block text-xs text-mut">{label}</span>
+              <span className="shrink-0 w-8 h-8 rounded-lg border border-line bg-bg/60 flex items-center justify-center text-sm font-semibold tabular-nums text-mut group-hover:text-ink transition-colors">
+                {i + 1}
+              </span>
+              <span className="text-lg md:text-xl font-medium text-ink">{label}</span>
             </button>
           ))}
         </div>

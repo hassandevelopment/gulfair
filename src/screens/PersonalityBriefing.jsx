@@ -17,8 +17,9 @@ export default function PersonalityBriefing({ onStart, onBack }) {
         </h2>
         <div className="mt-6 space-y-4 text-mut leading-relaxed animate-fade-up">
           <p>
-            The real profiler shows you trait statements and asks how strongly you agree, on a
-            scale of 1 to 5. It is not scored like the other sections. It measures two things:
+            The real profiler shows you trait statements and asks how strongly you agree, from
+            Strongly disagree up to Strongly agree. It is not scored like the other sections. It
+            measures two things:
             consistency (similar statements should get similar answers) and self-awareness.
           </p>
           <p>
