@@ -37,15 +37,24 @@ function Shape({ shape, x, y, s, fill, rotation }) {
   if (shape === 'square') return <rect x={x - h} y={y - h} width={s} height={s} {...common} />
   if (shape === 'triangle')
     return <polygon points={`${x},${y - h} ${x - h},${y + h} ${x + h},${y + h}`} {...common} />
-  // arrow pointing up
+  // Arrow as a closed polygon, so outline vs solid reads as hollow vs filled
+  // instead of "slightly bolder".
+  const headY = y - h + s * 0.48
+  const headW = h * 0.92
+  const shaftW = s * 0.2
   return (
-    <g {...common} fill="none">
-      <path d={`M ${x} ${y + h} L ${x} ${y - h * 0.55}`} />
-      <path
-        d={`M ${x - h * 0.7} ${y - h * 0.1} L ${x} ${y - h} L ${x + h * 0.7} ${y - h * 0.1} ${solid ? 'Z' : ''}`}
-        fill={solid ? 'currentColor' : 'none'}
-      />
-    </g>
+    <polygon
+      points={[
+        `${x},${y - h}`,
+        `${x + headW},${headY}`,
+        `${x + shaftW},${headY}`,
+        `${x + shaftW},${y + h}`,
+        `${x - shaftW},${y + h}`,
+        `${x - shaftW},${headY}`,
+        `${x - headW},${headY}`,
+      ].join(' ')}
+      {...common}
+    />
   )
 }
 
