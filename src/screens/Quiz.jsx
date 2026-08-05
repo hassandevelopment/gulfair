@@ -68,7 +68,7 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
         <TimerRing remaining={remaining} fraction={fraction} />
       </header>
 
-      <main key={question.id} className="flex-1 flex flex-col justify-center max-w-3xl w-full mx-auto px-5 md:px-8 pb-10 animate-fade-up">
+      <main key={question.id} className="flex-1 flex flex-col justify-center max-w-4xl w-full mx-auto px-5 md:px-8 pb-10 animate-fade-up">
         <QuestionCard question={question} />
         <div className="grid gap-3 md:grid-cols-2">
           {question.options.map((opt, i) => (

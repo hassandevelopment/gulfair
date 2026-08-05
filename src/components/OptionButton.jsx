@@ -2,7 +2,7 @@
 // a wrong pick lights signal red and shakes, everything else dims.
 export default function OptionButton({ index, children, state, onClick, mono }) {
   const base =
-    'group w-full text-left rounded-2xl px-6 py-6 flex items-center gap-4 transition-all duration-150 border'
+    'group w-full text-left rounded-2xl px-6 py-7 md:py-9 flex items-center gap-5 transition-all duration-150 border'
   const styles = {
     idle: 'border-line bg-surface card-shadow card-shadow-hover hover:border-dim/50 hover:bg-raised active:scale-[0.985] cursor-pointer',
     correct: 'border-good bg-good/10 animate-pop',
@@ -18,11 +18,11 @@ export default function OptionButton({ index, children, state, onClick, mono }) 
   return (
     <button type="button" onClick={onClick} className={`${base} ${styles[state]}`} disabled={state !== 'idle'}>
       <span
-        className={`shrink-0 w-10 h-10 rounded-xl border flex items-center justify-center text-base font-semibold tabular-nums transition-colors ${chipStyles[state]}`}
+        className={`shrink-0 w-11 h-11 md:w-12 md:h-12 rounded-xl border flex items-center justify-center text-lg font-semibold tabular-nums transition-colors ${chipStyles[state]}`}
       >
         {index + 1}
       </span>
-      <span className={`${mono ? 'font-semibold tabular-nums' : 'font-medium'} text-lg md:text-xl leading-snug text-ink`}>
+      <span className={`${mono ? 'font-semibold tabular-nums' : 'font-medium'} text-xl md:text-2xl leading-snug text-ink`}>
         {children}
       </span>
     </button>

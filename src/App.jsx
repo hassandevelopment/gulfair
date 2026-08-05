@@ -5,6 +5,7 @@ import ModeSelect from './screens/ModeSelect.jsx'
 import Quiz from './screens/Quiz.jsx'
 import Review from './screens/Review.jsx'
 import Settings from './screens/Settings.jsx'
+import ThemeToggle from './components/ThemeToggle.jsx'
 
 // The whole app is one page; this state object is the "router".
 export default function App() {
@@ -22,20 +23,21 @@ export default function App() {
     setSettings((s) => ({ ...s, theme }))
   }
 
+  let screen = null
   switch (view.screen) {
     case 'home':
-      return (
+      screen = (
         <Home
           onSection={(key) => setView({ screen: 'mode', sectionKey: key })}
           onSettings={() => setView({ screen: 'settings' })}
-          theme={settings.theme}
-          onToggleTheme={toggleTheme}
         />
       )
+      break
     case 'settings':
-      return <Settings settings={settings} onChange={setSettings} onBack={goHome} />
+      screen = <Settings settings={settings} onChange={setSettings} onBack={goHome} />
+      break
     case 'mode':
-      return (
+      screen = (
         <ModeSelect
           sectionKey={view.sectionKey}
           settings={settings}
@@ -43,8 +45,9 @@ export default function App() {
           onBack={goHome}
         />
       )
+      break
     case 'quiz':
-      return (
+      screen = (
         <Quiz
           key={view.run}
           sectionKey={view.sectionKey}
@@ -54,8 +57,9 @@ export default function App() {
           onExit={goHome}
         />
       )
+      break
     case 'review':
-      return (
+      screen = (
         <Review
           result={view.result}
           onHome={goHome}
@@ -69,7 +73,15 @@ export default function App() {
           }
         />
       )
+      break
     default:
-      return null
+      screen = null
   }
+
+  return (
+    <>
+      {screen}
+      <ThemeToggle theme={settings.theme} onToggle={toggleTheme} />
+    </>
+  )
 }
