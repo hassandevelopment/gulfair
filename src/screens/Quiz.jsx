@@ -76,18 +76,20 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
           ))}
         </div>
 
-        <div className="h-14 mt-5 flex items-center">
+        <div className="min-h-14 mt-5 flex items-center">
           {feedback ? (
             last.correct ? (
               <p className="text-good font-bold animate-fade-up">Correct</p>
             ) : (
-              <div className="animate-fade-up">
-                <p className="text-bad font-bold">
-                  {last.timedOut ? 'Time expired' : 'Incorrect'}
-                  <span className="text-mut font-normal ml-2">press Enter to continue</span>
-                </p>
+              <div className="animate-fade-up w-full">
+                <div className="flex items-center gap-4">
+                  <p className="text-bad font-bold">{last.timedOut ? 'Time expired' : 'Incorrect'}</p>
+                  <Btn variant="primary" onClick={next} kbd="Enter">
+                    Continue
+                  </Btn>
+                </div>
                 {question.explanation && (
-                  <p className="text-base text-mut mt-1 max-w-xl">{question.explanation}</p>
+                  <p className="text-base text-mut mt-2 max-w-xl">{question.explanation}</p>
                 )}
               </div>
             )
