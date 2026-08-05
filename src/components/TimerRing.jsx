@@ -1,7 +1,8 @@
 const R = 22
 const CIRC = 2 * Math.PI * R
 
-// Countdown ring. Amber while comfortable, red inside the last 10 seconds.
+// Countdown ring. Terracotta while comfortable, signal red inside the last
+// 10 seconds. The count stays espresso-dark so it reads at a glance.
 export default function TimerRing({ remaining, fraction, size = 56 }) {
   const urgent = remaining <= 10
   const color = urgent ? 'var(--color-bad)' : 'var(--color-accent)'
@@ -23,7 +24,7 @@ export default function TimerRing({ remaining, fraction, size = 56 }) {
         />
       </svg>
       <span
-        className={`absolute inset-0 flex items-center justify-center font-mono text-sm font-medium ${urgent ? 'text-bad' : 'text-mut'}`}
+        className={`absolute inset-0 flex items-center justify-center text-sm font-semibold tabular-nums ${urgent ? 'text-bad' : 'text-ink'}`}
       >
         {Math.ceil(remaining)}
       </span>

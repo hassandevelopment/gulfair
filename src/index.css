@@ -1,19 +1,20 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
 
-  --color-bg: #0a0e16;
-  --color-surface: #111827;
-  --color-raised: #18213396;
-  --color-line: #232e45;
-  --color-ink: #e9edf5;
-  --color-mut: #8b95a9;
-  --color-dim: #5b6478;
-  --color-accent: #f0b429;
-  --color-good: #34d399;
-  --color-bad: #f87171;
+  /* Warm editorial palette. All text/background pairs verified >= 4.5:1 (AA),
+     signal green and red kept deliberately saturated so feedback never blends in. */
+  --color-bg: #f4eee2;
+  --color-surface: #fcf9f1;
+  --color-raised: #fffdf8;
+  --color-line: #e5dbc8;
+  --color-ink: #33261b;
+  --color-mut: #63513f;
+  --color-dim: #776350;
+  --color-accent: #a84e27;
+  --color-good: #1b7a44;
+  --color-bad: #b3261e;
 
   --animate-fade-up: fade-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-pop: pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) both;
@@ -38,7 +39,7 @@
 
 html {
   background: var(--color-bg);
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -46,18 +47,39 @@ body {
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.005em;
+  line-height: 1.6;
 }
 
-/* Faint instrument glow behind the app, one soft amber pool up top */
+/* Warm paper atmosphere: faint terracotta light pooling at the top,
+   a whisper of shade at the foot, plus a film-grain layer for texture. */
 .app-atmosphere {
   background:
-    radial-gradient(60rem 30rem at 50% -12rem, rgba(240, 180, 41, 0.07), transparent 60%),
-    radial-gradient(40rem 26rem at 85% 110%, rgba(52, 100, 180, 0.06), transparent 60%),
+    radial-gradient(55rem 26rem at 50% -10rem, rgba(168, 78, 39, 0.05), transparent 60%),
+    radial-gradient(40rem 24rem at 90% 115%, rgba(51, 38, 27, 0.04), transparent 60%),
     var(--color-bg);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .hairline {
   border: 1px solid var(--color-line);
+}
+
+/* Ultra-diffuse card shadow, barely there */
+.card-shadow {
+  box-shadow: 0 1px 2px rgba(51, 38, 27, 0.04), 0 4px 16px rgba(51, 38, 27, 0.04);
+}
+.card-shadow-hover:hover {
+  box-shadow: 0 2px 4px rgba(51, 38, 27, 0.05), 0 8px 24px rgba(51, 38, 27, 0.07);
 }
 
 .stagger > * {

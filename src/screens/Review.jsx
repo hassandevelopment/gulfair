@@ -20,20 +20,20 @@ export default function Review({ result, onHome, onRetry }) {
           </p>
           <div className="mt-4 flex items-end gap-8">
             <div>
-              <p className="font-mono text-6xl font-medium text-ink">
+              <p className="text-6xl font-bold tabular-nums tracking-tight text-ink">
                 {correct}
                 <span className="text-dim text-3xl">/{answers.length}</span>
               </p>
               <p className="text-mut text-sm mt-1">correct</p>
             </div>
             <div className="pb-1">
-              <p className={`font-mono text-3xl ${accuracy >= 80 ? 'text-good' : accuracy >= 50 ? 'text-accent' : 'text-bad'}`}>
+              <p className={`text-3xl font-bold tabular-nums ${accuracy >= 80 ? 'text-good' : accuracy >= 50 ? 'text-accent' : 'text-bad'}`}>
                 {accuracy}%
               </p>
               <p className="text-mut text-sm mt-1">accuracy</p>
             </div>
             <div className="pb-1">
-              <p className="font-mono text-3xl text-ink">{avgS}s</p>
+              <p className="text-3xl font-bold tabular-nums text-ink">{avgS}s</p>
               <p className="text-mut text-sm mt-1">avg / question</p>
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function Review({ result, onHome, onRetry }) {
             <button
               type="button"
               onClick={onRetry}
-              className="px-4 py-2 rounded-lg bg-accent text-bg font-medium text-sm hover:brightness-110 active:scale-[0.97] transition cursor-pointer"
+              className="px-4 py-2 rounded-lg bg-accent text-white font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition cursor-pointer"
             >
               Go again (Enter)
             </button>
@@ -60,23 +60,23 @@ export default function Review({ result, onHome, onRetry }) {
             const q = questions[i]
             if (!q) return null
             return (
-              <li key={q.id + i} className={`rounded-xl p-4 border ${a.correct ? 'border-line bg-surface' : 'border-bad/30 bg-bad/5'}`}>
+              <li key={q.id + i} className={`rounded-xl p-4 border card-shadow ${a.correct ? 'border-line bg-surface' : 'border-bad/40 bg-bad/5'}`}>
                 <div className="flex items-start justify-between gap-4">
-                  <p className="text-[15px] text-ink leading-snug">
-                    <span className="font-mono text-dim mr-2">{i + 1}.</span>
+                  <p className="text-[15px] font-medium text-ink leading-snug">
+                    <span className="text-dim tabular-nums mr-2">{i + 1}.</span>
                     {q.prompt}
                   </p>
-                  <span className={`shrink-0 font-mono text-xs mt-1 ${a.correct ? 'text-good' : 'text-bad'}`}>
+                  <span className={`shrink-0 text-[11px] font-bold tracking-[0.08em] mt-1 ${a.correct ? 'text-good' : 'text-bad'}`}>
                     {a.correct ? 'PASS' : a.timedOut ? 'TIME' : 'MISS'}
                   </span>
                 </div>
                 <div className="mt-2 text-sm space-y-0.5">
                   {!a.correct && (
-                    <p className="text-bad/90">
+                    <p className="text-bad font-medium">
                       Your answer: {a.timedOut ? 'none (time expired)' : q.options[a.picked]}
                     </p>
                   )}
-                  <p className="text-good/90">Correct: {q.options[q.correctIndex]}</p>
+                  <p className="text-good font-medium">Correct: {q.options[q.correctIndex]}</p>
                   {q.explanation && <p className="text-mut mt-1.5">{q.explanation}</p>}
                 </div>
               </li>

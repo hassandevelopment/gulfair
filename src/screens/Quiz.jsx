@@ -56,8 +56,8 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
           </button>
         </div>
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.18em] text-dim">{SECTION_LABELS[sectionKey]}</p>
-          <p className="font-mono text-sm text-mut mt-0.5">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-dim">{SECTION_LABELS[sectionKey]}</p>
+          <p className="text-sm font-medium tabular-nums text-mut mt-0.5">
             {mode === 'set'
               ? `${state.index + 1} / ${state.questions.length}`
               : `${stats.answered} answered${stats.answered ? ` / ${stats.accuracy}%` : ''}${
@@ -81,10 +81,10 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
         <div className="h-14 mt-5 flex items-center">
           {feedback ? (
             last.correct ? (
-              <p className="text-good font-medium animate-fade-up">Correct</p>
+              <p className="text-good font-bold animate-fade-up">Correct</p>
             ) : (
               <div className="animate-fade-up">
-                <p className="text-bad font-medium">
+                <p className="text-bad font-bold">
                   {last.timedOut ? 'Time expired' : 'Incorrect'}
                   <span className="text-mut font-normal ml-2">press Enter to continue</span>
                 </p>

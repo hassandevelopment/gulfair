@@ -11,8 +11,7 @@
     "sanity": "node scripts/sanity.mjs"
   },
   "dependencies": {
-    "@fontsource-variable/archivo": "^5.2.5",
-    "@fontsource/ibm-plex-mono": "^5.2.5",
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

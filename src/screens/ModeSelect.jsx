@@ -24,9 +24,9 @@ export default function ModeSelect({ sectionKey, settings, onMode, onBack }) {
           <button
             type="button"
             onClick={() => onMode('set')}
-            className="text-left rounded-2xl p-6 border border-line bg-surface hover:border-dim hover:bg-raised hover:-translate-y-0.5 active:scale-[0.99] transition-all cursor-pointer"
+            className="text-left rounded-2xl p-6 border border-line bg-surface card-shadow card-shadow-hover hover:border-dim/50 hover:bg-raised hover:-translate-y-0.5 active:scale-[0.99] transition-all cursor-pointer"
           >
-            <p className="font-mono text-xs text-dim">1</p>
+            <p className="text-xs font-semibold tabular-nums text-dim">1</p>
             <p className="mt-1.5 text-xl font-medium">Set</p>
             <p className="mt-1.5 text-sm text-mut">
               {settings.setLength} questions, timed, scored, full review at the end
@@ -35,9 +35,9 @@ export default function ModeSelect({ sectionKey, settings, onMode, onBack }) {
           <button
             type="button"
             onClick={() => onMode('spam')}
-            className="text-left rounded-2xl p-6 border border-line bg-surface hover:border-dim hover:bg-raised hover:-translate-y-0.5 active:scale-[0.99] transition-all cursor-pointer"
+            className="text-left rounded-2xl p-6 border border-line bg-surface card-shadow card-shadow-hover hover:border-dim/50 hover:bg-raised hover:-translate-y-0.5 active:scale-[0.99] transition-all cursor-pointer"
           >
-            <p className="font-mono text-xs text-dim">2</p>
+            <p className="text-xs font-semibold tabular-nums text-dim">2</p>
             <p className="mt-1.5 text-xl font-medium">Spam</p>
             <p className="mt-1.5 text-sm text-mut">
               Endless fresh questions with live accuracy and pace
