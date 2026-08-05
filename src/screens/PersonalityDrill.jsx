@@ -81,9 +81,9 @@ function Results({ answers, onDone }) {
 }
 
 export default function PersonalityDrill({ settings, onDone }) {
-  // Shuffled run of the requested length. Past the bank size, statements
-  // reappear in a new order, which mirrors how real profilers re-ask
-  // similar items to check consistency.
+  // Shuffled run of the requested length. The bank holds 130+ unique
+  // statements (with paraphrase variants per trait), so even a full
+  // 114-item run never repeats a statement verbatim.
   const items = useMemo(() => {
     const rng = createRng()
     const target = settings.personalityLength ?? 30

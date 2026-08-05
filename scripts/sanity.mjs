@@ -8,6 +8,7 @@ import { attentionPool } from '../src/generators/attention/index.js'
 import { abstractPool } from '../src/generators/abstract/index.js'
 import { canonical } from '../src/generators/abstract/shapes.js'
 import { verbalBank } from '../src/data/verbalBank.js'
+import { personalityItems, TRAITS } from '../src/data/personalityItems.js'
 
 const RUNS = 3000
 let failures = 0
@@ -80,6 +81,15 @@ for (const q of verbalBank) {
   if (!q.explanation || !q.rule) fail('verbal: missing explanation or rule', q)
 }
 console.log(`verbalBank: ${verbalBank.length} items ok`)
+
+if (personalityItems.length < 114) fail(`personality bank too small: ${personalityItems.length} < 114`, {})
+if (new Set(personalityItems.map((i) => i.text)).size !== personalityItems.length) fail('personality: duplicate statements', {})
+for (const item of personalityItems) {
+  if (!TRAITS[item.trait]) fail(`personality: unknown trait "${item.trait}"`, item)
+}
+const reversedShare = personalityItems.filter((i) => i.reversed).length / personalityItems.length
+if (reversedShare < 0.4 || reversedShare > 0.6) fail(`personality: reversed share off balance (${reversedShare})`, {})
+console.log(`personalityItems: ${personalityItems.length} unique items ok (${Math.round(reversedShare * 100)}% reverse-keyed)`)
 
 if (failures) {
   console.error(`\n${failures} failure(s).`)
