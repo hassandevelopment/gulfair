@@ -41,7 +41,7 @@ export default function Review({ result, onHome, onRetry }) {
             <button
               type="button"
               onClick={onRetry}
-              className="px-4 py-2 rounded-lg bg-accent text-white font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition cursor-pointer"
+              className="px-4 py-2 rounded-lg bg-accent text-onsignal font-semibold text-sm hover:brightness-110 active:scale-[0.97] transition cursor-pointer"
             >
               Go again (Enter)
             </button>

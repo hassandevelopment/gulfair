@@ -1,6 +1,30 @@
 import { SECTIONS } from '../engine/registry.js'
 
-export default function Home({ onSection, onSettings }) {
+function ThemeIcon({ dark }) {
+  return dark ? (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="3.2" stroke="currentColor" strokeWidth="1.4" />
+      <path
+        d="M8 1.2v1.8M8 13v1.8M1.2 8H3M13 8h1.8M3.2 3.2l1.3 1.3M11.5 11.5l1.3 1.3M12.8 3.2l-1.3 1.3M4.5 11.5l-1.3 1.3"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  ) : (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path
+        d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+export default function Home({ onSection, onSettings, theme, onToggleTheme }) {
+  const dark = theme === 'dark'
   return (
     <div className="min-h-dvh app-atmosphere">
       <div className="max-w-3xl mx-auto px-5 md:px-8 py-12 md:py-16">
@@ -11,13 +35,23 @@ export default function Home({ onSection, onSettings }) {
               <h1 className="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">Psych Drill</h1>
               <p className="mt-3 text-mut">Exam day: 17 August. Train sharp, land it.</p>
             </div>
-            <button
-              type="button"
-              onClick={onSettings}
-              className="text-sm text-mut hover:text-ink transition-colors mt-2 cursor-pointer"
-            >
-              Settings
-            </button>
+            <div className="flex items-center gap-2 mt-2">
+              <button
+                type="button"
+                onClick={onToggleTheme}
+                title={dark ? 'Switch to day mode' : 'Switch to night mode'}
+                className="w-9 h-9 rounded-lg hairline bg-surface card-shadow flex items-center justify-center text-mut hover:text-ink active:scale-95 transition cursor-pointer"
+              >
+                <ThemeIcon dark={dark} />
+              </button>
+              <button
+                type="button"
+                onClick={onSettings}
+                className="text-sm text-mut hover:text-ink transition-colors cursor-pointer"
+              >
+                Settings
+              </button>
+            </div>
           </div>
         </header>
 

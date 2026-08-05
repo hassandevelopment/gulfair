@@ -89,7 +89,7 @@ export default function Quiz({ sectionKey, mode, settings, onDone, onExit }) {
                   <span className="text-mut font-normal ml-2">press Enter to continue</span>
                 </p>
                 {question.explanation && (
-                  <p className="text-sm text-mut mt-1 max-w-xl">{question.explanation}</p>
+                  <p className="text-base text-mut mt-1 max-w-xl">{question.explanation}</p>
                 )}
               </div>
             )

@@ -15,6 +15,8 @@
   --color-accent: #a84e27;
   --color-good: #1b7a44;
   --color-bad: #b3261e;
+  /* text placed on top of accent/good/bad fills */
+  --color-onsignal: #ffffff;
 
   --animate-fade-up: fade-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-pop: pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) both;
@@ -40,6 +42,37 @@
 html {
   background: var(--color-bg);
   color-scheme: light;
+}
+
+/* Night mode: same warm family, flipped. Espresso-black canvas, cream text,
+   terracotta and both signal colors brightened so they still pop on dark. */
+[data-theme='dark'] {
+  --color-bg: #16110d;
+  --color-surface: #1f1812;
+  --color-raised: #272017;
+  --color-line: #382d21;
+  --color-ink: #f0e7d9;
+  --color-mut: #b5a48e;
+  --color-dim: #8d7c66;
+  --color-accent: #e08350;
+  --color-good: #43c283;
+  --color-bad: #f2705f;
+  --color-onsignal: #221409;
+  color-scheme: dark;
+}
+
+[data-theme='dark'] .app-atmosphere {
+  background:
+    radial-gradient(55rem 26rem at 50% -10rem, rgba(224, 131, 80, 0.06), transparent 60%),
+    radial-gradient(40rem 24rem at 90% 115%, rgba(0, 0, 0, 0.3), transparent 60%),
+    var(--color-bg);
+}
+
+[data-theme='dark'] .card-shadow {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+[data-theme='dark'] .card-shadow-hover:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 body {

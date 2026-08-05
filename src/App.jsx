@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { getSettings } from './storage/storage.js'
+import { useEffect, useState } from 'react'
+import { getSettings, saveSettings } from './storage/storage.js'
 import Home from './screens/Home.jsx'
 import ModeSelect from './screens/ModeSelect.jsx'
 import Quiz from './screens/Quiz.jsx'
@@ -11,7 +11,16 @@ export default function App() {
   const [settings, setSettings] = useState(getSettings)
   const [view, setView] = useState({ screen: 'home' })
 
+  useEffect(() => {
+    document.documentElement.dataset.theme = settings.theme === 'dark' ? 'dark' : 'light'
+  }, [settings.theme])
+
   const goHome = () => setView({ screen: 'home' })
+  const toggleTheme = () => {
+    const theme = settings.theme === 'dark' ? 'light' : 'dark'
+    saveSettings({ theme })
+    setSettings((s) => ({ ...s, theme }))
+  }
 
   switch (view.screen) {
     case 'home':
@@ -19,6 +28,8 @@ export default function App() {
         <Home
           onSection={(key) => setView({ screen: 'mode', sectionKey: key })}
           onSettings={() => setView({ screen: 'settings' })}
+          theme={settings.theme}
+          onToggleTheme={toggleTheme}
         />
       )
     case 'settings':

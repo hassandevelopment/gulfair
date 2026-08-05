@@ -6,7 +6,7 @@ const KEY = 'psych-drill:v1'
 function defaults() {
   return {
     version: 1,
-    settings: { perQuestionSeconds: 45, setLength: 15, feedbackMode: 'immediate' },
+    settings: { perQuestionSeconds: 45, setLength: 15, feedbackMode: 'immediate', theme: 'light' },
     streak: { current: 0, best: 0, lastActiveDay: null },
     sections: {},
     verbalRules: {},

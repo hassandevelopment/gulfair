@@ -46,7 +46,7 @@ export default function Settings({ settings, onChange, onBack }) {
                   type="button"
                   onClick={() => update({ perQuestionSeconds: s })}
                   className={`px-3 py-1.5 rounded-lg text-sm tabular-nums transition cursor-pointer ${
-                    local.perQuestionSeconds === s ? 'bg-accent text-white font-semibold' : 'hairline text-mut hover:text-ink'
+                    local.perQuestionSeconds === s ? 'bg-accent text-onsignal font-semibold' : 'hairline text-mut hover:text-ink'
                   }`}
                 >
                   {s}
@@ -62,7 +62,7 @@ export default function Settings({ settings, onChange, onBack }) {
                   type="button"
                   onClick={() => update({ setLength: n })}
                   className={`px-3 py-1.5 rounded-lg text-sm tabular-nums transition cursor-pointer ${
-                    local.setLength === n ? 'bg-accent text-white font-semibold' : 'hairline text-mut hover:text-ink'
+                    local.setLength === n ? 'bg-accent text-onsignal font-semibold' : 'hairline text-mut hover:text-ink'
                   }`}
                 >
                   {n}
@@ -81,7 +81,7 @@ export default function Settings({ settings, onChange, onBack }) {
                   type="button"
                   onClick={() => update({ feedbackMode: v })}
                   className={`px-3 py-1.5 rounded-lg text-sm transition cursor-pointer ${
-                    local.feedbackMode === v ? 'bg-accent text-white font-semibold' : 'hairline text-mut hover:text-ink'
+                    local.feedbackMode === v ? 'bg-accent text-onsignal font-semibold' : 'hairline text-mut hover:text-ink'
                   }`}
                 >
                   {label}
