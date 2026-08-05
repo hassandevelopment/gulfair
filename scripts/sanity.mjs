@@ -64,11 +64,13 @@ const pools = [
 ]
 for (const [poolName, pool, opts] of pools) {
   for (const { fn } of pool) {
-    const name = `${poolName}/${fn.name}`
-    for (let i = 0; i < RUNS; i++) {
-      checkQuestion(fn(rng), name, opts)
+    for (const level of [1, 2, 3]) {
+      const name = `${poolName}/${fn.name} L${level}`
+      for (let i = 0; i < RUNS; i++) {
+        checkQuestion(fn(rng, level), name, opts)
+      }
     }
-    console.log(`${name}: ${RUNS} runs ok`)
+    console.log(`${poolName}/${fn.name}: ${RUNS} runs x 3 levels ok`)
   }
 }
 

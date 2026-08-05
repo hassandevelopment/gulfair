@@ -6,7 +6,10 @@ import { initSession, sessionReducer, currentQuestion } from '../engine/session.
 // Owns one drill session: question flow, answer timing, auto-advance.
 export function useQuizSession(sectionKey, mode, settings) {
   const rng = useMemo(() => createRng(), [])
-  const source = useMemo(() => buildSource(sectionKey, rng), [sectionKey, rng])
+  const source = useMemo(
+    () => buildSource(sectionKey, rng, settings.difficulty),
+    [sectionKey, rng, settings.difficulty],
+  )
 
   const [state, dispatch] = useReducer(sessionReducer, undefined, () =>
     initSession({

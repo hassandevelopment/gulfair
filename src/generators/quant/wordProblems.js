@@ -2,8 +2,23 @@ import { finalizeOptions } from '../../engine/distractors.js'
 import { nextId } from '../../engine/rng.js'
 
 // One or two step word problems with real framing and clean numbers.
-export function genWordProblem(rng) {
-  const kind = rng.pick(['change', 'fuelRate', 'tankPercent', 'trips', 'twoItems'])
+// Level 1: single step. Level 2: mixed. Level 3: discounts, averages, clock maths.
+const KINDS = {
+  1: ['fuelRate', 'trips', 'change'],
+  2: ['fuelRate', 'trips', 'change', 'tankPercent', 'twoItems', 'discount', 'average'],
+  3: ['discount', 'average', 'timeDiff', 'tankPercent', 'change', 'twoItems'],
+}
+
+function fmtDuration(mins) {
+  const h = Math.floor(mins / 60)
+  const m = mins % 60
+  if (h === 0) return `${m} min`
+  if (m === 0) return `${h} h`
+  return `${h} h ${m} min`
+}
+
+export function genWordProblem(rng, level = 2) {
+  const kind = rng.pick(KINDS[level] ?? KINDS[2])
 
   if (kind === 'change') {
     const c = rng.randInt(2, 6)
@@ -90,6 +105,75 @@ export function genWordProblem(rng) {
       options,
       correctIndex,
       explanation: `${k} trips x ${d} km = ${ans} km.`,
+    }
+  }
+
+  if (kind === 'discount') {
+    let price, p, off
+    do {
+      price = rng.pick([20, 40, 60, 80, 120, 200])
+      p = rng.pick([10, 20, 25, 50, 75])
+      off = (price * p) / 100
+    } while (!Number.isInteger(off))
+    const ans = price - off
+    const item = rng.pick(['A suitcase', 'A jacket', 'A watch', 'A pair of headphones'])
+    const candidates = [off, price - p, ans + 5, ans - 5]
+    const { options, correctIndex } = finalizeOptions(rng, ans, candidates, {
+      min: 1,
+      step: 5,
+      format: (v) => `${v} BD`,
+    })
+    return {
+      id: nextId('quant-word'),
+      section: 'quant',
+      type: 'word',
+      prompt: `${item} costs ${price} BD and is discounted by ${p}%. What is the new price?`,
+      options,
+      correctIndex,
+      explanation: `${p}% of ${price} is ${off}, so the new price is ${price} - ${off} = ${ans} BD.`,
+    }
+  }
+
+  if (kind === 'average') {
+    const k = rng.randInt(3, 6)
+    const avg = rng.randInt(4, 12)
+    const total = k * avg
+    const candidates = [avg + 1, avg - 1, total - k, avg + 2]
+    const { options, correctIndex } = finalizeOptions(rng, avg, candidates, {
+      min: 1,
+      format: (v) => `${v} kg`,
+    })
+    return {
+      id: nextId('quant-word'),
+      section: 'quant',
+      type: 'word',
+      prompt: `${k} crew members carry ${total} kg of luggage in total. What is the average per person?`,
+      options,
+      correctIndex,
+      explanation: `Average = total / people = ${total} / ${k} = ${avg} kg.`,
+    }
+  }
+
+  if (kind === 'timeDiff') {
+    const startH = rng.randInt(6, 18)
+    const startM = rng.pick([0, 10, 15, 20, 30, 40, 45, 50])
+    const diff = rng.pick([45, 60, 75, 90, 120, 150])
+    const endTotal = startH * 60 + startM + diff
+    const endH = Math.floor(endTotal / 60)
+    const endM = endTotal % 60
+    const fmt = (h, m) => `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`
+    const wrongs = [diff + 30, diff - 30, diff + 15, diff - 15].filter((d) => d > 0)
+    const { options, correctIndex } = finalizeOptions(rng, diff, wrongs, {
+      format: (v) => fmtDuration(v),
+    })
+    return {
+      id: nextId('quant-word'),
+      section: 'quant',
+      type: 'word',
+      prompt: `A flight departs at ${fmt(startH, startM)} and lands at ${fmt(endH, endM)}. How long is the flight?`,
+      options,
+      correctIndex,
+      explanation: `From ${fmt(startH, startM)} to ${fmt(endH, endM)} is ${fmtDuration(diff)}.`,
     }
   }
 

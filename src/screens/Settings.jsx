@@ -88,6 +88,27 @@ export default function Settings({ settings, onChange, onBack }) {
               ))}
             </div>
           </Row>
+          <Row label="Difficulty" hint="Ramps up starts easy and gets harder as you go">
+            <div className="flex flex-wrap justify-end gap-1.5">
+              {[
+                { v: 'easy', label: 'Easy' },
+                { v: 'standard', label: 'Standard' },
+                { v: 'hard', label: 'Hard' },
+                { v: 'ramp', label: 'Ramps up' },
+              ].map(({ v, label }) => (
+                <button
+                  key={v}
+                  type="button"
+                  onClick={() => update({ difficulty: v })}
+                  className={`!px-3.5 !py-1.5 !text-sm ${
+                    (local.difficulty ?? 'ramp') === v ? 'btn-primary' : 'btn-glass'
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </Row>
           <Row label="Feedback" hint="See results per question, or only in the end review">
             <div className="flex gap-1.5">
               {[

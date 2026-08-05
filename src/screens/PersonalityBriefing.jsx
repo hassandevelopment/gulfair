@@ -30,8 +30,9 @@ export default function PersonalityBriefing({ onStart, onBack }) {
             answer, so spamming Agree gives an inconsistent profile.
           </p>
           <p>
-            Below is a short practice run so the format feels familiar. Nothing is recorded and
-            nothing is graded.
+            Below is a practice run so the format feels familiar. Nothing is recorded or graded,
+            but at the end you get an informal trait sketch of how your answers come across. The
+            real exam gives no feedback at all.
           </p>
         </div>
         <Btn variant="primary" onClick={onStart} kbd="Enter" className="mt-8 self-start animate-fade-up">

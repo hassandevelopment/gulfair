@@ -13,11 +13,12 @@ function mentalMethod(p, n, a) {
 
 // Clean by construction: accept only (p, n) pairs where p*n resolves to an
 // integer or a single decimal, e.g. 30% of 6 = 1.8, 25% of 12 = 3.
-export function genPercent(rng) {
+// Level 1: small bases. Level 2: medium. Level 3: large round bases like 240.
+export function genPercent(rng, level = 2) {
   let p, n, times10
   do {
     p = rng.pick(PERCENTS)
-    n = rng.randInt(2, 40)
+    n = level === 3 ? 10 * rng.randInt(4, 40) : rng.randInt(2, level === 1 ? 20 : 60)
     times10 = p * n // answer * 1000; clean iff divisible by 100 (one decimal max)
   } while (times10 % 100 !== 0)
   const a = times10 / 100

@@ -5,19 +5,22 @@ import { nextId } from '../../engine/rng.js'
 // time fraction, distance is their product, then ask for any of the three.
 
 const TIMES = [
-  { h: 0.25, label: '15 minutes', speedHint: 'a quarter of an hour, so multiply by 4' },
-  { h: 0.5, label: '30 minutes', speedHint: 'half an hour, so multiply by 2' },
-  { h: 1, label: '1 hour', speedHint: 'one hour, so speed equals distance' },
-  { h: 2, label: '2 hours', speedHint: 'two hours, so divide by 2' },
-  { h: 3, label: '3 hours', speedHint: 'three hours, so divide by 3' },
+  { h: 0.25, label: '15 minutes', speedHint: 'a quarter of an hour, so multiply by 4', minLevel: 2 },
+  { h: 0.5, label: '30 minutes', speedHint: 'half an hour, so multiply by 2', minLevel: 1 },
+  { h: 0.75, label: '45 minutes', speedHint: 'three quarters of an hour: divide by 3, then multiply by 4', minLevel: 3 },
+  { h: 1, label: '1 hour', speedHint: 'one hour, so speed equals distance', minLevel: 1 },
+  { h: 1.5, label: '1.5 hours', speedHint: 'one and a half hours: two thirds of the distance per hour', minLevel: 3 },
+  { h: 2, label: '2 hours', speedHint: 'two hours, so divide by 2', minLevel: 1 },
+  { h: 3, label: '3 hours', speedHint: 'three hours, so divide by 3', minLevel: 2 },
 ]
 const SPEEDS = [40, 60, 80, 100, 120, 160, 200, 240, 300, 400, 480, 600]
 
-export function genSdt(rng) {
+export function genSdt(rng, level = 2) {
+  const times = TIMES.filter((x) => x.minLevel <= level)
   let s, t, d
   do {
     s = rng.pick(SPEEDS)
-    t = rng.pick(TIMES)
+    t = rng.pick(times)
     d = s * t.h
   } while (!Number.isInteger(d) || d < 10)
 

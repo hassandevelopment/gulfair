@@ -8,8 +8,9 @@ function defaults() {
     version: 1,
     settings: {
       perQuestionSeconds: 45,
-      setLength: 15,
+      setLength: 20,
       personalityLength: 30,
+      difficulty: 'ramp',
       feedbackMode: 'immediate',
       theme: 'light',
     },

@@ -1,16 +1,21 @@
 // A source is { next(): Question }. The quiz screen only ever calls next(),
 // so generated sections and the static verbal bank behave identically.
 
-export function makeGeneratorSource(pool, rng) {
+// getLevel(i) maps the i-th question served to a difficulty level (1..3);
+// generators that take a level use it, the rest ignore the extra argument.
+export function makeGeneratorSource(pool, rng, getLevel = () => 2) {
   const total = pool.reduce((s, g) => s + g.weight, 0)
+  let served = 0
   return {
     next() {
+      const level = getLevel(served)
+      served += 1
       let r = rng.next() * total
       for (const g of pool) {
         r -= g.weight
-        if (r <= 0) return g.fn(rng)
+        if (r <= 0) return g.fn(rng, level)
       }
-      return pool[pool.length - 1].fn(rng)
+      return pool[pool.length - 1].fn(rng, level)
     },
   }
 }

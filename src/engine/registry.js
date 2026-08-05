@@ -19,22 +19,32 @@ export const SECTIONS = [
 export const SECTION_LABELS = Object.fromEntries(SECTIONS.map((s) => [s.key, s.name]))
 SECTION_LABELS.mock = 'Mixed Mock'
 
+// Difficulty setting -> level per question index. 'ramp' starts easy and
+// gets harder as you go; fixed settings hold one level throughout.
+const LEVEL_FNS = {
+  easy: () => 1,
+  standard: () => 2,
+  hard: () => 3,
+  ramp: (i) => (i < 6 ? 1 : i < 13 ? 2 : 3),
+}
+
 const builders = {
-  quant: (rng) => makeGeneratorSource(quantPool, rng),
-  logical: (rng) => makeGeneratorSource(logicalPool, rng),
-  attention: (rng) => makeGeneratorSource(attentionPool, rng),
-  abstract: (rng) => makeGeneratorSource(abstractPool, rng),
+  quant: (rng, getLevel) => makeGeneratorSource(quantPool, rng, getLevel),
+  logical: (rng, getLevel) => makeGeneratorSource(logicalPool, rng, getLevel),
+  attention: (rng, getLevel) => makeGeneratorSource(attentionPool, rng, getLevel),
+  abstract: (rng, getLevel) => makeGeneratorSource(abstractPool, rng, getLevel),
   verbal: (rng) => makeBankSource(verbalBank, rng, getVerbalCycle(), saveVerbalCycle),
 }
 
-export function buildSource(sectionKey, rng) {
+export function buildSource(sectionKey, rng, difficulty = 'ramp') {
+  const getLevel = LEVEL_FNS[difficulty] ?? LEVEL_FNS.ramp
   if (sectionKey === 'mock') {
     const parts = SECTIONS.filter((s) => s.scored && s.ready && builders[s.key]).map((s) =>
-      builders[s.key](rng),
+      builders[s.key](rng, getLevel),
     )
     return makeMockSource(parts, rng)
   }
   const b = builders[sectionKey]
   if (!b) throw new Error(`No source builder for section "${sectionKey}"`)
-  return b(rng)
+  return b(rng, getLevel)
 }

@@ -2,9 +2,9 @@ import { finalizeOptions } from '../../engine/distractors.js'
 import { nextId } from '../../engine/rng.js'
 
 // Clean division by construction: dividend = divisor x quotient. 93/3, 84/4, 45/3.
-export function genDivision(rng) {
-  const d = rng.randInt(2, 9)
-  const q = rng.randInt(4, 25)
+export function genDivision(rng, level = 2) {
+  const d = level === 1 ? rng.randInt(2, 5) : level === 2 ? rng.randInt(2, 9) : rng.randInt(3, 12)
+  const q = level === 1 ? rng.randInt(3, 12) : level === 2 ? rng.randInt(4, 25) : rng.randInt(12, 40)
   const n = d * q
 
   const tens = Math.floor(n / d / 10) * 10 * d // largest clean tens chunk
