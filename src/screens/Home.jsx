@@ -10,8 +10,10 @@ export default function Home({ onSection, onSettings, onStats }) {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">Gulf Air prep</p>
-              <h1 className="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">Psych Drill</h1>
-              <p className="mt-3 text-mut">Exam day: 17 August. Train sharp, land it.</p>
+              <h1 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight">
+                Psychometric Exam Preparation <span className="text-dim font-normal">~</span> Hassan Alnajjar
+              </h1>
+              <p className="mt-3 text-mut">Exam day: 17 August.</p>
             </div>
             <div className="flex items-center gap-4 mt-2">
               {streak > 0 && (
