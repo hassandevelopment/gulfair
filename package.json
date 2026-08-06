@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "verbal-review": "node scripts/verbal-review.mjs",
+    "oral-review": "node scripts/oral-review.mjs",
     "sanity": "node scripts/sanity.mjs"
   },
   "dependencies": {

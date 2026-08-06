@@ -9,18 +9,25 @@ import ThemeToggle from './components/ThemeToggle.jsx'
 import PersonalityBriefing from './screens/PersonalityBriefing.jsx'
 import PersonalityDrill from './screens/PersonalityDrill.jsx'
 import Stats from './screens/Stats.jsx'
+import Landing from './screens/Landing.jsx'
+import OralHub from './screens/OralHub.jsx'
+import OralTextbook from './screens/OralTextbook.jsx'
+import OralExam from './screens/OralExam.jsx'
+import OralSdtDrill from './screens/OralSdtDrill.jsx'
 import { recordSession } from './storage/stats.js'
 
 // The whole app is one page; this state object is the "router".
 export default function App() {
   const [settings, setSettings] = useState(getSettings)
-  const [view, setView] = useState({ screen: 'home' })
+  const [view, setView] = useState({ screen: 'landing' })
 
   useEffect(() => {
     document.documentElement.dataset.theme = settings.theme === 'dark' ? 'dark' : 'light'
   }, [settings.theme])
 
   const goHome = () => setView({ screen: 'home' })
+  const goLanding = () => setView({ screen: 'landing' })
+  const goOralHub = () => setView({ screen: 'oral-hub' })
   const toggleTheme = () => {
     const theme = settings.theme === 'dark' ? 'light' : 'dark'
     saveSettings({ theme })
@@ -29,6 +36,28 @@ export default function App() {
 
   let screen = null
   switch (view.screen) {
+    case 'landing':
+      screen = <Landing onPsychometric={goHome} onOral={goOralHub} />
+      break
+    case 'oral-hub':
+      screen = (
+        <OralHub
+          onTextbook={() => setView({ screen: 'oral-textbook' })}
+          onExam={() => setView({ screen: 'oral-exam' })}
+          onSdt={() => setView({ screen: 'oral-sdt' })}
+          onBack={goLanding}
+        />
+      )
+      break
+    case 'oral-textbook':
+      screen = <OralTextbook onBack={goOralHub} />
+      break
+    case 'oral-exam':
+      screen = <OralExam onBack={goOralHub} />
+      break
+    case 'oral-sdt':
+      screen = <OralSdtDrill onBack={goOralHub} />
+      break
     case 'home':
       screen = (
         <Home
@@ -37,6 +66,7 @@ export default function App() {
           }
           onSettings={() => setView({ screen: 'settings' })}
           onStats={() => setView({ screen: 'stats' })}
+          onExit={goLanding}
         />
       )
       break

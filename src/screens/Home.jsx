@@ -31,7 +31,7 @@ function StreakFlame({ count }) {
   )
 }
 
-export default function Home({ onSection, onSettings, onStats }) {
+export default function Home({ onSection, onSettings, onStats, onExit }) {
   const streak = displayStreak(getStats().streak)
   return (
     <div className="min-h-dvh app-atmosphere">
@@ -47,6 +47,7 @@ export default function Home({ onSection, onSettings, onStats }) {
             </div>
             <div className="flex items-center gap-2.5 mt-2">
               {streak > 0 && <StreakFlame count={streak} />}
+              {onExit && <Btn onClick={onExit}>Menu</Btn>}
               <Btn onClick={onStats}>Stats</Btn>
               <Btn onClick={onSettings}>Settings</Btn>
             </div>

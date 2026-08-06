@@ -10,6 +10,7 @@ import { sdtPool } from '../src/generators/sdt/index.js'
 import { canonical } from '../src/generators/abstract/shapes.js'
 import { verbalBank } from '../src/data/verbalBank.js'
 import { personalityItems, TRAITS } from '../src/data/personalityItems.js'
+import { oralBank, isComplete, ORAL_CATEGORIES } from '../src/data/oralBank.js'
 
 const RUNS = 3000
 let failures = 0
@@ -92,6 +93,22 @@ for (const item of personalityItems) {
 const reversedShare = personalityItems.filter((i) => i.reversed).length / personalityItems.length
 if (reversedShare < 0.4 || reversedShare > 0.6) fail(`personality: reversed share off balance (${reversedShare})`, {})
 console.log(`personalityItems: ${personalityItems.length} unique items ok (${Math.round(reversedShare * 100)}% reverse-keyed)`)
+
+const oralIds = new Set(oralBank.map((q) => q.id))
+if (oralIds.size !== oralBank.length) fail('oral: duplicate ids', {})
+for (const q of oralBank) {
+  if (!/^oral-(aero|perf|inst|met|nav|gen)-\d{2}$/.test(q.id)) fail('oral: bad id', q)
+  if (!Number.isInteger(q.frequency) || q.frequency < 1 || q.frequency > 5) fail('oral: bad frequency', q)
+  if (!ORAL_CATEGORIES.includes(q.category)) fail(`oral: unknown category "${q.category}"`, q)
+  if (!q.question?.trim()) fail('oral: empty question', q)
+  const hasAny = q.conceptExplanation || q.spokenVersion || q.mcq || q.flashcardAnswer
+  if (hasAny && !isComplete(q)) fail('oral: half-complete entry', q)
+  if (q.mcq && (q.mcq.options.length !== 4 || new Set(q.mcq.options).size !== 4)) fail('oral: bad mcq options', q)
+  if (q.mcq && q.mcq.options[q.mcq.correctIndex] === undefined) fail('oral: bad mcq correctIndex', q)
+  if (q.spokenVersion && (q.spokenVersion.length < 3 || q.spokenVersion.length > 6)) fail('oral: spokenVersion out of range', q)
+}
+const oralComplete = oralBank.filter(isComplete).length
+console.log(`oralBank: ${oralBank.length} items ok (${oralComplete} complete)`)
 
 if (failures) {
   console.error(`\n${failures} failure(s).`)

@@ -19,6 +19,7 @@ function defaults() {
     verbalRules: {},
     history: [],
     verbalCycle: null,
+    oral: { mcqCycle: null, flashCycle: null },
   }
 }
 
@@ -53,6 +54,16 @@ export function getSettings() {
 export function saveSettings(settings) {
   updateStore((s) => {
     s.settings = { ...s.settings, ...settings }
+  })
+}
+
+export function getOralCycle(kind) {
+  return loadStore().oral?.[kind + 'Cycle'] ?? null
+}
+
+export function saveOralCycle(kind, cycle) {
+  updateStore((s) => {
+    s.oral = { ...(s.oral ?? {}), [kind + 'Cycle']: cycle }
   })
 }
 
