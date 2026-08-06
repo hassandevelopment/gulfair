@@ -1,6 +1,6 @@
 # Oral Interview Bank Review
 
-Generated from `src/data/oralBank.js` (108 questions, 17 with written answers). Do not edit by hand; run `npm run oral-review` after changing the bank.
+Generated from `src/data/oralBank.js` (108 questions, 7 with written answers). Do not edit by hand; run `npm run oral-review` after changing the bank.
 
 IMPORTANT: the answers below are unverified aviation theory written for study purposes. Some may be wrong or imprecise. Every answer must be checked by a qualified captain before it is trusted. Please mark anything incorrect, imprecise, or oddly phrased.
 
@@ -161,219 +161,49 @@ Multiple choice:
 
 Flashcard answer: ETOPS (now EDTO) is the approval letting twin-engine aircraft fly more than 60 minutes from an adequate alternate, up to an approved diversion time such as 120 or 180 minutes at the one engine inoperative speed, with stricter alternate, fuel and maintenance requirements.
 
-## Frequency 3: Common (10 questions, 10 written)
+## Frequency 3: Common (10 questions, 0 written)
 
 Asked in 3 of 5 interview sets.
 
 **8. What is a stall?** `Aerodynamics` `oral-aero-04`
 
-A stall is what happens when the wing is asked for more than the airflow can give. As angle of attack increases, lift increases, but only up to the critical angle of attack. Past that point the airflow can no longer follow the curved upper surface: it separates, becomes turbulent, lift drops sharply and drag rises. The essential idea, and the one interviewers listen for, is that a stall is about angle of attack, not about speed. The wing always stalls at the same critical angle, so you can stall at any airspeed and in any attitude if you pull hard enough. The published stall speed only tells you the speed at which you reach that angle in level 1g flight at a given weight; load the wing up more, by turning steeply or pulling, and the stall speed rises. The aircraft warns you first: airframe buffet from the separated flow, and on airliners the stick shaker before the real stall.
-
-Spoken answer skeleton:
-
-- Airflow separates when the wing passes its critical angle of attack
-- Lift drops sharply, drag rises
-- It is about angle of attack, not speed: possible at any speed or attitude
-- Published stall speed is for level 1g flight; rises with weight and load factor
-- Warnings first: buffet, then stick shaker
-
-Multiple choice:
-
-- An engine failure caused by disturbed airflow into the intake
-- **A loss of lift when the wing exceeds its critical angle of attack and the airflow separates** <- marked answer
-- A loss of lift that can only happen below the published stall speed
-- A sudden roll caused by turbulence over one wing
-
-Flashcard answer: A stall is airflow separation when the wing passes its critical angle of attack: lift falls sharply and drag rises. It depends on angle of attack, not speed, so it can happen at any speed; stall speed rises with weight and load factor.
+PENDING: answer not yet written.
 
 **9. What is Mach number? Is it the same at high and low level?** `Aerodynamics` `oral-aero-05`
 
-Mach number is your true airspeed divided by the local speed of sound. The key to the second half of the question is that the speed of sound depends only on air temperature: the colder the air, the slower sound travels. As you climb, the air gets colder, so the local speed of sound falls, which means the same TAS gives you a higher Mach number at altitude than it would low down. So no, it is not the same: Mach 0.8 at FL350 is a slower TAS than Mach 0.8 would be at sea level. At sea level in ISA conditions the speed of sound is about 661 knots, and it keeps falling until the tropopause, where the temperature stops dropping. This is also why we fly a climb on IAS at first and then switch to a constant Mach at the crossover altitude: it keeps us clear of the high speed limits as the local speed of sound comes down around us.
-
-Spoken answer skeleton:
-
-- Mach number = TAS divided by the local speed of sound
-- Speed of sound depends only on temperature; colder means slower
-- At altitude it is colder, so the same TAS gives a higher Mach
-- About 661 kt at sea level in ISA, roughly, falling with height to the tropopause
-- That is why we climb on IAS and change to Mach at crossover
-
-Multiple choice:
-
-- **TAS divided by the local speed of sound; not the same, because the speed of sound falls with temperature as you climb** <- marked answer
-- IAS divided by ground speed; the same at every level
-- The aircraft speed divided by 1000; it changes only with weight
-- TAS divided by the local speed of sound; identical at all levels because the speed of sound never changes
-
-Flashcard answer: Mach number is TAS divided by the local speed of sound. The speed of sound depends on temperature only, so in the colder air at altitude the same TAS gives a higher Mach number. At sea level in ISA it is about 661 kt.
+PENDING: answer not yet written.
 
 **10. What are the types of flaps, how does each work, and what are the pros and cons?** `Aerodynamics` `oral-aero-06`
 
-Flaps are trailing edge high lift devices. Their job is to increase the camber of the wing, and in some designs the area too, so the wing can produce enough lift at the low speeds we need for takeoff and landing. The main types, in rough order of effectiveness: a plain flap is simply the rear part of the wing hinged downwards. A split flap hinges down from the lower surface only, which adds lift but a lot of drag. A slotted flap opens a gap as it deploys, letting higher pressure air from below flow through and re-energize the airflow on top, delaying separation. A Fowler flap slides aft as well as down, so it adds wing area on top of camber; combined with slots it is the most effective, and that combination is what airliners carry. The trade is always the same: more lift at low speed, but more drag. So takeoff uses small settings, where you get mostly lift, and landing uses large settings, where the extra drag actually helps you fly a steady, slower approach with a better view over the nose.
-
-Spoken answer skeleton:
-
-- Trailing edge devices adding camber, and for Fowler also area
-- Plain: simple hinge down. Split: lower surface only, lots of drag
-- Slotted: a gap re-energizes the upper surface flow, delays separation
-- Fowler: slides aft, adds area, most effective, what airliners use
-- Trade: more low speed lift for more drag
-- Small settings for takeoff, large settings for landing
-
-Multiple choice:
-
-- Leading edge, trailing edge and tip flaps, each reducing drag in cruise
-- Krueger, slot and slat, each smoothing airflow over the tail
-- Spoiler, aileron and trim tab, each raising the stall speed
-- **Plain, split, slotted and Fowler, each raising lift by adding camber or area** <- marked answer
-
-Flashcard answer: Main types: plain, split, slotted and Fowler. All add camber; Fowler also adds area by sliding aft, and slots re-energize the airflow. They give the lift needed at low speed at the cost of drag, so takeoff uses small settings and landing uses large ones.
+PENDING: answer not yet written.
 
 **11. What are the types of slats, how do they work, and what is the difference between a flap and a slat?** `Aerodynamics` `oral-aero-07`
 
-Slats are the leading edge high lift devices. When a slat runs forward and down, it opens a slot between itself and the wing. Higher pressure air from underneath accelerates through that gap and washes over the upper surface, re-energizing the boundary layer so the airflow stays attached at angles of attack that would otherwise stall the wing. In other words, a slat raises the critical angle of attack. The types worth naming: fixed slots, which are simply permanent gaps in the leading edge on some light aircraft; movable slats, the airliner solution, sealed in cruise and opened for takeoff and landing; and Krueger flaps, panels that fold out from under the leading edge, often used on the inboard wing. The difference from a flap comes down to position and purpose: a flap is at the trailing edge and adds camber and area, giving more lift at a given angle of attack, while a slat is at the leading edge and delays separation, letting you use a higher angle of attack before the stall. Airliners use both together to build the low speed envelope.
-
-Spoken answer skeleton:
-
-- Leading edge devices: fixed slots, movable slats, Krueger flaps
-- Slat opens a gap; faster air through it keeps the upper flow attached
-- Effect: raises the critical angle of attack, delays the stall
-- Flap: trailing edge, adds camber and area, more lift at a given angle
-- Slat: leading edge, lets you reach a higher angle before stalling
-
-Multiple choice:
-
-- **Leading edge devices such as movable slats and Krueger flaps that keep the airflow attached to a higher angle of attack; a flap is a trailing edge device that adds camber** <- marked answer
-- Trailing edge devices that add wing area; a flap is a leading edge device that adds camber
-- Tailplane devices that improve pitch control; a flap controls roll
-- Panels that dump lift after touchdown; a flap adds drag in the climb
-
-Flashcard answer: Slats are leading edge devices: movable slats, fixed slots and Krueger flaps. They open a slot that keeps the upper surface flow attached, raising the critical angle of attack. A flap is a trailing edge device adding camber and area; a slat delays the stall to a higher angle of attack.
+PENDING: answer not yet written.
 
 **12. Name and define all the speeds on the aircraft.** `Performance` `oral-perf-01`
 
-The cleanest way to hold these is in groups. Takeoff: V1 is the decision speed, the last moment a rejected takeoff can be started and still stop within the distance available, and equally the earliest the takeoff can be continued after an engine failure; VR is rotation, where you raise the nose; V2 is the takeoff safety speed, the climb speed that guarantees the required gradient with an engine out. Control minimums: VMCG is the minimum speed on the ground at which the rudder can keep you straight after an engine failure, VMCA the same in the air. Stall and landing: VS is the stall speed for the configuration, and VREF is the landing reference speed crossing the threshold, typically about 1.3 times the stall speed in the landing configuration, though the exact factor depends on the certification rules and the type. Structural and configuration limits: VMO and MMO are the maximum operating speed and Mach number, VFE the maximum with flaps extended, VLE the maximum with gear extended and VLO the maximum for actually operating the gear. There are more in the books, but these are the ones the interview wants.
-
-Spoken answer skeleton:
-
-- Takeoff trio: V1 decision, VR rotate, V2 takeoff safety speed
-- Control minimums: VMCG on the ground, VMCA in the air
-- Stall and landing: VS for the configuration, VREF about 1.3 times VS, roughly
-- Limits: VMO and MMO maximum operating, VFE flaps, VLE and VLO gear
-
-Multiple choice:
-
-- V1 rotation speed, VR decision speed, V2 landing reference speed, VREF takeoff safety speed
-- V1 maximum operating speed, VR stall speed, V2 gear limit speed, VREF flap limit speed
-- **V1 decision speed, VR rotation speed, V2 takeoff safety speed, VREF landing reference speed** <- marked answer
-- V1 climb speed, VR cruise speed, V2 descent speed, VREF taxi speed
-
-Flashcard answer: Key speeds: V1 decision, VR rotate, V2 takeoff safety speed, VS stall, VREF landing reference (about 1.3 times VS), VMCG and VMCA minimum control speeds, VMO and MMO maximum operating, VFE flap limit, VLE and VLO gear limits.
+PENDING: answer not yet written.
 
 **13. What are the takeoff segments?** `Performance` `oral-perf-02`
 
-The takeoff segments describe the climb path the aircraft must be able to fly after an engine fails at the worst moment, from the 35 ft screen height at the end of the runway up to at least 1500 ft. For a twin the picture is: first segment, from the screen height until the gear is fully retracted, flown at V2 with takeoff thrust, where the requirement is simply a positive climb gradient. Second segment, from gear up to the acceleration altitude, which is at least 400 ft, still at V2 and takeoff thrust, with a minimum gross gradient of 2.4 percent for a twin; this is usually the most limiting segment and often sets the maximum takeoff weight. Third segment, a level acceleration at the acceleration altitude where the flaps are retracted on schedule and the aircraft accelerates to its final climb speed. Final segment, the climb from there to 1500 ft, now at maximum continuous thrust, with a minimum gradient of 1.2 percent. The numbers 2.4 and 1.2 percent are the certification minima for a twin; three and four engine aircraft have their own figures.
-
-Spoken answer skeleton:
-
-- The engine out climb path from 35 ft screen height to 1500 ft
-- First: to gear up, at V2, takeoff thrust, positive gradient
-- Second: gear up to at least 400 ft, 2.4 percent minimum for a twin, usually limiting
-- Third: level acceleration, flaps retracted, reach final climb speed
-- Final: climb at maximum continuous thrust, 1.2 percent, to 1500 ft
-
-Multiple choice:
-
-- **The engine out climb path from screen height to 1500 ft: gear retraction, second segment climb, level acceleration, then final segment** <- marked answer
-- The runway distances used for the takeoff roll: TORA, TODA and ASDA
-- The four thrust settings used between taxi and cruise
-- The stages of a departure from pushback to top of climb
-
-Flashcard answer: The one engine inoperative path from 35 ft to 1500 ft. First segment to gear up at V2; second segment to at least 400 ft at 2.4 percent minimum for a twin, usually the limiting one; third segment level acceleration and flap retraction; final segment at maximum continuous thrust, 1.2 percent, up to 1500 ft.
+PENDING: answer not yet written.
 
 **14. What is a thunderstorm and what are its stages?** `Meteorology` `oral-met-02`
 
-A thunderstorm is a cumulonimbus cloud producing lightning and thunder, and it needs three ingredients to get going: unstable air, enough moisture, and something to trigger the lifting, like surface heating, a front or terrain. A single cell then lives through three stages. In the cumulus stage the cloud is building: updrafts only, growing fast, no rain yet. The mature stage begins when precipitation starts to fall and drags air down with it, so updrafts and downdrafts exist side by side in the same cloud. This is the most dangerous stage: heavy rain, hail, lightning, severe turbulence, icing, and windshear or microbursts underneath. In the dissipating stage the downdrafts take over, cut off the storm's inflow of warm moist air, the anvil spreads out at the top and the cell collapses. A single cell lasts somewhere around an hour, roughly, but storms often form in multicell clusters or lines where new cells keep replacing old ones, which is why the storm as a whole can go on much longer.
-
-Spoken answer skeleton:
-
-- A CB with lightning; needs instability, moisture and a lifting trigger
-- Cumulus stage: updrafts only, cloud building
-- Mature stage: updrafts and downdrafts together, the dangerous one
-- Hazards then: hail, severe turbulence, windshear, microbursts, lightning
-- Dissipating stage: downdrafts dominate, anvil spreads, cell dies
-
-Multiple choice:
-
-- A stratus layer producing steady drizzle, with warm and cold stages
-- **A cumulonimbus storm with lightning, growing through cumulus, mature and dissipating stages** <- marked answer
-- A night time fog bank, with forming and clearing stages
-- A standing wave cloud downwind of mountains, with lifting and sinking stages
-
-Flashcard answer: A cumulonimbus producing lightning and thunder, built from instability, moisture and a trigger. Stages: cumulus (updrafts, building), mature (updrafts and downdrafts together, heaviest weather and windshear), dissipating (downdrafts and the anvil). The mature stage is the most hazardous.
+PENDING: answer not yet written.
 
 **15. What is ISA, its parameters, and the lapse rates DALR, ELR, SALR?** `Meteorology` `oral-met-03`
 
-ISA, the International Standard Atmosphere, is an agreed model of the atmosphere so that instruments, performance charts and pilots everywhere are talking about the same thing. Its sea level parameters: temperature 15 degrees C, pressure 1013.25 hPa, density 1.225 kilograms per cubic metre. In the model the temperature falls at 1.98 degrees per 1000 ft, in practice we say about 2, up to 36,090 ft, and above that it holds constant at minus 56.5 degrees. The lapse rates describe how real air behaves when a parcel of it is lifted. The DALR, dry adiabatic lapse rate, is 3 degrees per 1000 ft and applies to a parcel that is not saturated. The SALR, saturated adiabatic lapse rate, is lower, around 1.8 degrees per 1000 ft, because condensation releases latent heat that partly offsets the cooling; it is not a fixed number and varies with temperature. The ELR, environmental lapse rate, is not a rule at all: it is whatever the actual atmosphere is doing that day, measured by balloon. Comparing the ELR against the DALR and SALR is how we judge whether the air is stable or unstable.
-
-Spoken answer skeleton:
-
-- Standard model atmosphere: 15 C, 1013.25 hPa, 1.225 kg per cubic metre at sea level
-- ISA temperature falls about 2 C per 1000 ft (1.98) up to 36,090 ft, then minus 56.5 constant
-- DALR: 3 C per 1000 ft for an unsaturated parcel
-- SALR: around 1.8, lower because condensation releases latent heat; it varies
-- ELR: the actual measured rate that day; compare them to judge stability
-
-Multiple choice:
-
-- The average weather for each region, updated monthly
-- A forecast model of upper winds issued every six hours
-- **A standard atmosphere: 15 C and 1013.25 hPa at sea level, temperature falling about 2 C per 1000 ft up to 36,090 ft** <- marked answer
-- The coldest recorded atmosphere, used for engine testing
-
-Flashcard answer: ISA: sea level 15 C, 1013.25 hPa, density 1.225 kg per cubic metre, temperature falling 1.98 C (about 2) per 1000 ft to 36,090 ft, then constant at minus 56.5 C. DALR 3 C per 1000 ft, SALR around 1.8 and variable, ELR is whatever the real atmosphere measures that day.
+PENDING: answer not yet written.
 
 **16. What is the tropopause and what happens there? What is its height at the equator and the poles?** `Meteorology` `oral-met-04`
 
-The tropopause is the boundary between the troposphere, where we live and where nearly all weather happens, and the stratosphere above it. What defines it is temperature: through the troposphere temperature falls with height, and at the tropopause it stops falling, becoming constant or even rising slightly above. That makes the air above extremely stable, so the tropopause acts like a lid: convection, water vapour and weather are trapped underneath it, which is why CB tops flatten into anvils when they reach it. Its height varies with latitude and season: over the poles it sits at roughly 8 km, around 25,000 ft, while over the equator it is much higher, roughly 16 to 18 km, well above 50,000 ft, all approximate figures. Counter-intuitively the high equatorial tropopause is also the colder one, because the temperature keeps falling all the way up to it. The tropopause does not slope smoothly from equator to pole: it steps down in breaks, and those breaks are exactly where the jetstreams sit and where CAT is common.
-
-Spoken answer skeleton:
-
-- Boundary between troposphere and stratosphere
-- Temperature stops falling with height there; air above is very stable
-- Acts as a lid: weather and convection trapped below, CB anvils flatten on it
-- Height roughly 8 km at the poles, 16 to 18 km at the equator, approximately
-- Equatorial tropopause is higher and colder; jets and CAT sit at its breaks
-
-Multiple choice:
-
-- **The boundary where temperature stops falling with height, higher over the equator than over the poles** <- marked answer
-- The layer of maximum weather, lowest over the equator
-- The bottom of the troposphere, at the same height everywhere
-- The level where pressure stops changing with height
-
-Flashcard answer: The lid of the troposphere: the level where temperature stops falling with height, trapping weather and convection below. Roughly 8 km high at the poles and 16 to 18 km at the equator, and the equatorial one is both higher and colder. Jetstreams and CAT live near its breaks.
+PENDING: answer not yet written.
 
 **17. What is CAT, what causes it, and where do you find it?** `Meteorology` `oral-met-05`
 
-CAT is clear air turbulence: turbulence at high level in air with no cloud in it, which is what makes it nasty, because there is nothing to see out the window and nothing for the weather radar to paint. The cause is windshear: layers of air sliding past each other at different speeds or directions, and where the shear is strong enough the smooth flow breaks down into turbulent eddies. The classic place to find it is around the jetstream, since a jet is by definition a huge speed difference packed into a small space. It is worst near the tropopause on the edges of the jet, and the cold, polar side of the core has the reputation for the roughest air. You also find CAT in mountain waves, well downwind and far above the terrain that made them. Because you cannot detect it onboard, the defences are planning and reports: the significant weather charts, forecasts, and pilot reports from aircraft ahead, plus keeping the seatbelt sign in mind, and if you hit it, a change of level or route.
-
-Spoken answer skeleton:
-
-- Turbulence in clear air at high level; invisible to eye and radar
-- Caused by windshear between layers moving at different speeds
-- Classic location: jetstream edges near the tropopause, worst on the cold polar side
-- Also in mountain waves, far from the terrain that made them
-- Defences: SIGWX charts, forecasts, pilot reports, seatbelts, change level or route
-
-Multiple choice:
-
-- Turbulence inside a thunderstorm caused by updrafts and downdrafts
-- Low level turbulence from surface heating on a hot afternoon
-- Vibration caused by ice building on the wings
-- **High level turbulence in cloud free air, caused by windshear around jetstreams and in mountain waves** <- marked answer
-
-Flashcard answer: CAT is turbulence in clear air at high altitude, caused by windshear, most often at jetstream edges near the tropopause (worst on the cold polar side) and in mountain waves. Radar cannot see it, so you rely on forecasts and pilot reports.
+PENDING: answer not yet written.
 
 ## Frequency 2: Occasional (28 questions, 0 written)
 

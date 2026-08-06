@@ -54,13 +54,188 @@ export const FREQ_DETAIL = {
 
 const raw = [
   // ---------- aerodynamics ----------
-  { id: 'oral-aero-01', category: 'aerodynamics', frequency: 5, question: 'What is drag and what are the types of drag?' },
-  { id: 'oral-aero-02', category: 'aerodynamics', frequency: 4, question: 'What are the four forces acting on an aircraft?' },
-  { id: 'oral-aero-03', category: 'aerodynamics', frequency: 4, question: 'What is lift and how is it generated?' },
-  { id: 'oral-aero-04', category: 'aerodynamics', frequency: 3, question: 'What is a stall?' },
-  { id: 'oral-aero-05', category: 'aerodynamics', frequency: 3, question: 'What is Mach number? Is it the same at high and low level?' },
-  { id: 'oral-aero-06', category: 'aerodynamics', frequency: 3, question: 'What are the types of flaps, how does each work, and what are the pros and cons?' },
-  { id: 'oral-aero-07', category: 'aerodynamics', frequency: 3, question: 'What are the types of slats, how do they work, and what is the difference between a flap and a slat?' },
+  {
+    id: 'oral-aero-01',
+    category: 'aerodynamics',
+    frequency: 5,
+    question: 'What is drag and what are the types of drag?',
+    conceptExplanation:
+      'Drag is the aerodynamic force that resists the aircraft moving through the air. It acts backwards, along the relative airflow, and the engines have to spend thrust just to overcome it. Total drag splits into two families. Parasite drag is the price of simply pushing the airframe through the air, and it has three parts: form drag from the shape of the body, skin friction from air rubbing along every surface, and interference drag where airflows meet and disturb each other, like at the wing to fuselage junction. Parasite drag grows with the square of speed, so fly twice as fast and it roughly quadruples. Induced drag is different: it is the unavoidable byproduct of making lift. The pressure difference across the wing lets air spill around the tips, which creates vortices and downwash, and that tilts the lift force slightly backwards. The backwards component is induced drag. It is worst at low speed and high angle of attack, and it shrinks as you speed up. Plot both against speed and they cross at the minimum drag speed, where total drag is lowest.',
+    spokenVersion: [
+      'Force acting backwards along the airflow, resisting motion',
+      'Two families: parasite and induced',
+      'Parasite: form, skin friction, interference; grows with speed squared',
+      'Induced: byproduct of lift, from tip vortices; worst at low speed',
+      'The curves cross at minimum drag speed',
+    ],
+    mcq: {
+      options: [
+        'The force opposing lift, split into form drag and pressure drag',
+        'The downward force on the tailplane, split into static and dynamic drag',
+        'The force opposing motion through the air, split into parasite and induced drag',
+        'The component of gravity along the flight path, split into profile and wave drag',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Drag is the force resisting motion through the air. Parasite drag (form, skin friction, interference) rises with speed squared; induced drag comes from producing lift and falls as speed increases. Total drag is lowest where the two cross, the minimum drag speed.',
+  },
+  {
+    id: 'oral-aero-02',
+    category: 'aerodynamics',
+    frequency: 4,
+    question: 'What are the four forces acting on an aircraft?',
+    conceptExplanation:
+      'Every aircraft in flight is being pulled and pushed by four forces at once. Lift acts upwards, perpendicular to the relative airflow, and is made mostly by the wings. Weight acts straight down towards the centre of the earth and comes from the mass of the aircraft, fuel and load. Thrust acts forwards from the engines. Drag acts backwards along the airflow, resisting motion. The useful way to think about them is in pairs: lift works against weight, thrust works against drag. In steady, level, unaccelerated flight the pairs are in balance, so lift equals weight and thrust equals drag, and the aircraft is in equilibrium. The moment one force changes, the balance breaks and the aircraft accelerates, climbs, descends or slows until a new balance is found. That is really all manoeuvring is: deliberately unbalancing these four forces.',
+    spokenVersion: [
+      'Lift, weight, thrust and drag',
+      'Lift up, perpendicular to the airflow; weight straight down',
+      'Thrust forwards; drag backwards',
+      'Steady level flight: lift equals weight, thrust equals drag',
+    ],
+    mcq: {
+      options: [
+        'Lift, weight, thrust and drag',
+        'Lift, gravity, power and inertia',
+        'Thrust, drag, centrifugal force and torque',
+        'Lift, thrust, side force and yaw',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Lift, weight, thrust and drag. In steady level flight lift balances weight and thrust balances drag, so the aircraft is in equilibrium.',
+  },
+  {
+    id: 'oral-aero-03',
+    category: 'aerodynamics',
+    frequency: 4,
+    question: 'What is lift and how is it generated?',
+    conceptExplanation:
+      'Lift is the aerodynamic force that supports the aircraft, acting perpendicular to the relative airflow. It is generated by the wing in two ways that are really two views of the same thing. First, pressure: the wing is cambered and meets the air at an angle of attack, so the airflow over the curved upper surface accelerates. Faster flow means lower pressure, so the pressure above the wing drops below the pressure underneath, and that difference pushes the wing up. Second, momentum: the wing deflects a huge mass of air downwards, and by action and reaction the air pushes the wing upwards. The amount of lift follows the lift formula, L equals half rho V squared S CL: it depends on air density, speed squared, wing area and the lift coefficient, which captures the wing shape and angle of attack. That is why the pilot controls lift mainly through speed and angle of attack.',
+    spokenVersion: [
+      'Force perpendicular to the relative airflow, supports the aircraft',
+      'Air accelerates over the curved top, pressure drops above the wing',
+      'Wing also deflects air down, reaction pushes the wing up',
+      'Amount: L = half rho V squared S CL',
+      'Pilot controls it through speed and angle of attack',
+    ],
+    mcq: {
+      options: [
+        'Higher pressure above the wing than below it',
+        'Engine thrust directed under the wing',
+        'Lower pressure above the wing and air deflected downwards',
+        'Higher air density above the wing',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Lift is the force perpendicular to the relative airflow. The wing accelerates air over its curved top so pressure drops above it, and it deflects air downwards, whose reaction pushes the wing up. L = half rho V squared S CL.',
+  },
+  {
+    id: 'oral-aero-04',
+    category: 'aerodynamics',
+    frequency: 3,
+    question: 'What is a stall?',
+    conceptExplanation:
+      'A stall is what happens when the wing is asked for more than the airflow can give. As angle of attack increases, lift increases, but only up to the critical angle of attack. Past that point the airflow can no longer follow the curved upper surface: it separates, becomes turbulent, lift drops sharply and drag rises. The essential idea, and the one interviewers listen for, is that a stall is about angle of attack, not about speed. The wing always stalls at the same critical angle, so you can stall at any airspeed and in any attitude if you pull hard enough. The published stall speed only tells you the speed at which you reach that angle in level 1g flight at a given weight; load the wing up more, by turning steeply or pulling, and the stall speed rises. The aircraft warns you first: airframe buffet from the separated flow, and on airliners the stick shaker before the real stall.',
+    spokenVersion: [
+      'Airflow separates when the wing passes its critical angle of attack',
+      'Lift drops sharply, drag rises',
+      'It is about angle of attack, not speed: possible at any speed or attitude',
+      'Published stall speed is for level 1g flight; rises with weight and load factor',
+      'Warnings first: buffet, then stick shaker',
+    ],
+    mcq: {
+      options: [
+        'An engine failure caused by disturbed airflow into the intake',
+        'A loss of lift when the wing exceeds its critical angle of attack and the airflow separates',
+        'A loss of lift that can only happen below the published stall speed',
+        'A sudden roll caused by turbulence over one wing',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'A stall is airflow separation when the wing passes its critical angle of attack: lift falls sharply and drag rises. It depends on angle of attack, not speed, so it can happen at any speed; stall speed rises with weight and load factor.',
+  },
+  {
+    id: 'oral-aero-05',
+    category: 'aerodynamics',
+    frequency: 3,
+    question: 'What is Mach number? Is it the same at high and low level?',
+    conceptExplanation:
+      'Mach number is your true airspeed divided by the local speed of sound. The key to the second half of the question is that the speed of sound depends only on air temperature: the colder the air, the slower sound travels. As you climb, the air gets colder, so the local speed of sound falls, which means the same TAS gives you a higher Mach number at altitude than it would low down. So no, it is not the same: Mach 0.8 at FL350 is a slower TAS than Mach 0.8 would be at sea level. At sea level in ISA conditions the speed of sound is about 661 knots, and it keeps falling until the tropopause, where the temperature stops dropping. This is also why we fly a climb on IAS at first and then switch to a constant Mach at the crossover altitude: it keeps us clear of the high speed limits as the local speed of sound comes down around us.',
+    spokenVersion: [
+      'Mach number = TAS divided by the local speed of sound',
+      'Speed of sound depends only on temperature; colder means slower',
+      'At altitude it is colder, so the same TAS gives a higher Mach',
+      'About 661 kt at sea level in ISA, roughly, falling with height to the tropopause',
+      'That is why we climb on IAS and change to Mach at crossover',
+    ],
+    mcq: {
+      options: [
+        'TAS divided by the local speed of sound; not the same, because the speed of sound falls with temperature as you climb',
+        'IAS divided by ground speed; the same at every level',
+        'The aircraft speed divided by 1000; it changes only with weight',
+        'TAS divided by the local speed of sound; identical at all levels because the speed of sound never changes',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Mach number is TAS divided by the local speed of sound. The speed of sound depends on temperature only, so in the colder air at altitude the same TAS gives a higher Mach number. At sea level in ISA it is about 661 kt.',
+  },
+  {
+    id: 'oral-aero-06',
+    category: 'aerodynamics',
+    frequency: 3,
+    question: 'What are the types of flaps, how does each work, and what are the pros and cons?',
+    conceptExplanation:
+      'Flaps are trailing edge high lift devices. Their job is to increase the camber of the wing, and in some designs the area too, so the wing can produce enough lift at the low speeds we need for takeoff and landing. The main types, in rough order of effectiveness: a plain flap is simply the rear part of the wing hinged downwards. A split flap hinges down from the lower surface only, which adds lift but a lot of drag. A slotted flap opens a gap as it deploys, letting higher pressure air from below flow through and re-energize the airflow on top, delaying separation. A Fowler flap slides aft as well as down, so it adds wing area on top of camber; combined with slots it is the most effective, and that combination is what airliners carry. The trade is always the same: more lift at low speed, but more drag. So takeoff uses small settings, where you get mostly lift, and landing uses large settings, where the extra drag actually helps you fly a steady, slower approach with a better view over the nose.',
+    spokenVersion: [
+      'Trailing edge devices adding camber, and for Fowler also area',
+      'Plain: simple hinge down. Split: lower surface only, lots of drag',
+      'Slotted: a gap re-energizes the upper surface flow, delays separation',
+      'Fowler: slides aft, adds area, most effective, what airliners use',
+      'Trade: more low speed lift for more drag',
+      'Small settings for takeoff, large settings for landing',
+    ],
+    mcq: {
+      options: [
+        'Leading edge, trailing edge and tip flaps, each reducing drag in cruise',
+        'Krueger, slot and slat, each smoothing airflow over the tail',
+        'Spoiler, aileron and trim tab, each raising the stall speed',
+        'Plain, split, slotted and Fowler, each raising lift by adding camber or area',
+      ],
+      correctIndex: 3,
+    },
+    flashcardAnswer:
+      'Main types: plain, split, slotted and Fowler. All add camber; Fowler also adds area by sliding aft, and slots re-energize the airflow. They give the lift needed at low speed at the cost of drag, so takeoff uses small settings and landing uses large ones.',
+  },
+  {
+    id: 'oral-aero-07',
+    category: 'aerodynamics',
+    frequency: 3,
+    question: 'What are the types of slats, how do they work, and what is the difference between a flap and a slat?',
+    conceptExplanation:
+      'Slats are the leading edge high lift devices. When a slat runs forward and down, it opens a slot between itself and the wing. Higher pressure air from underneath accelerates through that gap and washes over the upper surface, re-energizing the boundary layer so the airflow stays attached at angles of attack that would otherwise stall the wing. In other words, a slat raises the critical angle of attack. The types worth naming: fixed slots, which are simply permanent gaps in the leading edge on some light aircraft; movable slats, the airliner solution, sealed in cruise and opened for takeoff and landing; and Krueger flaps, panels that fold out from under the leading edge, often used on the inboard wing. The difference from a flap comes down to position and purpose: a flap is at the trailing edge and adds camber and area, giving more lift at a given angle of attack, while a slat is at the leading edge and delays separation, letting you use a higher angle of attack before the stall. Airliners use both together to build the low speed envelope.',
+    spokenVersion: [
+      'Leading edge devices: fixed slots, movable slats, Krueger flaps',
+      'Slat opens a gap; faster air through it keeps the upper flow attached',
+      'Effect: raises the critical angle of attack, delays the stall',
+      'Flap: trailing edge, adds camber and area, more lift at a given angle',
+      'Slat: leading edge, lets you reach a higher angle before stalling',
+    ],
+    mcq: {
+      options: [
+        'Leading edge devices such as movable slats and Krueger flaps that keep the airflow attached to a higher angle of attack; a flap is a trailing edge device that adds camber',
+        'Trailing edge devices that add wing area; a flap is a leading edge device that adds camber',
+        'Tailplane devices that improve pitch control; a flap controls roll',
+        'Panels that dump lift after touchdown; a flap adds drag in the climb',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Slats are leading edge devices: movable slats, fixed slots and Krueger flaps. They open a slot that keeps the upper surface flow attached, raising the critical angle of attack. A flap is a trailing edge device adding camber and area; a slat delays the stall to a higher angle of attack.',
+  },
   { id: 'oral-aero-08', category: 'aerodynamics', frequency: 2, question: 'What is the lift formula, what is CL, and what can you change in it?' },
   { id: 'oral-aero-09', category: 'aerodynamics', frequency: 2, question: 'What is angle of attack?' },
   { id: 'oral-aero-10', category: 'aerodynamics', frequency: 2, question: 'What is induced drag and how do you reduce it?' },
@@ -88,8 +263,57 @@ const raw = [
   { id: 'oral-aero-32', category: 'aerodynamics', frequency: 1, question: 'What is wake turbulence?' },
 
   // ---------- performance ----------
-  { id: 'oral-perf-01', category: 'performance', frequency: 3, question: 'Name and define all the speeds on the aircraft.' },
-  { id: 'oral-perf-02', category: 'performance', frequency: 3, question: 'What are the takeoff segments?' },
+  {
+    id: 'oral-perf-01',
+    category: 'performance',
+    frequency: 3,
+    question: 'Name and define all the speeds on the aircraft.',
+    conceptExplanation:
+      'The cleanest way to hold these is in groups. Takeoff: V1 is the decision speed, the last moment a rejected takeoff can be started and still stop within the distance available, and equally the earliest the takeoff can be continued after an engine failure; VR is rotation, where you raise the nose; V2 is the takeoff safety speed, the climb speed that guarantees the required gradient with an engine out. Control minimums: VMCG is the minimum speed on the ground at which the rudder can keep you straight after an engine failure, VMCA the same in the air. Stall and landing: VS is the stall speed for the configuration, and VREF is the landing reference speed crossing the threshold, typically about 1.3 times the stall speed in the landing configuration, though the exact factor depends on the certification rules and the type. Structural and configuration limits: VMO and MMO are the maximum operating speed and Mach number, VFE the maximum with flaps extended, VLE the maximum with gear extended and VLO the maximum for actually operating the gear. There are more in the books, but these are the ones the interview wants.',
+    spokenVersion: [
+      'Takeoff trio: V1 decision, VR rotate, V2 takeoff safety speed',
+      'Control minimums: VMCG on the ground, VMCA in the air',
+      'Stall and landing: VS for the configuration, VREF about 1.3 times VS, roughly',
+      'Limits: VMO and MMO maximum operating, VFE flaps, VLE and VLO gear',
+    ],
+    mcq: {
+      options: [
+        'V1 rotation speed, VR decision speed, V2 landing reference speed, VREF takeoff safety speed',
+        'V1 maximum operating speed, VR stall speed, V2 gear limit speed, VREF flap limit speed',
+        'V1 decision speed, VR rotation speed, V2 takeoff safety speed, VREF landing reference speed',
+        'V1 climb speed, VR cruise speed, V2 descent speed, VREF taxi speed',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Key speeds: V1 decision, VR rotate, V2 takeoff safety speed, VS stall, VREF landing reference (about 1.3 times VS), VMCG and VMCA minimum control speeds, VMO and MMO maximum operating, VFE flap limit, VLE and VLO gear limits.',
+  },
+  {
+    id: 'oral-perf-02',
+    category: 'performance',
+    frequency: 3,
+    question: 'What are the takeoff segments?',
+    conceptExplanation:
+      'The takeoff segments describe the climb path the aircraft must be able to fly after an engine fails at the worst moment, from the 35 ft screen height at the end of the runway up to at least 1500 ft. For a twin the picture is: first segment, from the screen height until the gear is fully retracted, flown at V2 with takeoff thrust, where the requirement is simply a positive climb gradient. Second segment, from gear up to the acceleration altitude, which is at least 400 ft, still at V2 and takeoff thrust, with a minimum gross gradient of 2.4 percent for a twin; this is usually the most limiting segment and often sets the maximum takeoff weight. Third segment, a level acceleration at the acceleration altitude where the flaps are retracted on schedule and the aircraft accelerates to its final climb speed. Final segment, the climb from there to 1500 ft, now at maximum continuous thrust, with a minimum gradient of 1.2 percent. The numbers 2.4 and 1.2 percent are the certification minima for a twin; three and four engine aircraft have their own figures.',
+    spokenVersion: [
+      'The engine out climb path from 35 ft screen height to 1500 ft',
+      'First: to gear up, at V2, takeoff thrust, positive gradient',
+      'Second: gear up to at least 400 ft, 2.4 percent minimum for a twin, usually limiting',
+      'Third: level acceleration, flaps retracted, reach final climb speed',
+      'Final: climb at maximum continuous thrust, 1.2 percent, to 1500 ft',
+    ],
+    mcq: {
+      options: [
+        'The engine out climb path from screen height to 1500 ft: gear retraction, second segment climb, level acceleration, then final segment',
+        'The runway distances used for the takeoff roll: TORA, TODA and ASDA',
+        'The four thrust settings used between taxi and cruise',
+        'The stages of a departure from pushback to top of climb',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'The one engine inoperative path from 35 ft to 1500 ft. First segment to gear up at V2; second segment to at least 400 ft at 2.4 percent minimum for a twin, usually the limiting one; third segment level acceleration and flap retraction; final segment at maximum continuous thrust, 1.2 percent, up to 1500 ft.',
+  },
   { id: 'oral-perf-03', category: 'performance', frequency: 2, question: 'Maximum endurance versus maximum range: what is the difference?' },
   { id: 'oral-perf-04', category: 'performance', frequency: 2, question: 'What is screen height? Does it change?' },
   { id: 'oral-perf-05', category: 'performance', frequency: 1, question: 'What is V1?' },
@@ -99,7 +323,32 @@ const raw = [
   { id: 'oral-perf-09', category: 'performance', frequency: 1, question: 'Takeoff segments: why 1500 ft?' },
 
   // ---------- instruments ----------
-  { id: 'oral-inst-01', category: 'instruments', frequency: 5, question: 'What is TAS?' },
+  {
+    id: 'oral-inst-01',
+    category: 'instruments',
+    frequency: 5,
+    question: 'What is TAS?',
+    conceptExplanation:
+      'True airspeed is the actual speed of the aircraft through the air mass it is flying in. The airspeed indicator does not measure it directly: it senses dynamic pressure through the pitot tube, and dynamic pressure depends on both speed and air density. At sea level on a standard day the two match, but as you climb the air gets thinner, so for the same true speed there is less dynamic pressure and the indicator under-reads. TAS is what you get after correcting indicated airspeed for that density change, which depends on altitude and temperature. The working rule of thumb is that TAS rises about 2 percent per 1000 ft for the same indicated airspeed. TAS matters because it is the speed you actually cover air with: add or subtract the wind and you get ground speed, which is what flight planning and navigation are built on.',
+    spokenVersion: [
+      'The real speed of the aircraft through the air mass',
+      'ASI senses dynamic pressure, which drops with density, so it under-reads at altitude',
+      'TAS is IAS corrected for density, meaning altitude and temperature',
+      'Rule of thumb: about 2 percent higher per 1000 ft for the same IAS',
+      'TAS plus or minus wind gives ground speed',
+    ],
+    mcq: {
+      options: [
+        'The speed shown directly on the airspeed indicator',
+        'The speed of the aircraft over the ground',
+        'The actual speed of the aircraft through the air mass',
+        'Indicated airspeed corrected for instrument error only',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'TAS is the aircraft\'s real speed through the air mass: IAS corrected for air density. At altitude the air is thinner so TAS is higher than IAS, roughly 2 percent per 1000 ft. TAS with the wind applied gives ground speed.',
+  },
   { id: 'oral-inst-02', category: 'instruments', frequency: 2, question: 'Does TAS change with altitude? What happens during the climb?' },
   { id: 'oral-inst-03', category: 'instruments', frequency: 2, question: 'Two aircraft at the same IAS, one at FL200 and one at FL350: which is faster and why?' },
   { id: 'oral-inst-04', category: 'instruments', frequency: 2, question: 'IAS, CAS, EAS: define each.' },
@@ -113,11 +362,136 @@ const raw = [
   { id: 'oral-inst-12', category: 'instruments', frequency: 1, question: 'What is QNH and what is QFE?' },
 
   // ---------- meteorology ----------
-  { id: 'oral-met-01', category: 'meteorology', frequency: 4, question: 'What is a jetstream, how does it form, and where do you find it?' },
-  { id: 'oral-met-02', category: 'meteorology', frequency: 3, question: 'What is a thunderstorm and what are its stages?' },
-  { id: 'oral-met-03', category: 'meteorology', frequency: 3, question: 'What is ISA, its parameters, and the lapse rates DALR, ELR, SALR?' },
-  { id: 'oral-met-04', category: 'meteorology', frequency: 3, question: 'What is the tropopause and what happens there? What is its height at the equator and the poles?' },
-  { id: 'oral-met-05', category: 'meteorology', frequency: 3, question: 'What is CAT, what causes it, and where do you find it?' },
+  {
+    id: 'oral-met-01',
+    category: 'meteorology',
+    frequency: 4,
+    question: 'What is a jetstream, how does it form, and where do you find it?',
+    conceptExplanation:
+      'A jetstream is a narrow ribbon of very strong wind found near the tropopause: thousands of kilometres long but only a few hundred wide and a few kilometres deep, with core speeds of at least 60 knots and sometimes well over 150. It forms where two air masses with a big temperature difference sit next to each other. That horizontal temperature contrast creates a pressure gradient that grows stronger with height, so the wind keeps strengthening up to the tropopause, and the flow is turned to run west to east. The two main ones are the polar front jet, over the boundary between polar and warmer mid-latitude air at roughly 30 to 60 degrees latitude and around FL300, and the subtropical jet nearer 25 to 30 degrees and higher, around FL400. Both sit near breaks in the tropopause, are westerly in both hemispheres, and are strongest in winter when the temperature contrast is biggest. For us they matter twice: a well planned jet gives a serious tailwind, and the edges of the jet, especially the cold polar side, are prime areas for clear air turbulence.',
+    spokenVersion: [
+      'Narrow band of strong wind near the tropopause, core 60 kt or more',
+      'Formed by a big horizontal temperature contrast between air masses',
+      'Polar front jet around FL300, subtropical jet around FL400',
+      'Westerly in both hemispheres, strongest in winter',
+      'Found at tropopause breaks; edges give CAT, core gives tailwinds',
+    ],
+    mcq: {
+      options: [
+        'A narrow band of very strong wind near tropopause breaks, formed by the temperature contrast between air masses',
+        'A wide layer of light wind at the surface, formed by daytime heating',
+        'A vertical current inside a thunderstorm, formed by latent heat release',
+        'A steady easterly wind found only over the equator',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'A narrow band of very strong westerly wind (60 kt plus at the core) near tropopause breaks, driven by the temperature contrast between air masses. Main ones are the polar front jet near FL300 and the subtropical jet near FL400; both are strongest in winter and their edges produce CAT.',
+  },
+  {
+    id: 'oral-met-02',
+    category: 'meteorology',
+    frequency: 3,
+    question: 'What is a thunderstorm and what are its stages?',
+    conceptExplanation:
+      'A thunderstorm is a cumulonimbus cloud producing lightning and thunder, and it needs three ingredients to get going: unstable air, enough moisture, and something to trigger the lifting, like surface heating, a front or terrain. A single cell then lives through three stages. In the cumulus stage the cloud is building: updrafts only, growing fast, no rain yet. The mature stage begins when precipitation starts to fall and drags air down with it, so updrafts and downdrafts exist side by side in the same cloud. This is the most dangerous stage: heavy rain, hail, lightning, severe turbulence, icing, and windshear or microbursts underneath. In the dissipating stage the downdrafts take over, cut off the storm\'s inflow of warm moist air, the anvil spreads out at the top and the cell collapses. A single cell lasts somewhere around an hour, roughly, but storms often form in multicell clusters or lines where new cells keep replacing old ones, which is why the storm as a whole can go on much longer.',
+    spokenVersion: [
+      'A CB with lightning; needs instability, moisture and a lifting trigger',
+      'Cumulus stage: updrafts only, cloud building',
+      'Mature stage: updrafts and downdrafts together, the dangerous one',
+      'Hazards then: hail, severe turbulence, windshear, microbursts, lightning',
+      'Dissipating stage: downdrafts dominate, anvil spreads, cell dies',
+    ],
+    mcq: {
+      options: [
+        'A stratus layer producing steady drizzle, with warm and cold stages',
+        'A cumulonimbus storm with lightning, growing through cumulus, mature and dissipating stages',
+        'A night time fog bank, with forming and clearing stages',
+        'A standing wave cloud downwind of mountains, with lifting and sinking stages',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'A cumulonimbus producing lightning and thunder, built from instability, moisture and a trigger. Stages: cumulus (updrafts, building), mature (updrafts and downdrafts together, heaviest weather and windshear), dissipating (downdrafts and the anvil). The mature stage is the most hazardous.',
+  },
+  {
+    id: 'oral-met-03',
+    category: 'meteorology',
+    frequency: 3,
+    question: 'What is ISA, its parameters, and the lapse rates DALR, ELR, SALR?',
+    conceptExplanation:
+      'ISA, the International Standard Atmosphere, is an agreed model of the atmosphere so that instruments, performance charts and pilots everywhere are talking about the same thing. Its sea level parameters: temperature 15 degrees C, pressure 1013.25 hPa, density 1.225 kilograms per cubic metre. In the model the temperature falls at 1.98 degrees per 1000 ft, in practice we say about 2, up to 36,090 ft, and above that it holds constant at minus 56.5 degrees. The lapse rates describe how real air behaves when a parcel of it is lifted. The DALR, dry adiabatic lapse rate, is 3 degrees per 1000 ft and applies to a parcel that is not saturated. The SALR, saturated adiabatic lapse rate, is lower, around 1.8 degrees per 1000 ft, because condensation releases latent heat that partly offsets the cooling; it is not a fixed number and varies with temperature. The ELR, environmental lapse rate, is not a rule at all: it is whatever the actual atmosphere is doing that day, measured by balloon. Comparing the ELR against the DALR and SALR is how we judge whether the air is stable or unstable.',
+    spokenVersion: [
+      'Standard model atmosphere: 15 C, 1013.25 hPa, 1.225 kg per cubic metre at sea level',
+      'ISA temperature falls about 2 C per 1000 ft (1.98) up to 36,090 ft, then minus 56.5 constant',
+      'DALR: 3 C per 1000 ft for an unsaturated parcel',
+      'SALR: around 1.8, lower because condensation releases latent heat; it varies',
+      'ELR: the actual measured rate that day; compare them to judge stability',
+    ],
+    mcq: {
+      options: [
+        'The average weather for each region, updated monthly',
+        'A forecast model of upper winds issued every six hours',
+        'A standard atmosphere: 15 C and 1013.25 hPa at sea level, temperature falling about 2 C per 1000 ft up to 36,090 ft',
+        'The coldest recorded atmosphere, used for engine testing',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'ISA: sea level 15 C, 1013.25 hPa, density 1.225 kg per cubic metre, temperature falling 1.98 C (about 2) per 1000 ft to 36,090 ft, then constant at minus 56.5 C. DALR 3 C per 1000 ft, SALR around 1.8 and variable, ELR is whatever the real atmosphere measures that day.',
+  },
+  {
+    id: 'oral-met-04',
+    category: 'meteorology',
+    frequency: 3,
+    question: 'What is the tropopause and what happens there? What is its height at the equator and the poles?',
+    conceptExplanation:
+      'The tropopause is the boundary between the troposphere, where we live and where nearly all weather happens, and the stratosphere above it. What defines it is temperature: through the troposphere temperature falls with height, and at the tropopause it stops falling, becoming constant or even rising slightly above. That makes the air above extremely stable, so the tropopause acts like a lid: convection, water vapour and weather are trapped underneath it, which is why CB tops flatten into anvils when they reach it. Its height varies with latitude and season: over the poles it sits at roughly 8 km, around 25,000 ft, while over the equator it is much higher, roughly 16 to 18 km, well above 50,000 ft, all approximate figures. Counter-intuitively the high equatorial tropopause is also the colder one, because the temperature keeps falling all the way up to it. The tropopause does not slope smoothly from equator to pole: it steps down in breaks, and those breaks are exactly where the jetstreams sit and where CAT is common.',
+    spokenVersion: [
+      'Boundary between troposphere and stratosphere',
+      'Temperature stops falling with height there; air above is very stable',
+      'Acts as a lid: weather and convection trapped below, CB anvils flatten on it',
+      'Height roughly 8 km at the poles, 16 to 18 km at the equator, approximately',
+      'Equatorial tropopause is higher and colder; jets and CAT sit at its breaks',
+    ],
+    mcq: {
+      options: [
+        'The boundary where temperature stops falling with height, higher over the equator than over the poles',
+        'The layer of maximum weather, lowest over the equator',
+        'The bottom of the troposphere, at the same height everywhere',
+        'The level where pressure stops changing with height',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'The lid of the troposphere: the level where temperature stops falling with height, trapping weather and convection below. Roughly 8 km high at the poles and 16 to 18 km at the equator, and the equatorial one is both higher and colder. Jetstreams and CAT live near its breaks.',
+  },
+  {
+    id: 'oral-met-05',
+    category: 'meteorology',
+    frequency: 3,
+    question: 'What is CAT, what causes it, and where do you find it?',
+    conceptExplanation:
+      'CAT is clear air turbulence: turbulence at high level in air with no cloud in it, which is what makes it nasty, because there is nothing to see out the window and nothing for the weather radar to paint. The cause is windshear: layers of air sliding past each other at different speeds or directions, and where the shear is strong enough the smooth flow breaks down into turbulent eddies. The classic place to find it is around the jetstream, since a jet is by definition a huge speed difference packed into a small space. It is worst near the tropopause on the edges of the jet, and the cold, polar side of the core has the reputation for the roughest air. You also find CAT in mountain waves, well downwind and far above the terrain that made them. Because you cannot detect it onboard, the defences are planning and reports: the significant weather charts, forecasts, and pilot reports from aircraft ahead, plus keeping the seatbelt sign in mind, and if you hit it, a change of level or route.',
+    spokenVersion: [
+      'Turbulence in clear air at high level; invisible to eye and radar',
+      'Caused by windshear between layers moving at different speeds',
+      'Classic location: jetstream edges near the tropopause, worst on the cold polar side',
+      'Also in mountain waves, far from the terrain that made them',
+      'Defences: SIGWX charts, forecasts, pilot reports, seatbelts, change level or route',
+    ],
+    mcq: {
+      options: [
+        'Turbulence inside a thunderstorm caused by updrafts and downdrafts',
+        'Low level turbulence from surface heating on a hot afternoon',
+        'Vibration caused by ice building on the wings',
+        'High level turbulence in cloud free air, caused by windshear around jetstreams and in mountain waves',
+      ],
+      correctIndex: 3,
+    },
+    flashcardAnswer:
+      'CAT is turbulence in clear air at high altitude, caused by windshear, most often at jetstream edges near the tropopause (worst on the cold polar side) and in mountain waves. Radar cannot see it, so you rely on forecasts and pilot reports.',
+  },
   { id: 'oral-met-06', category: 'meteorology', frequency: 2, question: 'How do clouds form?' },
   { id: 'oral-met-07', category: 'meteorology', frequency: 2, question: 'How are clouds classified and what are the families?' },
   { id: 'oral-met-08', category: 'meteorology', frequency: 2, question: 'What is a microburst, what are its types, and why is it hazardous?' },
@@ -148,7 +522,33 @@ const raw = [
   { id: 'oral-met-33', category: 'meteorology', frequency: 1, question: 'What is CB and what makes it hazardous?' },
 
   // ---------- navigation ----------
-  { id: 'oral-nav-01', category: 'navigation', frequency: 4, question: 'ILS: how does it work, what are its frequencies, what does it combine, and what are its errors?' },
+  {
+    id: 'oral-nav-01',
+    category: 'navigation',
+    frequency: 4,
+    question: 'ILS: how does it work, what are its frequencies, what does it combine, and what are its errors?',
+    conceptExplanation:
+      'The ILS is the standard precision approach aid: it combines lateral and vertical guidance to bring you down to the runway on a defined path. Lateral guidance comes from the localizer, an antenna past the far end of the runway transmitting on VHF between 108.10 and 111.95 MHz. Vertical guidance comes from the glideslope, an antenna beside the touchdown zone transmitting on UHF between about 329 and 335 MHz, giving a path of roughly 3 degrees. You never tune the glideslope yourself: it is frequency paired with the localizer, so selecting the localizer gives you both. Both beams work the same way: two overlapping lobes, one modulated at 90 Hz and one at 150 Hz, and the receiver compares the depth of modulation to tell you which side of the beam you are on. Range information comes from marker beacons or, more usually now, a paired DME. The errors to know: false glideslopes, which are reflection lobes at multiples of the real angle, around 6 and 9 degrees, which is why you intercept from below and cross check altitude against distance; and beam bending or scalloping, where vehicles, aircraft or terrain reflect the signal, which is why the ILS critical and sensitive areas are protected in low visibility operations.',
+    spokenVersion: [
+      'Precision approach: localizer for centreline plus glideslope for a 3 degree path',
+      'Localizer VHF 108.10 to 111.95; glideslope UHF around 329 to 335, frequency paired',
+      'Receiver compares 90 Hz and 150 Hz modulation to find beam centre',
+      'Range from marker beacons or a paired DME',
+      'Errors: false glideslopes at about 6 and 9 degrees, beam bending from reflections',
+      'So intercept from below, cross check range against altitude, protect critical areas',
+    ],
+    mcq: {
+      options: [
+        'A single UHF beam giving distance and height above the runway',
+        'A VHF localizer (108.10 to 111.95 MHz) with a paired UHF glideslope giving centreline and a 3 degree path',
+        'A satellite based approach needing no ground equipment',
+        'An NDB and a DME combined to give a curved approach path',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'A precision approach aid combining a VHF localizer (108.10 to 111.95 MHz) for centreline with a frequency paired UHF glideslope (about 329 to 335 MHz) for a roughly 3 degree path, plus markers or DME for range. Guidance comes from comparing 90 and 150 Hz modulations. Main errors: false glideslopes near 6 and 9 degrees, and beam bending from reflections, hence protected critical areas.',
+  },
   { id: 'oral-nav-02', category: 'navigation', frequency: 2, question: 'What are the approach segments?' },
   { id: 'oral-nav-03', category: 'navigation', frequency: 2, question: 'IRS and INS: what are they, how do they work, and what is the difference?' },
   { id: 'oral-nav-04', category: 'navigation', frequency: 2, question: 'RNAV and GPS: what are they and what are the charts used for?' },
@@ -167,7 +567,32 @@ const raw = [
   { id: 'oral-nav-17', category: 'navigation', frequency: 1, question: 'What does it mean to level off at a flight level, and what is an airway?' },
 
   // ---------- general ----------
-  { id: 'oral-gen-01', category: 'general', frequency: 4, question: 'What is ETOPS?' },
+  {
+    id: 'oral-gen-01',
+    category: 'general',
+    frequency: 4,
+    question: 'What is ETOPS?',
+    conceptExplanation:
+      'ETOPS stands for Extended-range Twin-engine Operations; ICAO now calls the wider concept EDTO, extended diversion time operations. The background is simple: a twin that loses an engine has only one left, so historically twins were kept within 60 minutes single-engine flying time of an adequate airport. ETOPS is the approval that relaxes that rule. If the aircraft type is certified for it and the operator is approved, the aircraft may fly routes further away, up to its approved diversion time, quoted in minutes: ETOPS 120, ETOPS 180 and today well beyond that. The time means how far you may be from an adequate alternate, flown at the approved one engine inoperative speed in still air. In exchange there are stricter requirements: designated enroute alternates within the diversion time with suitable weather, extra fuel scenarios, and tighter maintenance rules, like not having the same engineer do the same task on both engines. It is what lets twins like the 787 or A350 fly long oceanic routes that used to need three or four engines.',
+    spokenVersion: [
+      'Extended range twin operations; ICAO now calls it EDTO',
+      'Baseline rule: a twin stays within 60 minutes of an adequate airport',
+      'ETOPS approval extends that to 120, 180 minutes or more',
+      'Time is measured at the one engine inoperative speed in still air',
+      'Needs enroute alternates, extra fuel planning and stricter maintenance',
+    ],
+    mcq: {
+      options: [
+        'A rule keeping twin engine aircraft within 60 NM of the coast at all times',
+        'Approval for twins to fly more than 60 minutes from an adequate alternate, up to an approved diversion time',
+        'The extra holding fuel carried on all oceanic crossings',
+        'A certificate allowing flight without ATC contact over oceans',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'ETOPS (now EDTO) is the approval letting twin-engine aircraft fly more than 60 minutes from an adequate alternate, up to an approved diversion time such as 120 or 180 minutes at the one engine inoperative speed, with stricter alternate, fuel and maintenance requirements.',
+  },
   { id: 'oral-gen-02', category: 'general', frequency: 2, question: 'What is a NOTAM and what is it used for?' },
   { id: 'oral-gen-03', category: 'general', frequency: 1, question: 'Tell me something about the engine.' },
   { id: 'oral-gen-04', category: 'general', frequency: 1, question: 'What is hypoxia, what does it cause, and what is the time of useful consciousness at 30,000 ft?' },
