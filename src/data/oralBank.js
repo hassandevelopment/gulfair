@@ -236,16 +236,265 @@ const raw = [
     flashcardAnswer:
       'Slats are leading edge devices: movable slats, fixed slots and Krueger flaps. They open a slot that keeps the upper surface flow attached, raising the critical angle of attack. A flap is a trailing edge device adding camber and area; a slat delays the stall to a higher angle of attack.',
   },
-  { id: 'oral-aero-08', category: 'aerodynamics', frequency: 2, question: 'What is the lift formula, what is CL, and what can you change in it?' },
-  { id: 'oral-aero-09', category: 'aerodynamics', frequency: 2, question: 'What is angle of attack?' },
-  { id: 'oral-aero-10', category: 'aerodynamics', frequency: 2, question: 'What is induced drag and how do you reduce it?' },
-  { id: 'oral-aero-11', category: 'aerodynamics', frequency: 2, question: 'How do you recover from a stall?' },
-  { id: 'oral-aero-12', category: 'aerodynamics', frequency: 2, question: 'What are wingtip vortices and how do winglets help?' },
-  { id: 'oral-aero-13', category: 'aerodynamics', frequency: 2, question: 'What is a vortex generator and what does it do?' },
-  { id: 'oral-aero-14', category: 'aerodynamics', frequency: 2, question: 'What is coffin corner?' },
-  { id: 'oral-aero-15', category: 'aerodynamics', frequency: 2, question: 'What are spoilers used for?' },
-  { id: 'oral-aero-16', category: 'aerodynamics', frequency: 2, question: 'What is the local speed of sound, what affects it, and what is it at sea level?' },
-  { id: 'oral-aero-17', category: 'aerodynamics', frequency: 2, question: 'What are the primary flight controls?' },
+  {
+    id: 'oral-aero-08',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What is the lift formula, what is CL, and what can you change in it?',
+    conceptExplanation:
+      'The lift formula is L equals half rho V squared S CL. Take it term by term: rho is air density, V is the true airspeed through the air, S is the wing area, and CL is the lift coefficient. CL is the interesting one: it is a dimensionless number that bundles up everything about how well the wing is working, mainly its shape and its angle of attack. Increase the angle of attack and CL rises, up to the critical angle where the wing stalls; deploy flaps or slats and you shift the whole CL curve so more lift is available at any given angle. Now, what can the pilot actually change? Density is set by altitude and temperature, so not directly. Wing area is fixed, unless Fowler flaps extend it. That leaves the two working levers: speed, which counts twice because it is squared, and CL, through angle of attack and the high lift devices. Flying is essentially trading those two against each other to keep lift equal to weight.',
+    spokenVersion: [
+      'L = half rho V squared S CL',
+      'Rho density, V true airspeed, S wing area, CL lift coefficient',
+      'CL bundles wing shape and angle of attack; flaps and slats shift its curve',
+      'Pilot really controls two things: speed, squared, and CL',
+      'Flying level is trading speed against angle of attack to keep lift equal to weight',
+    ],
+    mcq: {
+      options: [
+        'L equals half rho V squared S CL; CL is the lift coefficient from wing shape and angle of attack; the pilot mainly changes speed and CL',
+        'L equals rho V S CL; CL is a fixed constant for every aircraft; the pilot can only change the weight',
+        'L equals half rho V squared S CL; CL is the air density factor; the pilot mainly changes the wing area',
+        'L equals thrust minus drag; CL is the climb limit; the pilot changes it with engine power',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'L = half rho V squared S CL. CL is the dimensionless lift coefficient set by wing shape and angle of attack, shifted by flaps and slats. In practice the pilot controls lift through speed (squared) and CL; density and area are essentially fixed.',
+  },
+  {
+    id: 'oral-aero-09',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What is angle of attack?',
+    conceptExplanation:
+      'Angle of attack is the angle between the wing\'s chord line, the straight line from leading edge to trailing edge, and the relative airflow, the direction the air is actually meeting the wing from. The important discipline is keeping it separate from pitch attitude. Attitude is where the nose points relative to the horizon; angle of attack is how the wing meets the air, and the two can be very different. In a steep climb at low speed the flight path and the airflow tilt with you, and in a descent an aircraft can have the nose below the horizon yet a high angle of attack if it is sinking fast. Angle of attack is the single variable that sets the lift coefficient: raise it and CL rises, until the critical angle where the flow separates and the wing stalls. That is why it is the quantity that actually matters for the stall, not speed and not attitude.',
+    spokenVersion: [
+      'Angle between the chord line and the relative airflow',
+      'Not the same as pitch attitude, which is nose against the horizon',
+      'Sets the lift coefficient: more angle, more CL',
+      'Up to the critical angle, where the wing stalls',
+    ],
+    mcq: {
+      options: [
+        'The angle between the nose and the horizon',
+        'The angle between the chord line and the relative airflow',
+        'The angle between the wing and the fuselage',
+        'The angle of the flight path below the horizontal',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'The angle between the wing chord line and the relative airflow. It is not pitch attitude. It controls the lift coefficient, and past the critical angle of attack the wing stalls, at any speed.',
+  },
+  {
+    id: 'oral-aero-10',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What is induced drag and how do you reduce it?',
+    conceptExplanation:
+      'Induced drag is the drag you pay for making lift. The wing works by keeping pressure lower on top than underneath, and at the wingtips that difference leaks: air curls around the tip from the high pressure side to the low, rolling up into the wingtip vortices. Those vortices drive downwash behind the wing, which tilts the local airflow downward, and since lift stays perpendicular to the airflow, the lift vector leans slightly backwards. That rearward lean is induced drag. It is worst exactly when the wing is working hardest for its speed: slow flight, high angle of attack, high weight, tight turns; it fades as speed rises. Reducing it: fly faster where you have the choice, keep weight down, and in design terms use a high aspect ratio wing, long and slender like a glider\'s, and fit winglets, which weaken the tip leak. This ties straight back to the drag picture: induced falling with speed, parasite rising, minimum drag where they cross.',
+    spokenVersion: [
+      'The drag that comes from producing lift',
+      'Pressure leaks around the wingtips, forming vortices and downwash',
+      'Downwash tilts the lift vector back; that rearward lean is the drag',
+      'Worst slow, heavy and at high angle of attack; fades with speed',
+      'Reduce it: more speed, less weight, high aspect ratio, winglets',
+    ],
+    mcq: {
+      options: [
+        'Drag from skin friction over the wing, reduced by polishing the surface',
+        'Drag from the landing gear, reduced by retracting it',
+        'Drag created as a byproduct of lift, from tip vortices and downwash, reduced by speed, aspect ratio and winglets',
+        'Drag from shockwaves at high Mach, reduced by slowing down',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Induced drag is the byproduct of lift: air leaks around the wingtips into vortices, the downwash tilts lift rearwards, and that rearward component is drag. Worst at low speed and high angle of attack. Reduced by flying faster, lower weight, high aspect ratio wings and winglets.',
+  },
+  {
+    id: 'oral-aero-11',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'How do you recover from a stall?',
+    conceptExplanation:
+      'Since a stall is the wing sitting past its critical angle of attack, the recovery has one non-negotiable first step: reduce the angle of attack. Push the nose down, or at least release the back pressure, until the wing is flying again. Everything else is secondary to that. Then roll the wings level with coordinated use of the controls, and add thrust as needed to rebuild energy, being aware that on aircraft with engines slung under the wing, a big handful of thrust pitches the nose up, which works against the recovery, so pitch control comes first and thrust follows. Once the buffet stops and airspeed is building, ease out of the descent gently. Pull too hard, too early, and you put the wing straight back past the critical angle: that is the secondary stall, and it is the classic recovery error. The modern training emphasis is exactly this order: angle of attack first, thrust second, altitude last.',
+    spokenVersion: [
+      'First and always: reduce the angle of attack, push or release back pressure',
+      'Roll wings level with coordinated controls',
+      'Thrust as required, remembering underwing engines pitch the nose up',
+      'Let speed build, then ease out of the descent gently',
+      'Pulling too early causes a secondary stall',
+    ],
+    mcq: {
+      options: [
+        'Pull back firmly to stop the descent and add full power',
+        'Reduce the angle of attack first, roll wings level, add thrust as required, then recover gently from the descent',
+        'Extend the speedbrakes and hold the attitude until the buffet stops',
+        'Turn towards the nearest airport and lower the landing gear',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Reduce the angle of attack first, by pushing or releasing back pressure, roll wings level, add thrust as required (underwing engines pitch up, so pitch first), then ease out of the descent gently to avoid a secondary stall.',
+  },
+  {
+    id: 'oral-aero-12',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What are wingtip vortices and how do winglets help?',
+    conceptExplanation:
+      'Any wing making lift has higher pressure below than above, and at the tips that difference has an open edge to escape around. Air spills from underneath, curls around the tip and rolls up into two counter-rotating spirals trailing behind the aircraft: the wingtip vortices. They matter twice. Aerodynamically, they are the mechanism behind induced drag: the spillage feeds downwash, tilts the lift vector back, and costs fuel. Operationally, they are wake turbulence for whoever flies behind, strongest when the generating aircraft is heavy, slow and clean, because that is when the wing is working hardest. Winglets attack the first problem. By standing a surface at the tip, they act as a barrier that weakens the spillage and break up how the vortex forms, and their own aerodynamic force even recovers a little energy from the swirling flow. Weaker vortices mean less downwash, so less induced drag and measurably better fuel burn, most valuable on long sectors.',
+    spokenVersion: [
+      'High pressure under the wing spills around the tips',
+      'Rolls up into two counter-rotating trailing vortices',
+      'They drive induced drag, and they are the wake turbulence hazard',
+      'Strongest when heavy, slow and clean',
+      'Winglets weaken the spillage, cutting induced drag and fuel burn',
+    ],
+    mcq: {
+      options: [
+        'Swirls of air where high pressure spills around the tips; winglets weaken them and so cut induced drag',
+        'Vibrations of the wing structure; winglets stiffen the wing to stop them',
+        'Currents of hot engine exhaust; winglets deflect them away from the tail',
+        'Shockwaves at the wingtip; winglets stop the airflow going supersonic',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Wingtip vortices are the spirals formed as high pressure air spills around the tips of a lifting wing; they cause induced drag and wake turbulence, and are strongest heavy, slow and clean. Winglets act as a barrier that weakens the spillage, reducing induced drag and fuel burn.',
+  },
+  {
+    id: 'oral-aero-13',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What is a vortex generator and what does it do?',
+    conceptExplanation:
+      'A vortex generator is one of those small metal vanes you see standing up in rows on the wing or tail, each only a few centimetres tall, set at an angle to the flow. Its job is boundary layer maintenance. The boundary layer, the thin layer of air slowed by friction against the surface, is the part of the flow that separates first when the going gets hard, near the stall or around shockwaves at high Mach. Each vane deliberately sheds a small, tidy vortex that stirs faster air from just outside the boundary layer down into it, re-energizing it so it stays attached further along the surface and to higher angles of attack. In practice they delay separation, keep ailerons and other controls effective at low speed, and tame shock-induced separation on transonic wings. The price is a tiny amount of extra parasite drag, which is why they are a cheap, common fix.',
+    spokenVersion: [
+      'Small vanes on the surface, set at an angle to the airflow',
+      'Each sheds a tiny vortex that stirs fast air into the boundary layer',
+      'Re-energized boundary layer stays attached longer',
+      'Delays separation near the stall and around shockwaves',
+      'Keeps controls effective; costs a little parasite drag',
+    ],
+    mcq: {
+      options: [
+        'A device that creates wingtip vortices to increase lift',
+        'A generator that powers the instruments from the airflow',
+        'A fairing that smooths the junction between wing and fuselage',
+        'A small vane that mixes faster air into the boundary layer, delaying airflow separation',
+      ],
+      correctIndex: 3,
+    },
+    flashcardAnswer:
+      'A small vane that sheds a controlled vortex, mixing faster air into the boundary layer to keep it attached longer. It delays separation near the stall and around shockwaves and keeps controls effective, at the cost of slight parasite drag.',
+  },
+  {
+    id: 'oral-aero-14',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What is coffin corner?',
+    conceptExplanation:
+      'Coffin corner is the tight spot at the top of the flight envelope where the low speed and high speed limits close in on each other. As you climb, two things happen at once. The air gets thinner, so the true airspeed at which the wing reaches the stall, the low speed buffet, keeps rising. Meanwhile the air gets colder, the local speed of sound falls, and with it the true airspeed at which you hit the high speed limit, the Mach buffet near MMO. One limit climbing up, the other coming down: the corridor between them narrows with altitude. At the aerodynamic ceiling they meet: slow down and you get stall buffet, speed up and you get Mach buffet, and there is nowhere left to go. Airlines never operate at that point; cruise levels are chosen to keep a buffet margin, typically enough to handle a load factor from turbulence or a turn, because manoeuvring and weight both push the stall side of the corner up towards you.',
+    spokenVersion: [
+      'The narrow corridor between low speed and high speed buffet at altitude',
+      'Climbing: stall TAS rises as air thins',
+      'Same time: Mach limit TAS falls as air gets colder',
+      'At the aerodynamic ceiling the two meet: buffet either way',
+      'We cruise with a buffet margin for turbulence and turns',
+    ],
+    mcq: {
+      options: [
+        'The point at high altitude where the stall buffet and Mach buffet speeds converge, leaving almost no speed margin',
+        'The corner of the runway where crosswind is strongest during takeoff',
+        'The lowest altitude at which the autopilot can be engaged',
+        'The part of the descent where the cabin altitude catches up with the aircraft',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Coffin corner is the region near the aerodynamic ceiling where the rising stall speed and the falling Mach buffet speed converge: slower means stall buffet, faster means Mach buffet. Cruise levels are chosen to keep a buffet margin clear of it.',
+  },
+  {
+    id: 'oral-aero-15',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What are spoilers used for?',
+    conceptExplanation:
+      'Spoilers are the panels hinged along the upper surface of the wing that swing up into the airflow. The name says exactly what they do: they spoil the lift the wing is making at that spot, and add drag while they are at it. That one trick gets used three ways. As roll spoilers, the panels on one wing rise a little to help the ailerons: killing lift on the downgoing wing rolls the aircraft crisply, especially at high speed where big aileron deflections are undesirable. As speedbrakes in flight, panels on both wings rise together, adding drag and dumping lift so you can descend faster or slow down without gaining speed. And as ground spoilers or lift dumpers after touchdown, all panels deploy fully, killing the remaining lift so the aircraft\'s weight settles onto the wheels, which is what makes the brakes actually bite, and shortening the landing roll.',
+    spokenVersion: [
+      'Upper surface panels that dump lift and add drag',
+      'Roll spoilers: assist ailerons by killing lift on the downgoing wing',
+      'Speedbrakes: both wings together, steeper descent or deceleration',
+      'Ground spoilers: full deployment after touchdown',
+      'Puts weight on the wheels so the brakes work',
+    ],
+    mcq: {
+      options: [
+        'Increasing lift for takeoff and landing',
+        'Assisting roll, acting as speedbrakes in flight, and dumping lift after touchdown',
+        'Trimming the aircraft in pitch during cruise',
+        'Cooling the brakes during a long taxi',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Spoilers are upper wing panels that dump lift and add drag. Three jobs: roll spoilers assisting the ailerons, speedbrakes for descent and deceleration, and ground spoilers after touchdown that put the weight on the wheels so the brakes bite.',
+  },
+  {
+    id: 'oral-aero-16',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What is the local speed of sound, what affects it, and what is it at sea level?',
+    conceptExplanation:
+      'The local speed of sound is the speed at which pressure disturbances, sound waves, travel through the air you are flying in right now. It matters to us because it is the yardstick for Mach number: Mach is your TAS divided by this local value. The single thing that sets it is air temperature: warmer air carries sound faster, colder air slower. Pressure and density on their own do not change it, which surprises people, because their effects cancel each other out. At sea level in ISA conditions, plus 15 degrees, it is about 661 knots. Climb into colder air and it falls with the temperature, until the tropopause, where the temperature stops falling and the speed of sound steadies too. That falling yardstick is the whole story behind Mach effects at altitude: the same TAS measures as a higher Mach number up high simply because the speed of sound around you has come down.',
+    spokenVersion: [
+      'The speed pressure waves travel in the air around you',
+      'Depends on temperature only: warmer faster, colder slower',
+      'About 661 kt at sea level in ISA, roughly',
+      'Falls as you climb until the tropopause, then steadies',
+      'It is the yardstick for Mach number: TAS divided by it',
+    ],
+    mcq: {
+      options: [
+        'The speed of the jetstream at cruise level; it depends on pressure; about 100 kt at sea level',
+        'The maximum speed of the aircraft; it depends on weight; about 350 kt at sea level',
+        'The speed sound waves travel in the surrounding air; it depends on temperature; about 661 kt at sea level in ISA',
+        'The speed of the wind at the surface; it depends on density; about 15 kt at sea level',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'The speed at which sound travels in the surrounding air, set by temperature alone: colder means slower. About 661 kt at sea level in ISA, falling with height to the tropopause. It is the denominator of Mach number.',
+  },
+  {
+    id: 'oral-aero-17',
+    category: 'aerodynamics',
+    frequency: 2,
+    question: 'What are the primary flight controls?',
+    conceptExplanation:
+      'The primary flight controls are the surfaces that rotate the aircraft about its three axes, and there are three of them. The ailerons, out near the wingtips, move opposite to each other and roll the aircraft about its longitudinal axis; that is how you bank into a turn. The elevator, on the tailplane, pitches the aircraft about its lateral axis, controlling attitude and hence angle of attack. The rudder, on the fin, yaws the aircraft about its vertical axis, used for coordination, crosswinds and engine-out control. They are called primary because they are essential to controlling the flight path, as opposed to the secondary controls: flaps, slats, spoilers and trim, which change the wing\'s performance or relieve control loads rather than steer the aircraft. On big jets the surfaces are moved hydraulically or by fly by wire, and roll is often shared between ailerons and roll spoilers, but the three-axis principle is the same as in the smallest trainer.',
+    spokenVersion: [
+      'Ailerons: roll, about the longitudinal axis',
+      'Elevator: pitch, about the lateral axis, sets attitude and angle of attack',
+      'Rudder: yaw, about the vertical axis, coordination and engine out',
+      'Primary because they steer the flight path',
+      'Secondary controls are flaps, slats, spoilers and trim',
+    ],
+    mcq: {
+      options: [
+        'Flaps, slats and spoilers',
+        'Ailerons for roll, elevator for pitch and rudder for yaw',
+        'Throttles, brakes and nosewheel steering',
+        'Trim tabs, servo tabs and balance tabs',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Ailerons (roll, longitudinal axis), elevator (pitch, lateral axis) and rudder (yaw, vertical axis). They steer the flight path; flaps, slats, spoilers and trim are the secondary controls.',
+  },
   { id: 'oral-aero-18', category: 'aerodynamics', frequency: 1, question: 'What are the different types of drag, in depth?' },
   { id: 'oral-aero-19', category: 'aerodynamics', frequency: 1, question: 'What is interference drag, how does it form, and how do you reduce it?' },
   { id: 'oral-aero-20', category: 'aerodynamics', frequency: 1, question: 'What is the critical angle of attack?' },
@@ -314,8 +563,58 @@ const raw = [
     flashcardAnswer:
       'The one engine inoperative path from 35 ft to 1500 ft. First segment to gear up at V2; second segment to at least 400 ft at 2.4 percent minimum for a twin, usually the limiting one; third segment level acceleration and flap retraction; final segment at maximum continuous thrust, 1.2 percent, up to 1500 ft.',
   },
-  { id: 'oral-perf-03', category: 'performance', frequency: 2, question: 'Maximum endurance versus maximum range: what is the difference?' },
-  { id: 'oral-perf-04', category: 'performance', frequency: 2, question: 'What is screen height? Does it change?' },
+  {
+    id: 'oral-perf-03',
+    category: 'performance',
+    frequency: 2,
+    question: 'Maximum endurance versus maximum range: what is the difference?',
+    conceptExplanation:
+      'They answer two different questions. Maximum endurance is about time: how long can I stay airborne on the fuel I have, never mind where I go. You get it by flying at the speed with the lowest fuel flow per hour, which for a jet is close to the minimum drag speed. It is the holding answer: when ATC parks you in a stack, you fly close to this. Maximum range is about distance: how far can I get on the fuel? Now the question is fuel burned per mile, not per hour, and it pays to fly somewhat faster than the endurance speed, because the extra ground covered outweighs the extra burn; for a jet the best range speed sits noticeably above minimum drag speed. Range also cares about wind where endurance does not: a headwind cuts miles per kilogram of fuel, so you fly a little faster into wind and it can pay to change level, while a holding pattern burns the same either way.',
+    spokenVersion: [
+      'Endurance: maximum time airborne; range: maximum distance',
+      'Endurance speed: lowest fuel flow per hour, near minimum drag speed for a jet',
+      'Range speed: best fuel per mile, somewhat faster than that',
+      'Wind matters for range, not endurance: speed up a little into a headwind',
+      'Holding uses endurance; diversion planning uses range',
+    ],
+    mcq: {
+      options: [
+        'Endurance is flying as fast as possible; range is flying as slowly as possible',
+        'Endurance is maximum time airborne, flown near minimum fuel flow; range is maximum distance, flown somewhat faster for the best fuel per mile',
+        'They are the same thing measured in different units',
+        'Endurance applies only to jets and range only to propeller aircraft',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Maximum endurance is the longest time airborne, flown at the lowest fuel flow, near minimum drag speed for a jet; used for holding. Maximum range is the greatest distance, flown somewhat faster for the best fuel per mile, and adjusted for wind.',
+  },
+  {
+    id: 'oral-perf-04',
+    category: 'performance',
+    frequency: 2,
+    question: 'What is screen height? Does it change?',
+    conceptExplanation:
+      'Screen height is an imaginary screen standing at the end of the takeoff distance, and the certification rules say the aircraft must cross it by the time the takeoff distance available runs out, even with an engine failed at the worst moment. For a jet transport the screen is 35 ft on a dry runway. And yes, it changes: on a wet runway the rules allow a reduced screen height of 15 ft. The logic of the trade is worth understanding: on a wet runway, stopping distances stretch, so V1 is reduced to keep a rejected takeoff safe; a lower V1 means the continue case starts from a lower speed, and rather than demand more runway the rules accept clearing a lower screen. The same idea appears at the other end of the flight: the landing distance is measured from crossing the threshold at 50 ft. It also marks where the takeoff distance ends and the takeoff flight path, the climb segments, begins.',
+    spokenVersion: [
+      'Imaginary height to clear by the end of the takeoff distance, engine out',
+      '35 ft for a jet on a dry runway',
+      'Yes it changes: reduced to 15 ft on a wet runway',
+      'Wet: lower V1 for stopping, so a lower screen is accepted',
+      'Marks the start of the takeoff flight path segments',
+    ],
+    mcq: {
+      options: [
+        'The minimum cloud base for takeoff; it changes with the time of day',
+        'The height of the airport fence; it never changes',
+        'The height the aircraft must clear at the end of the takeoff distance: 35 ft dry, reduced to 15 ft wet for a jet',
+        'The height at which the flight directors engage; it changes with aircraft weight',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Screen height is the height the aircraft must reach by the end of the takeoff distance available, even engine out: 35 ft on a dry runway for a jet, reduced to 15 ft on a wet one, where a lower V1 protects the stopping case.',
+  },
   { id: 'oral-perf-05', category: 'performance', frequency: 1, question: 'What is V1?' },
   { id: 'oral-perf-06', category: 'performance', frequency: 1, question: 'Service ceiling and absolute ceiling: define both.' },
   { id: 'oral-perf-07', category: 'performance', frequency: 1, question: 'A heavy aircraft is landing. What happens to the landing distance and why?' },
@@ -349,11 +648,137 @@ const raw = [
     flashcardAnswer:
       'TAS is the aircraft\'s real speed through the air mass: IAS corrected for air density. At altitude the air is thinner so TAS is higher than IAS, roughly 2 percent per 1000 ft. TAS with the wind applied gives ground speed.',
   },
-  { id: 'oral-inst-02', category: 'instruments', frequency: 2, question: 'Does TAS change with altitude? What happens during the climb?' },
-  { id: 'oral-inst-03', category: 'instruments', frequency: 2, question: 'Two aircraft at the same IAS, one at FL200 and one at FL350: which is faster and why?' },
-  { id: 'oral-inst-04', category: 'instruments', frequency: 2, question: 'IAS, CAS, EAS: define each.' },
-  { id: 'oral-inst-05', category: 'instruments', frequency: 2, question: 'What is ground speed?' },
-  { id: 'oral-inst-06', category: 'instruments', frequency: 2, question: 'What happens if the pitot is blocked, in the climb and the descent? What happens to the VSI?' },
+  {
+    id: 'oral-inst-02',
+    category: 'instruments',
+    frequency: 2,
+    question: 'Does TAS change with altitude? What happens during the climb?',
+    conceptExplanation:
+      'Yes. The airspeed indicator works on dynamic pressure, and dynamic pressure depends on density as well as speed. Climb at a constant indicated airspeed and the air keeps getting thinner, so to hold the same dynamic pressure the aircraft must actually move faster through the air: TAS rises steadily, by roughly 2 percent per 1000 ft as a rule of thumb. That is the first part of the climb. Higher up, at the crossover altitude, we stop flying a constant IAS and hold a constant Mach number instead, to stay clear of the high speed limits. From there the picture flips: the air is still getting colder, the local speed of sound is falling, and a constant Mach of a falling yardstick means TAS actually decreases gently through the rest of the climb, until the tropopause, where the temperature steadies and so does TAS. So in one climb profile you see TAS rise on the IAS segment and ease back slightly on the Mach segment.',
+    spokenVersion: [
+      'Yes: same IAS in thinner air means a higher TAS',
+      'Roughly 2 percent more TAS per 1000 ft, as a rule of thumb',
+      'Climb is flown constant IAS first, constant Mach after crossover',
+      'On the Mach segment TAS falls gently as the air cools',
+      'Above the tropopause temperature steadies, so TAS does too',
+    ],
+    mcq: {
+      options: [
+        'No, TAS is fixed by the throttle setting alone',
+        'Yes: at constant IAS, TAS rises as the air thins with altitude, then falls gently on the constant Mach segment as the air cools',
+        'Yes: TAS always falls as you climb because drag increases',
+        'No, TAS and IAS are always equal above 10,000 ft',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Yes. Climbing at constant IAS, the thinning air means TAS rises, roughly 2 percent per 1000 ft. After crossover, holding constant Mach in cooling air, TAS falls gently until the tropopause, where it steadies.',
+  },
+  {
+    id: 'oral-inst-03',
+    category: 'instruments',
+    frequency: 2,
+    question: 'Two aircraft at the same IAS, one at FL200 and one at FL350: which is faster and why?',
+    conceptExplanation:
+      'The one at FL350 is faster, meaning it has the higher true airspeed. The reasoning comes straight from how the airspeed indicator works: it senses dynamic pressure, which is a product of air density and speed. Both aircraft are reading the same indicated airspeed, so both are feeling the same dynamic pressure. But at FL350 the air is far thinner than at FL200, so to generate that same pressure the higher aircraft must be pushing through the air considerably faster. Same IAS, less density, therefore more TAS. Using the rough 2 percent per 1000 ft rule of thumb, 15,000 ft of difference is on the order of a 30 percent gap in TAS, so this is not a small effect; it is exactly why flying high is efficient. Over the ground, of course, wind gets the final say, but through the air the FL350 aircraft is unambiguously the faster one.',
+    spokenVersion: [
+      'The one at FL350 has the higher TAS',
+      'Same IAS means the same dynamic pressure at both levels',
+      'Air at FL350 is much thinner',
+      'So it must move faster through the air for the same pressure',
+      'By the rough 2 percent per 1000 ft rule, a large TAS gap',
+    ],
+    mcq: {
+      options: [
+        'The one at FL200, because the air is denser and gives more lift',
+        'Both have the same TAS because their IAS is the same',
+        'The one at FL350, because the thinner air means a higher TAS is needed for the same indicated airspeed',
+        'Impossible to say without knowing the wind',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'The aircraft at FL350. The same IAS means the same dynamic pressure, and in the much thinner air up there the aircraft must move faster through the air to create it, so its TAS is far higher.',
+  },
+  {
+    id: 'oral-inst-04',
+    category: 'instruments',
+    frequency: 2,
+    question: 'IAS, CAS, EAS: define each.',
+    conceptExplanation:
+      'These are steps in a correction chain, and the order is easy to hold onto: I, C, E, then T. IAS, indicated airspeed, is simply what the airspeed indicator shows, straight from the dynamic pressure the pitot static system delivers, errors and all. CAS, calibrated airspeed, is IAS corrected for instrument error and position error, the error from where the pitot and static sources sit on the airframe and how the local airflow distorts what they sense; the correction varies with configuration and angle of attack. EAS, equivalent airspeed, is CAS corrected for compressibility: at high speed the air piles up and compresses slightly in the pitot, making the reading a little optimistic, and EAS takes that out. It is the aerodynamicist\'s honest speed. The last step, already covered under TAS, is correcting EAS for density to get the true speed through the air. At low speed and low level the four are close together; fast and high, the gaps grow.',
+    spokenVersion: [
+      'A correction chain: I, C, E, then T',
+      'IAS: what the indicator shows, from dynamic pressure',
+      'CAS: IAS corrected for instrument and position error',
+      'EAS: CAS corrected for compressibility at high speed',
+      'EAS corrected for density gives TAS',
+    ],
+    mcq: {
+      options: [
+        'IAS is what the indicator shows; CAS corrects it for instrument and position error; EAS further corrects for compressibility',
+        'IAS is the true speed; CAS is the ground speed; EAS is the wind corrected speed',
+        'IAS is corrected for density; CAS for temperature; EAS for wind',
+        'They are three names for the same reading on different aircraft types',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'IAS: the raw indicator reading from dynamic pressure. CAS: IAS corrected for instrument and position error. EAS: CAS corrected for compressibility. Correct EAS for density and you have TAS.',
+  },
+  {
+    id: 'oral-inst-05',
+    category: 'instruments',
+    frequency: 2,
+    question: 'What is ground speed?',
+    conceptExplanation:
+      'Ground speed is the speed of the aircraft over the surface of the earth, and it is the speed that navigation actually runs on: it decides your timings, your fuel over a route and your estimated arrival. The relationship to remember is that ground speed is true airspeed with the wind applied. The aircraft moves through the air mass at its TAS, but the air mass itself is moving over the ground, so a tailwind adds to TAS and a headwind subtracts, and a crosswind both costs a little speed and pushes you sideways, which is why we lay off drift. The clean contrast to hold: IAS is what the wing and the handling care about, TAS is your real speed through the air, and ground speed is what the flight plan and the passengers care about. Today it comes straight from the IRS and GPS, but the relationship TAS plus or minus wind is still the arithmetic underneath.',
+    spokenVersion: [
+      'Speed over the ground, the one navigation runs on',
+      'Ground speed = TAS with the wind applied',
+      'Tailwind adds, headwind subtracts, crosswind gives drift',
+      'IAS for handling, TAS through the air, GS for timings and fuel',
+      'Comes from IRS and GPS today, same arithmetic underneath',
+    ],
+    mcq: {
+      options: [
+        'The speed shown on the airspeed indicator during taxi',
+        'The aircraft speed over the surface: TAS with the wind added or subtracted',
+        'The speed of the air flowing over the wing',
+        'The maximum speed permitted below 10,000 ft',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Ground speed is the aircraft\'s speed over the earth\'s surface: TAS with the wind applied, tailwind adding and headwind subtracting. It drives timings, fuel and ETAs.',
+  },
+  {
+    id: 'oral-inst-06',
+    category: 'instruments',
+    frequency: 2,
+    question: 'What happens if the pitot is blocked, in the climb and the descent? What happens to the VSI?',
+    conceptExplanation:
+      'Take it from what the instrument is doing. The airspeed indicator measures the difference between pitot pressure and static pressure. If the pitot tube blocks completely, including its drain hole, the pressure trapped inside the pitot line is frozen at whatever it was, while the static side keeps working. Now the ASI is comparing a fixed trapped pressure against a static pressure that changes with altitude, which means it has stopped being an airspeed indicator and has started behaving like an altimeter. In a climb, static pressure falls, the difference across the capsule grows, and the ASI over-reads: it shows the speed increasing when it may not be. That is the dangerous direction, because the instinctive response, pitching up or pulling power back to control the apparent overspeed, pushes you towards the stall. In a descent the opposite: static rises, the difference shrinks, and it under-reads. The VSI is untouched, because it works entirely from the static source; the same goes for the altimeter. Unreliable airspeed drills exist exactly for this: fly a known pitch and thrust, and sort the instruments out from there.',
+    spokenVersion: [
+      'Blocked pitot traps a fixed pressure; static keeps working',
+      'ASI then behaves like an altimeter',
+      'Climb: over-reads; the dangerous case, invites pulling towards the stall',
+      'Descent: under-reads',
+      'VSI and altimeter unaffected: they use static only',
+      'Response: unreliable airspeed drill, known pitch and thrust',
+    ],
+    mcq: {
+      options: [
+        'The ASI reads zero at all times and the VSI fails',
+        'The ASI over-reads in the climb and under-reads in the descent, behaving like an altimeter; the VSI, on static pressure, is unaffected',
+        'The ASI under-reads in the climb and over-reads in the descent; the VSI freezes',
+        'Nothing changes, because the static port takes over the pitot\'s job',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'A fully blocked pitot traps its pressure, so the ASI acts like an altimeter: over-reading in the climb (dangerous, invites a pull towards the stall) and under-reading in the descent. The VSI and altimeter run on static pressure and are unaffected. Fly pitch and thrust.',
+  },
   { id: 'oral-inst-07', category: 'instruments', frequency: 1, question: 'What are the pressure instruments and how do they work?' },
   { id: 'oral-inst-08', category: 'instruments', frequency: 1, question: 'Explain the pitot system and which pressure it uses.' },
   { id: 'oral-inst-09', category: 'instruments', frequency: 1, question: 'What is GPWS and what are its modes?' },
@@ -492,13 +917,188 @@ const raw = [
     flashcardAnswer:
       'CAT is turbulence in clear air at high altitude, caused by windshear, most often at jetstream edges near the tropopause (worst on the cold polar side) and in mountain waves. Radar cannot see it, so you rely on forecasts and pilot reports.',
   },
-  { id: 'oral-met-06', category: 'meteorology', frequency: 2, question: 'How do clouds form?' },
-  { id: 'oral-met-07', category: 'meteorology', frequency: 2, question: 'How are clouds classified and what are the families?' },
-  { id: 'oral-met-08', category: 'meteorology', frequency: 2, question: 'What is a microburst, what are its types, and why is it hazardous?' },
-  { id: 'oral-met-09', category: 'meteorology', frequency: 2, question: 'What are the types of fog?' },
-  { id: 'oral-met-10', category: 'meteorology', frequency: 2, question: 'Virga, dew, mist, haze: define each.' },
-  { id: 'oral-met-11', category: 'meteorology', frequency: 2, question: 'What are the layers of the atmosphere?' },
-  { id: 'oral-met-12', category: 'meteorology', frequency: 2, question: 'What is windshear, how is it formed, and how do you handle it on the approach?' },
+  {
+    id: 'oral-met-06',
+    category: 'meteorology',
+    frequency: 2,
+    question: 'How do clouds form?',
+    conceptExplanation:
+      'A cloud is what you get when moist air is cooled to its dew point, the temperature at which it can no longer hold its water as invisible vapour. The vapour condenses into droplets on tiny particles in the air, condensation nuclei like dust and salt, and millions of those droplets together are the cloud. The cooling almost always comes from lifting: raise a parcel of air and it expands into the lower pressure and cools adiabatically, at the DALR while dry and the SALR once saturated. What does the lifting is the useful part of the answer: convection from a heated surface, air forced up over terrain, air climbing over a frontal surface, or air converging into a low and having nowhere to go but up. The character of the cloud then follows from stability: unstable air keeps rising and builds cumuliform cloud, stable air spreads into layered stratiform sheets. Cooling without lifting, by radiation on a clear night or advection over a cold surface, gives cloud at the surface, which is fog.',
+    spokenVersion: [
+      'Moist air cooled to its dew point; vapour condenses on nuclei',
+      'Cooling is usually adiabatic, from lifting',
+      'Lifting: convection, terrain, fronts, convergence',
+      'Unstable air gives cumuliform, stable air gives stratiform',
+      'Cooling at the surface without lifting gives fog',
+    ],
+    mcq: {
+      options: [
+        'Air is heated until its moisture evaporates into a visible cloud',
+        'Moist air is lifted and cooled to its dew point, and the vapour condenses on nuclei into droplets',
+        'Wind mixes smoke and dust into visible layers',
+        'Rain falling from high level freezes into a cloud layer',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Moist air is cooled, usually by being lifted and expanding, until it reaches its dew point; the vapour then condenses on condensation nuclei into droplets. Lifting comes from convection, terrain, fronts or convergence; stability decides whether the result is cumuliform or stratiform.',
+  },
+  {
+    id: 'oral-met-07',
+    category: 'meteorology',
+    frequency: 2,
+    question: 'How are clouds classified and what are the families?',
+    conceptExplanation:
+      'Clouds are classified two ways at once: by the height of their base and by their form. Height gives the families. High cloud, the cirrus family, is made of ice crystals: cirrus, cirrocumulus and cirrostratus. Medium cloud carries the prefix alto: altocumulus and altostratus. Low cloud is stratus, stratocumulus, and nimbostratus, the thick rain-bearer that in practice spans low and medium levels. The fourth family is cloud of vertical development, which ignores the height bands entirely: cumulus and cumulonimbus, growing from a low base up through the levels, the CB sometimes all the way to the tropopause. The rough band heights vary with latitude, so treat them as approximate. Form tells you the physics: cumuliform means unstable air, heaped cloud, showers and bumps; stratiform means stable air, layered cloud, steady precipitation and smoother rides. The prefix nimbo or suffix nimbus simply marks a cloud that rains.',
+    spokenVersion: [
+      'Classified by base height and by form',
+      'High: cirrus family, ice crystals. Medium: alto prefix',
+      'Low: stratus, stratocumulus, nimbostratus',
+      'Vertical development: cumulus and CB, up through the levels',
+      'Cumuliform means unstable and showery; stratiform means stable and steady',
+    ],
+    mcq: {
+      options: [
+        'By colour: white, grey and dark clouds',
+        'By the height of their base and their form: high, medium, low and vertical development families',
+        'By the season in which they appear',
+        'By wind speed at their level: fast, medium and slow clouds',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Classified by base height and form. Families: high (cirrus, cirrocumulus, cirrostratus), medium (altocumulus, altostratus), low (stratus, stratocumulus, nimbostratus) and vertical development (cumulus, cumulonimbus). Cumuliform means unstable air; stratiform means stable.',
+  },
+  {
+    id: 'oral-met-08',
+    category: 'meteorology',
+    frequency: 2,
+    question: 'What is a microburst, what are its types, and why is it hazardous?',
+    conceptExplanation:
+      'A microburst is an intense, concentrated downdraft from a convective cloud that hits the ground and bursts outward in all directions, like water poured onto a plate. It is small, a few kilometres across, and short-lived, usually a matter of minutes, which is exactly what makes it treacherous: it can be sitting on the approach path with little warning. The two types are wet and dry. A wet microburst arrives inside a shaft of heavy rain, visible on radar; a dry one falls from high-based cloud where the rain evaporates on the way down, the evaporation actually cooling and accelerating the downdraft, and there may be nothing to see but a ring of blown dust. The hazard is the shear sequence on approach: first you fly into the outflow headwind, performance and airspeed jump, and the temptation is to reduce thrust; seconds later the headwind becomes a downdraft and then a tailwind, and the aircraft is suddenly low, slow and sinking with the engines spooled down. That sequence has destroyed airliners, which is why windshear warnings trigger a full escape manoeuvre, not a corrected approach.',
+    spokenVersion: [
+      'A concentrated downdraft that hits the ground and bursts outward',
+      'Small and brief: a few kilometres, a few minutes',
+      'Wet type in heavy rain; dry type under high cloud, invisible',
+      'Sequence: headwind gain, then downdraft, then tailwind loss',
+      'Low, slow and sinking with thrust reduced: escape manoeuvre, never ride it',
+    ],
+    mcq: {
+      options: [
+        'A small area of clear air turbulence at cruise level',
+        'A sudden increase in headwind that improves performance all the way down',
+        'An intense downdraft from a convective cloud spreading out at the ground, wet or dry, giving headwind then tailwind shear on approach',
+        'A gust of crosswind on the runway during taxi',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'An intense localized downdraft from convective cloud that spreads out on hitting the ground; wet (in heavy rain) or dry (evaporating, nearly invisible). Hazardous because approach shear runs headwind gain, then downdraft, then tailwind loss, leaving you low and slow; the answer is the windshear escape manoeuvre.',
+  },
+  {
+    id: 'oral-met-09',
+    category: 'meteorology',
+    frequency: 2,
+    question: 'What are the types of fog?',
+    conceptExplanation:
+      'Fog is cloud at the surface, and the types are named for what does the cooling or supplies the moisture. Radiation fog forms on clear, calm nights: the ground radiates its heat away, chills the air touching it to its dew point, and a light stir of wind spreads the cooling into a layer; it favours valleys and burns off after sunrise. Advection fog forms when moist air flows over a cold surface, sea fog being the classic, and unlike radiation fog it can arrive in wind and persist for days. Upslope or hill fog is moist air cooled adiabatically as it is forced up rising ground, cloud sitting on the hills. Frontal or precipitation fog forms ahead of a warm front, where rain falling into the cold air beneath saturates it. Steam fog forms when very cold air drifts over much warmer water and the water appears to smoke. For operations, radiation fog is the early morning menace at inland airports; advection fog is the one that can shut a coastal airport for a long time.',
+    spokenVersion: [
+      'Radiation: clear calm night, ground cools the air; burns off in the morning',
+      'Advection: moist air over a cold surface; sea fog, can persist in wind',
+      'Upslope: moist air cooled climbing rising ground',
+      'Frontal: rain ahead of a warm front saturates the cold air below',
+      'Steam fog: cold air over warm water',
+    ],
+    mcq: {
+      options: [
+        'Radiation, advection, upslope, frontal and steam fog',
+        'Cumulus, stratus and cirrus fog',
+        'Morning, afternoon and evening fog',
+        'Ground, sky and sea smoke only',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Radiation fog (clear calm nights, ground cooling), advection fog (moist air over a cold surface, sea fog), upslope fog (air cooled climbing terrain), frontal fog (rain ahead of a warm front saturating cold air) and steam fog (cold air over warm water).',
+  },
+  {
+    id: 'oral-met-10',
+    category: 'meteorology',
+    frequency: 2,
+    question: 'Virga, dew, mist, haze: define each.',
+    conceptExplanation:
+      'Four small definitions, each with an operational edge. Virga is precipitation that falls from a cloud but evaporates before reaching the ground; you see it as grey streaks hanging under the cloud base. The catch is that the evaporation cools the air and can drive strong downdrafts, so virga under convective cloud is a warning sign for dry microburst conditions. Dew is water vapour condensing directly onto cold surfaces on clear, calm nights, the same cooling that, with a little wind to stir it, would give radiation fog instead. Mist is water droplets reducing visibility, but not below fog limits: in reports, visibility of 1000 metres or more with high humidity is mist, coded BR, while below 1000 metres it becomes fog, FG. Haze is different in kind: it is dry particles, dust or smoke or salt, scattering the light, reduced visibility with no moisture story at all, coded HZ, common in this region when desert dust hangs in stable air.',
+    spokenVersion: [
+      'Virga: precipitation evaporating before it reaches the ground',
+      'Under convective cloud, virga hints at dry microburst risk',
+      'Dew: vapour condensing straight onto cold surfaces on calm clear nights',
+      'Mist: water droplets, visibility 1000 m or more; below that it is fog',
+      'Haze: dry particles like dust or smoke, no moisture involved',
+    ],
+    mcq: {
+      options: [
+        'Virga is ground frost; dew is falling rain; mist is smoke; haze is thick fog',
+        'Virga is precipitation evaporating before the ground; dew is condensation on surfaces; mist is water droplets with visibility 1000 m or more; haze is dry particles',
+        'All four are types of freezing precipitation',
+        'Virga is a cloud family; dew, mist and haze are wind phenomena',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Virga: precipitation evaporating before reaching the ground, a dry microburst clue under convective cloud. Dew: condensation directly onto cold surfaces at night. Mist: water droplets, visibility 1000 m or more (BR); below 1000 m it is fog. Haze: dry particles such as dust or smoke (HZ).',
+  },
+  {
+    id: 'oral-met-11',
+    category: 'meteorology',
+    frequency: 2,
+    question: 'What are the layers of the atmosphere?',
+    conceptExplanation:
+      'From the ground up, the atmosphere is stacked in layers defined by what the temperature does in each. The troposphere is the bottom layer, where temperature falls with height, where nearly all the water vapour lives and therefore where the weather happens; it is capped by the tropopause, higher and colder over the equator than the poles. Above it lies the stratosphere, where temperature is first steady and then rises with height because the ozone layer absorbs solar ultraviolet; that makes it very stable, dry and largely weather-free, which is why cruising in the lower stratosphere on polar-side routes is such smooth flying. Above that, the mesosphere, where temperature falls again to the coldest point of the atmosphere, and then the thermosphere, where the thin air is heated by direct solar radiation, and within which the ionosphere sits, the electrified region that HF radio depends on. Commercial aviation lives in the troposphere and the lowest slice of the stratosphere; the rest matters to us mainly through radio and space weather.',
+    spokenVersion: [
+      'Troposphere: temperature falls with height, all the weather; capped by the tropopause',
+      'Stratosphere: stable, ozone warms it with height, smooth cruising',
+      'Mesosphere: temperature falls again, coldest point',
+      'Thermosphere: heated by the sun, contains the ionosphere for HF',
+      'We operate in the troposphere and lower stratosphere',
+    ],
+    mcq: {
+      options: [
+        'Troposphere, stratosphere, mesosphere and thermosphere, separated by how temperature changes with height',
+        'Low, medium and high layers, separated by cloud families',
+        'The pressure layer, the wind layer and the weather layer',
+        'The ionosphere, then the stratosphere, then the troposphere going upward',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Troposphere (temperature falling, all the weather), tropopause, stratosphere (stable, warmed aloft by ozone), mesosphere (cooling again), thermosphere (solar heated, holds the ionosphere). Airliners fly in the troposphere and lower stratosphere.',
+  },
+  {
+    id: 'oral-met-12',
+    category: 'meteorology',
+    frequency: 2,
+    question: 'What is windshear, how is it formed, and how do you handle it on the approach?',
+    conceptExplanation:
+      'Windshear is a marked change of wind speed or direction over a short distance, horizontally or vertically, short enough that the aircraft crosses it before it can settle into the new wind, so the airspeed and flight path get disturbed. It forms in several ways: thunderstorms and microbursts are the violent source; fronts bring a wind change across their surface; a low-level temperature inversion can have calm air beneath and a strong flow just above, including the low-level jet at night; terrain and buildings bend the surface wind; and a strong gusty crosswind shears in its own right. On approach, the defence starts before the aircraft: if windshear is reported or a predictive windshear warning triggers, delay the approach or divert; there is no prize for flying into it. Fly a stabilised approach with any recommended speed additive. If you encounter it, the moment performance goes wrong, fluctuating airspeed, sink, a windshear warning, the answer is the escape manoeuvre: maximum thrust, rotate towards the commanded pitch, follow the flight director windshear guidance, keep the configuration until safely climbing away. Never try to rescue the landing out of a shear encounter.',
+    spokenVersion: [
+      'A marked wind change over a short distance, vertical or horizontal',
+      'Sources: thunderstorms and microbursts, fronts, inversions and low level jets, terrain',
+      'Reported or predicted on approach: delay or divert',
+      'Stabilised approach, speed additive if recommended',
+      'Encounter: escape manoeuvre, max thrust, pitch, configuration held, go around',
+    ],
+    mcq: {
+      options: [
+        'A steady headwind down the whole approach, handled by trimming once',
+        'A sudden change of wind speed or direction over a short distance; avoid when warned, and fly the escape manoeuvre if encountered',
+        'The normal decrease of wind near the ground, handled by reducing flap',
+        'Turbulence from the aircraft ahead, handled by extra spacing only',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Windshear is a marked wind change over a short distance, from storms and microbursts, fronts, inversions, low level jets or terrain. On approach: delay or divert if warned, fly stabilised with any additive, and on encountering it fly the windshear escape manoeuvre and go around; never continue the landing.',
+  },
   { id: 'oral-met-13', category: 'meteorology', frequency: 1, question: 'What is the major reason for weather changes?' },
   { id: 'oral-met-14', category: 'meteorology', frequency: 1, question: 'What is the air composed of?' },
   { id: 'oral-met-15', category: 'meteorology', frequency: 1, question: 'What causes wind? Explain pressure gradient and Coriolis.' },
@@ -549,9 +1149,84 @@ const raw = [
     flashcardAnswer:
       'A precision approach aid combining a VHF localizer (108.10 to 111.95 MHz) for centreline with a frequency paired UHF glideslope (about 329 to 335 MHz) for a roughly 3 degree path, plus markers or DME for range. Guidance comes from comparing 90 and 150 Hz modulations. Main errors: false glideslopes near 6 and 9 degrees, and beam bending from reflections, hence protected critical areas.',
   },
-  { id: 'oral-nav-02', category: 'navigation', frequency: 2, question: 'What are the approach segments?' },
-  { id: 'oral-nav-03', category: 'navigation', frequency: 2, question: 'IRS and INS: what are they, how do they work, and what is the difference?' },
-  { id: 'oral-nav-04', category: 'navigation', frequency: 2, question: 'RNAV and GPS: what are they and what are the charts used for?' },
+  {
+    id: 'oral-nav-02',
+    category: 'navigation',
+    frequency: 2,
+    question: 'What are the approach segments?',
+    conceptExplanation:
+      'An instrument approach procedure is built from segments, each with its own job and its own obstacle protection. The arrival gets you from the enroute structure towards the airport, often via a STAR. The initial approach segment begins at the initial approach fix, the IAF, and its job is manoeuvring: getting the aircraft pointed the right way, descending, starting to slow. The intermediate segment, from the intermediate fix, is about preparation: it is designed with a shallow or level profile so you can configure, slow to approach speed and stabilise before the real descent begins. The final approach segment, from the final approach fix or point, is the descent to the runway, down to a decision altitude on a precision approach like the ILS, or a minimum descent altitude on a non-precision one. And the missed approach segment, from the missed approach point, is the protected escape route if you do not become visual: a defined track and climb that guarantees obstacle clearance. Knowing which segment you are in tells you what the procedure expects of you at that moment.',
+    spokenVersion: [
+      'Arrival brings you from enroute towards the procedure',
+      'Initial, from the IAF: manoeuvring and slowing',
+      'Intermediate, from the IF: configure and stabilise, shallow profile',
+      'Final, from the FAF: the descent to DA or MDA',
+      'Missed approach, from the MAP: the protected escape climb',
+    ],
+    mcq: {
+      options: [
+        'Takeoff, cruise, descent and landing',
+        'Downwind, base and final only',
+        'Arrival, initial, intermediate, final and missed approach segments',
+        'The first, second, third and final climb segments',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Arrival, then initial (from the IAF, manoeuvring), intermediate (from the IF, configure and stabilise), final (from the FAF, descent to DA or MDA) and missed approach (from the MAP, the protected escape climb). Each segment has its own job and obstacle protection.',
+  },
+  {
+    id: 'oral-nav-03',
+    category: 'navigation',
+    frequency: 2,
+    question: 'IRS and INS: what are they, how do they work, and what is the difference?',
+    conceptExplanation:
+      'Both are self-contained navigation systems: give them a starting position and they track everything that happens to the aircraft afterwards, with no radio, no ground stations, no satellites. The principle is dead reckoning by physics. Accelerometers measure every acceleration of the aircraft; integrate acceleration once and you have velocity, integrate again and you have distance and direction travelled, and therefore present position. Gyros keep track of which way the accelerometers are pointing, and the whole thing needs a careful alignment on the ground, stationary at a known position, to find true north and level before flight. The difference is the generation of technology. The INS is the older system: a mechanically gimballed platform physically held stable in space by spinning gyros, with the accelerometers mounted on it. The IRS is the modern one: strapdown, meaning the sensors are bolted to the airframe, with ring laser gyros measuring rotation and a computer doing mathematically what the gimbals did mechanically. Both drift slowly with time, a few miles over a long flight being typical, roughly, which is why modern aircraft blend IRS with GPS updating: the IRS gives the smooth, continuous, jam-proof backbone, and GPS pins it to the earth.',
+    spokenVersion: [
+      'Self-contained dead reckoning: no radio, no satellites',
+      'Accelerometers integrated once for velocity, twice for position',
+      'Gyros track orientation; aligned before flight at a known position',
+      'INS: old, mechanical gimballed platform. IRS: strapdown, ring laser gyros, computed',
+      'Both drift with time, so modern aircraft blend IRS with GPS updates',
+    ],
+    mcq: {
+      options: [
+        'Radio systems that triangulate position from ground beacons',
+        'Self-contained systems integrating accelerometer and gyro data for position; INS uses a mechanical gimballed platform, IRS is strapdown with laser gyros',
+        'Satellite receivers that need at least four satellites to navigate',
+        'Autopilot modes for holding a selected heading',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Self-contained inertial navigation: accelerometers and gyros, aligned at a known position, integrate acceleration into velocity and position with no external signals. INS is the older gimballed platform; IRS is modern strapdown with ring laser gyros and computation. Both drift, so they are blended with GPS.',
+  },
+  {
+    id: 'oral-nav-04',
+    category: 'navigation',
+    frequency: 2,
+    question: 'RNAV and GPS: what are they and what are the charts used for?',
+    conceptExplanation:
+      'RNAV, area navigation, is a capability, not a piece of equipment: it means the aircraft can fly point to point along any desired track, between arbitrary waypoints, instead of being chained to tracks that run beacon to beacon. The FMS builds the route from a database and feeds it whatever position sources it has: GPS, IRS, DME ranging. GPS is one of those sources, and today the dominant one: a constellation of satellites broadcasting timed signals, from which the receiver measures its distance to each and solves for position, needing at least four satellites for a three-dimensional fix, with integrity monitoring, RAIM, checking that the answer can be trusted. The charts: RNAV SIDs, STARs and RNAV or RNP approach charts describe procedures defined entirely by waypoints, with the required navigation accuracy printed on them; RNP means RNAV plus the aircraft monitoring and alerting its own accuracy. The chart tells you the path, the required performance, and the minima that apply to the equipment you are using.',
+    spokenVersion: [
+      'RNAV: the capability to fly point to point between waypoints, off the beacon tracks',
+      'Position from whatever sensors are available: GPS, IRS, DME ranging',
+      'GPS: satellite ranging, four satellites minimum for a 3D fix, RAIM for integrity',
+      'RNP is RNAV with onboard accuracy monitoring and alerting',
+      'Charts: RNAV SIDs, STARs and approaches, waypoint-defined with required accuracy and minima',
+    ],
+    mcq: {
+      options: [
+        'Two names for the autopilot system',
+        'RNAV is a satellite constellation; GPS is the chart that displays it',
+        'RNAV is point to point navigation using available sensors; GPS is satellite ranging that feeds it; the charts define waypoint-based departures, arrivals and approaches',
+        'Radar systems used by ATC to vector aircraft',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'RNAV is the capability to navigate point to point between waypoints using available sensors; GPS is satellite ranging (four satellites for a 3D fix, RAIM for integrity) and is the main sensor today. RNAV and RNP charts define waypoint-based SIDs, STARs and approaches with the required accuracy and minima.',
+  },
   { id: 'oral-nav-05', category: 'navigation', frequency: 1, question: 'What is the point of equal time?' },
   { id: 'oral-nav-06', category: 'navigation', frequency: 1, question: 'What is DME and what is slant range?' },
   { id: 'oral-nav-07', category: 'navigation', frequency: 1, question: 'What are the VOR errors?' },
@@ -593,7 +1268,32 @@ const raw = [
     flashcardAnswer:
       'ETOPS (now EDTO) is the approval letting twin-engine aircraft fly more than 60 minutes from an adequate alternate, up to an approved diversion time such as 120 or 180 minutes at the one engine inoperative speed, with stricter alternate, fuel and maintenance requirements.',
   },
-  { id: 'oral-gen-02', category: 'general', frequency: 2, question: 'What is a NOTAM and what is it used for?' },
+  {
+    id: 'oral-gen-02',
+    category: 'general',
+    frequency: 2,
+    question: 'What is a NOTAM and what is it used for?',
+    conceptExplanation:
+      'A NOTAM, a notice to airmen, is the system aviation uses to tell you what has changed and could affect your flight, when the change is too recent or too temporary to be in the charts and the AIP. It carries time-critical information: a runway or taxiway closed, an ILS or VOR out of service, a change to a procedure, cranes near the approach, airspace restricted for an exercise, or a temporary danger area. Each one states what, where, and from when to when. In practice they are the backbone of the preflight briefing: dispatch pulls the NOTAMs for departure, destination, alternates and the route, and the crew reads them looking for anything that changes the plan, a longer taxi, a different approach, a raised minimum, an unusable alternate. The skill with NOTAMs is filtering: a busy airport can have pages of them, and the discipline is finding the two or three that actually matter for tonight\'s flight.',
+    spokenVersion: [
+      'Time-critical notice of changes affecting flight operations',
+      'Covers closures, navaid outages, procedure changes, obstacles, airspace restrictions',
+      'States what, where, and the valid times',
+      'Checked in the preflight briefing for departure, destination, alternates and route',
+      'The skill is filtering out the few that change your plan',
+    ],
+    mcq: {
+      options: [
+        'A weather forecast for the destination airport',
+        'A monthly magazine about new aircraft types',
+        'The flight plan filed with air traffic control',
+        'A time-critical notice of changes such as closures, navaid outages and airspace restrictions, checked before flight',
+      ],
+      correctIndex: 3,
+    },
+    flashcardAnswer:
+      'A NOTAM is a time-critical notice of temporary or recent changes affecting flight: runway closures, navaid outages, procedure changes, obstacles, airspace restrictions, each with a validity period. Crews check NOTAMs for departure, destination, alternates and route in the preflight briefing.',
+  },
   { id: 'oral-gen-03', category: 'general', frequency: 1, question: 'Tell me something about the engine.' },
   { id: 'oral-gen-04', category: 'general', frequency: 1, question: 'What is hypoxia, what does it cause, and what is the time of useful consciousness at 30,000 ft?' },
   { id: 'oral-gen-05', category: 'general', frequency: 1, question: 'What is a stopbar?' },
