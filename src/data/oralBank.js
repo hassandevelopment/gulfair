@@ -495,21 +495,399 @@ const raw = [
     flashcardAnswer:
       'Ailerons (roll, longitudinal axis), elevator (pitch, lateral axis) and rudder (yaw, vertical axis). They steer the flight path; flaps, slats, spoilers and trim are the secondary controls.',
   },
-  { id: 'oral-aero-18', category: 'aerodynamics', frequency: 1, question: 'What are the different types of drag, in depth?' },
-  { id: 'oral-aero-19', category: 'aerodynamics', frequency: 1, question: 'What is interference drag, how does it form, and how do you reduce it?' },
-  { id: 'oral-aero-20', category: 'aerodynamics', frequency: 1, question: 'What is the critical angle of attack?' },
-  { id: 'oral-aero-21', category: 'aerodynamics', frequency: 1, question: 'Can you stall at high speed?' },
-  { id: 'oral-aero-22', category: 'aerodynamics', frequency: 1, question: 'What is a secondary stall and how do you recover?' },
-  { id: 'oral-aero-23', category: 'aerodynamics', frequency: 1, question: 'What is downwash?' },
-  { id: 'oral-aero-24', category: 'aerodynamics', frequency: 1, question: 'What does a sweptback wing do? Advantages and disadvantages?' },
-  { id: 'oral-aero-25', category: 'aerodynamics', frequency: 1, question: 'What is Mcrit and why do shockwaves happen?' },
-  { id: 'oral-aero-26', category: 'aerodynamics', frequency: 1, question: 'What is Dutch roll and how do you prevent it?' },
-  { id: 'oral-aero-27', category: 'aerodynamics', frequency: 1, question: 'What is lateral stability?' },
-  { id: 'oral-aero-28', category: 'aerodynamics', frequency: 1, question: 'What is directional stability?' },
-  { id: 'oral-aero-29', category: 'aerodynamics', frequency: 1, question: 'Can an aircraft be statically unstable and dynamically stable?' },
-  { id: 'oral-aero-30', category: 'aerodynamics', frequency: 1, question: 'How does an aircraft fly?' },
-  { id: 'oral-aero-31', category: 'aerodynamics', frequency: 1, question: 'What are fences?' },
-  { id: 'oral-aero-32', category: 'aerodynamics', frequency: 1, question: 'What is wake turbulence?' },
+  {
+    id: 'oral-aero-18',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What are the different types of drag, in depth?',
+    conceptExplanation:
+      'Going one level deeper than the basic split. Parasite drag has three members. Form drag comes from the pressure field around the shape: the flow cannot close up neatly behind a blunt body, leaving lower pressure behind than in front; streamlining is the cure. Skin friction is the viscous rubbing of air in the boundary layer over every square metre of surface; it grows with wetted area and roughness, which is why surface condition matters. Interference drag is the extra loss where flows around different parts meet and disturb each other, beyond what each part costs alone. All of parasite drag rises with the square of speed. Induced drag is the lift byproduct: tip vortices, downwash, the lift vector tilted rearward; it falls as speed rises and grows with weight and with low aspect ratio. And at high Mach there is wave drag, the energy fed into shockwaves once airflow over the wing goes locally supersonic past Mcrit. Total drag is the sum, with its minimum at Vmd where parasite and induced cross.',
+    spokenVersion: [
+      'Parasite: form drag from the pressure field behind a shape',
+      'Skin friction in the boundary layer, grows with wetted area and roughness',
+      'Interference where flows meet at junctions',
+      'All parasite drag rises with speed squared; induced falls with speed',
+      'Induced: tip vortices and downwash tilting lift rearward',
+      'Wave drag past Mcrit, energy lost into shockwaves',
+    ],
+    mcq: {
+      options: [
+        'Parasite drag (form, skin friction, interference), induced drag from lift, and wave drag past Mcrit',
+        'Only form drag and friction drag, both falling with speed',
+        'Static drag on the ground and dynamic drag in the air',
+        'Engine drag, propeller drag and wheel drag',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Parasite drag: form (pressure field), skin friction (boundary layer) and interference (junction flows), all rising with speed squared. Induced drag: the lift byproduct, falling with speed. Wave drag: shockwave losses past Mcrit. Total drag bottoms out at Vmd.',
+  },
+  {
+    id: 'oral-aero-19',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is interference drag, how does it form, and how do you reduce it?',
+    conceptExplanation:
+      'Interference drag is the extra drag that appears where the airflows around two parts of the aircraft meet, over and above the drag each part would have on its own. At a junction like the wing root against the fuselage, or an engine pylon against the wing, the two boundary layers and pressure fields run into each other, the combined flow slows and thickens, and it separates more readily than either flow alone, especially in the tight corner angles. The result is turbulent, low-energy air and extra drag charged to nobody in particular, which is exactly why it gets its own name. The cure is to soften the meeting: fairings and fillets that round out the corners, blended junctions, and careful placement so that strong pressure fields do not overlap. That is what the smooth moulded fillet at an airliner\'s wing root is doing: it is not decoration, it is managing the meeting of two airflows.',
+    spokenVersion: [
+      'Extra drag where airflows around two parts meet',
+      'Junction flows slow, thicken and separate in the corners',
+      'More drag than the two parts would cost separately',
+      'Reduced with fairings, fillets and blended junctions',
+      'The wing root fillet is exactly this fix',
+    ],
+    mcq: {
+      options: [
+        'Drag from ice contaminating the wing, reduced by de-icing',
+        'Drag created where airflows from different parts of the aircraft meet at junctions, reduced by fairings and fillets',
+        'Drag from the propeller slipstream, reduced by feathering',
+        'Radio interference slowing the aircraft, reduced by shielding',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'The extra drag where airflows around different components meet, at junctions like wing root and pylons: the merged flows thicken and separate in the corners. Reduced with fairings, fillets and blended junctions.',
+  },
+  {
+    id: 'oral-aero-20',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is the critical angle of attack?',
+    conceptExplanation:
+      'The critical angle of attack is the angle at which the wing produces its maximum lift coefficient, and beyond which the airflow can no longer stay attached to the upper surface: it separates, lift falls away sharply, and the wing is stalled. Below it, increasing angle of attack buys more lift; past it, more angle only deepens the stall. The point worth pressing in an interview is that for a given wing and configuration it is essentially a fixed angle, typically somewhere around the mid teens of degrees for a conventional wing, as a rough figure. It does not care about weight, speed, or attitude; those change the speed at which you happen to reach the critical angle, not the angle itself. Slats raise it, which is how they delay the stall; ice and contamination lower it, which is why a contaminated wing can stall early and with little warning.',
+    spokenVersion: [
+      'The angle of attack giving maximum lift coefficient',
+      'Beyond it the airflow separates: the stall',
+      'Fixed for a given wing and configuration, roughly mid teens of degrees',
+      'Weight and speed change when you reach it, not the angle itself',
+      'Slats raise it; ice and contamination lower it',
+    ],
+    mcq: {
+      options: [
+        'The angle of bank at which the aircraft overbanks',
+        'The pitch attitude at which the tail strikes the runway',
+        'The angle of attack at maximum lift coefficient, beyond which the airflow separates and the wing stalls',
+        'The angle of climb that gives the best gradient',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'The angle of attack at which the wing reaches maximum lift coefficient; past it the flow separates and the wing stalls. Essentially fixed for a configuration (roughly mid teens of degrees), regardless of weight or speed. Slats raise it, contamination lowers it.',
+  },
+  {
+    id: 'oral-aero-21',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'Can you stall at high speed?',
+    conceptExplanation:
+      'Yes, and being crisp about why is the point of the question. The wing stalls at its critical angle of attack, full stop; speed only determines how much lift you get at any angle. In level 1g flight you happen to reach the critical angle at the published stall speed. But load the wing harder, in a steep turn, a hard pull-up, or an abrupt gust, and it must fly at a higher angle of attack for the same speed to make the extra lift; pull hard enough and you reach the critical angle at a speed far above the 1g stall speed. That is the accelerated stall, and the arithmetic is unforgiving: stall speed rises with the square root of load factor, so at 2g the stall speed is roughly 40 percent higher. Separately, at high altitude and high Mach the flow can separate behind a shockwave, felt as high speed buffet, which is a compressibility effect rather than a classic stall, but it is the other way the wing can quit at speed.',
+    spokenVersion: [
+      'Yes: the wing stalls at its critical angle of attack, at any speed',
+      'High load factor forces a higher angle at the same speed',
+      'The accelerated stall: steep turns, hard pulls, gusts',
+      'Stall speed rises with the square root of load factor, about 40 percent up at 2g',
+      'At high Mach, shock-induced separation is the other high speed limit',
+    ],
+    mcq: {
+      options: [
+        'No, a stall can only happen below the published stall speed',
+        'Yes, but only with the flaps extended',
+        'No, at high speed the wing always has enough lift',
+        'Yes: under high load factor the wing can reach its critical angle of attack at speeds well above the 1g stall speed',
+      ],
+      correctIndex: 3,
+    },
+    flashcardAnswer:
+      'Yes. The wing stalls at its critical angle of attack regardless of speed, and high load factor (steep turns, hard pulls) forces it there at speeds well above the 1g stall speed: the accelerated stall. Stall speed grows with the square root of load factor.',
+  },
+  {
+    id: 'oral-aero-22',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is a secondary stall and how do you recover?',
+    conceptExplanation:
+      'A secondary stall is a second stall triggered during the recovery from the first one, and it is nearly always self-inflicted. The aircraft has just stalled, the pilot has correctly lowered the nose, the wing is flying again, and then, anxious about the nose-low attitude and the altitude unwinding, the pilot pulls out of the descent too aggressively before the airspeed has rebuilt. That pull raises the load factor, the wing is asked for more lift than it has speed to give, the angle of attack runs straight back past critical, and the buffet returns. The recovery is the same as any stall, applied with more patience: reduce the angle of attack again, release the back pressure, let the airspeed genuinely build this time, and then ease out of the descent with a gentle, progressive pull. The lesson under it is that stall recovery costs altitude by design; trying to save the altitude is what causes the secondary stall.',
+    spokenVersion: [
+      'A second stall during recovery from the first',
+      'Cause: pulling out of the descent too hard, too early, before speed rebuilds',
+      'The pull raises load factor and angle of attack back past critical',
+      'Recover the same way: reduce angle of attack, be patient, let speed build',
+      'Then ease out gently; accept the altitude loss',
+    ],
+    mcq: {
+      options: [
+        'A stall of the tailplane instead of the wing',
+        'A stall caused by pulling too hard during recovery from a first stall, before airspeed has rebuilt; recover by reducing angle of attack again and easing out gently',
+        'A stall that only occurs on the second flight of the day',
+        'An engine compressor stall following an airframe stall',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'A second stall caused by pulling out of the recovery descent too hard before airspeed has rebuilt: the load factor drives the angle of attack back past critical. Recover by reducing the angle of attack again, letting speed build, then easing out gently. Accept the altitude loss.',
+  },
+  {
+    id: 'oral-aero-23',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is downwash?',
+    conceptExplanation:
+      'Downwash is the downward motion given to the air behind the wing as a consequence of it producing lift. It follows directly from the two pictures of lift: the wing deflects air downward, and the tip vortices wrap air down behind the span. Two consequences matter. First, induced drag: the downwash tilts the local relative airflow downward at the wing, and since lift stays perpendicular to that local flow, the lift vector leans back, and the rearward lean is induced drag; strong downwash, meaning slow flight and high lift coefficient, means strong induced drag. Second, the tailplane: it flies in the wing\'s downwash, so the air arrives at the tail descending, which changes the tail\'s effective angle of attack and therefore pitch trim and stability; changes of flap setting or speed change the downwash and produce the trim changes pilots feel. Behind the aircraft, the organised downwash between the vortices is also part of what makes wake turbulence sink.',
+    spokenVersion: [
+      'The downward flow given to the air behind a lifting wing',
+      'Comes from deflecting air down and from the tip vortices',
+      'Tilts the local airflow, leans lift back: induced drag',
+      'Tailplane flies in it, so it shifts trim and stability with flap and speed',
+      'Also part of why wake turbulence sinks',
+    ],
+    mcq: {
+      options: [
+        'The downward deflection of air behind a lifting wing, responsible for induced drag and affecting the tailplane',
+        'The downdraft inside a thunderstorm',
+        'Air escaping from the cabin pressurisation outflow valve',
+        'The propeller slipstream over the wing roots',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'The downward motion of air behind a lifting wing, from deflection and the tip vortices. It tilts the local airflow so lift leans rearward (induced drag) and it changes the airflow the tailplane sees, shifting trim as flap and speed change.',
+  },
+  {
+    id: 'oral-aero-24',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What does a sweptback wing do? Advantages and disadvantages?',
+    conceptExplanation:
+      'Sweeping the wing back is fundamentally a high speed trick. What matters for compressibility is the component of the airflow running straight across the wing, perpendicular to the leading edge; sweep the wing and that component is only part of the true airspeed, so the wing behaves as if it were flying slower than it is. The payoff is a higher critical Mach number: the aircraft can cruise faster before shockwaves and their drag arrive. Sweep also contributes to lateral stability, behaving a little like dihedral in a sideslip. The costs are real. A swept wing makes less lift at low speed, driving higher takeoff and landing speeds and demanding the full set of slats and flaps. The spanwise drift of the boundary layer encourages the tips to stall first, which is bad news because the tips are behind the centre of gravity: a tip stall pitches the nose up, deeper into the stall. And the combination of sweep and the resulting strong lateral stability makes the aircraft prone to Dutch roll, which is why swept jets carry yaw dampers.',
+    spokenVersion: [
+      'Only the airflow component across the wing counts for compressibility',
+      'So sweep raises Mcrit: cruise faster before shockwaves and wave drag',
+      'Bonus: adds lateral stability, like dihedral',
+      'Costs: poor low speed lift, so higher speeds and full high lift devices',
+      'Tip stall tendency with pitch-up, and Dutch roll, hence the yaw damper',
+    ],
+    mcq: {
+      options: [
+        'It increases low speed lift for shorter runways, at the cost of a slower cruise',
+        'It delays compressibility by reducing the effective airflow across the wing, allowing faster cruise, at the cost of low speed lift, tip stall tendency and Dutch roll',
+        'It reduces the weight of the wing with no aerodynamic effect',
+        'It improves the view from the flight deck during taxi',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Sweep means only part of the true airspeed flows straight across the wing, raising Mcrit so the aircraft cruises faster before shockwaves; it also adds lateral stability. Costs: weaker low speed lift (hence slats and flaps), a tip stall and pitch-up tendency, and Dutch roll, managed by the yaw damper.',
+  },
+  {
+    id: 'oral-aero-25',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is Mcrit and why do shockwaves happen?',
+    conceptExplanation:
+      'The wing works by accelerating air over its upper surface, which means the airflow there is always moving faster than the aircraft itself. So there comes a point, while the aircraft is still comfortably subsonic, where that accelerated local flow touches the speed of sound. The aircraft Mach number at which airflow somewhere on the airframe first reaches local Mach 1 is the critical Mach number, Mcrit. Fly faster than Mcrit and a pocket of supersonic flow grows over the wing. That pocket has to return to subsonic flow somewhere, and supersonic air cannot slow down gradually: the deceleration happens across an abrupt front, a shockwave, where pressure, density and temperature jump almost instantaneously. The shock costs energy, felt as wave drag, and the sharp pressure rise across it can peel the boundary layer off the wing, shock-induced separation, felt as high speed buffet and degraded control. Managing all this is why jets have swept wings, supercritical wing sections, and an MMO.',
+    spokenVersion: [
+      'Air over the wing moves faster than the aircraft',
+      'Mcrit: aircraft Mach where some local flow first reaches Mach 1',
+      'Beyond it a supersonic pocket forms over the wing',
+      'Supersonic flow cannot slow gently: it snaps back through a shockwave',
+      'Shock costs wave drag and can separate the flow: buffet',
+      'Answers: sweep, supercritical sections, MMO',
+    ],
+    mcq: {
+      options: [
+        'The Mach number at which the whole aircraft goes supersonic; shockwaves are engine noise',
+        'The aircraft Mach number at which airflow somewhere first reaches local Mach 1; beyond it supersonic flow can only slow through an abrupt shockwave',
+        'The minimum control speed at altitude; shockwaves come from the flight controls',
+        'The maximum operating altitude; shockwaves are a pressurisation effect',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Mcrit is the aircraft Mach number at which the accelerated airflow somewhere, usually over the wing, first reaches local Mach 1. Past it a supersonic pocket forms, and supersonic flow can only return to subsonic through an abrupt shockwave, causing wave drag and possible shock-induced separation and buffet.',
+  },
+  {
+    id: 'oral-aero-26',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is Dutch roll and how do you prevent it?',
+    conceptExplanation:
+      'Dutch roll is an oscillation that couples yaw and roll: the aircraft yaws one way, the advancing wing speeds up and lifts more, rolling the aircraft, then the motion swings back the other way, and it settles into a continuous wallowing, rolling and yawing out of phase. It shows up when lateral stability is strong relative to directional stability: the rolling response to a sideslip is powerful, but the fin is not quick enough to kill the yaw that starts it. Swept wings make it worse, because sweep adds exactly that strong rolling response, and it is most persistent at high altitude where the thin air weakens the fin and the damping. The practical prevention on jets is the yaw damper: it senses the yawing oscillation and applies small, fast rudder inputs to stop it before it grows, running whenever the aircraft is airborne. If it must be flown by hand, the technique is gentle aileron inputs against the roll and disciplined feet, since ham-fisted rudder feeds the oscillation rather than stopping it.',
+    spokenVersion: [
+      'Coupled yaw and roll oscillation, a continuous wallowing motion',
+      'Yaw advances one wing, it lifts more, the aircraft rolls, then swings back',
+      'Happens when lateral stability is strong against weak directional stability',
+      'Worse with swept wings and at high altitude',
+      'Prevented by the yaw damper making small automatic rudder inputs',
+    ],
+    mcq: {
+      options: [
+        'A rolling takeoff technique used in strong crosswinds',
+        'A steady spiral dive caused by too much fin area',
+        'A coupled yaw and roll oscillation, from strong lateral against weak directional stability, prevented by the yaw damper',
+        'A pitching oscillation caused by an aft centre of gravity',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Dutch roll is a coupled yaw and roll oscillation, a wallowing motion arising when lateral stability is strong relative to directional stability, aggravated by wing sweep and high altitude. The yaw damper prevents it with small automatic rudder inputs.',
+  },
+  {
+    id: 'oral-aero-27',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is lateral stability?',
+    conceptExplanation:
+      'Lateral stability is the aircraft\'s tendency to return to wings level after a disturbance in roll, without the pilot doing anything. The mechanism runs through sideslip: when a wing drops, the aircraft slips towards the low wing, and a laterally stable design converts that sideslip into a rolling moment that picks the wing back up. Several features do the converting. Dihedral, the upward angle of the wings, means the into-wind wing meets the sideslip at a higher effective angle of attack and lifts more. Wing sweep does the same job in its own way, the into-wind wing presenting more effective span to the flow. A high wing with the fuselage hanging below, and keel area above the centre of gravity, add more of the same. Designers actually have to be careful not to have too much: excessive lateral stability against modest directional stability is exactly the recipe for Dutch roll, which is why some high wing types even use anhedral.',
+    spokenVersion: [
+      'Tendency to roll back to wings level on its own',
+      'A dropped wing causes sideslip towards it',
+      'Design turns that sideslip into a restoring roll',
+      'From dihedral, sweep, high wing and keel effect',
+      'Too much of it, against weak directional stability, invites Dutch roll',
+    ],
+    mcq: {
+      options: [
+        'The tendency to hold a constant heading in turbulence',
+        'The tendency to return to wings level after a roll disturbance, from dihedral, sweep and high wing effects',
+        'The strength of the wing structure in a steep turn',
+        'The ability to taxi in a crosswind without weathercocking',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'The tendency to return to wings level after a roll disturbance: the resulting sideslip is converted into a restoring rolling moment by dihedral, wing sweep, a high wing and keel effect. Excess lateral stability contributes to Dutch roll.',
+  },
+  {
+    id: 'oral-aero-28',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is directional stability?',
+    conceptExplanation:
+      'Directional stability is the aircraft\'s tendency to yaw back into line with the relative airflow after a disturbance in yaw, the same way a weathercock swings to face the wind, which is why it is often called weathercock stability. The main agent is the fin: it sits well behind the centre of gravity, so when the aircraft is skidding sideways through the air the fin is flying at an angle to the flow, generates a sideways lift force, and that force acting on the long tail arm swings the nose back into the airflow. Fuselage side area behind the centre of gravity helps; side area ahead of it, like a long forward fuselage, actually fights it, which is part of why fins are sized the way they are. It is directional stability that keeps the aircraft honestly pointed along its flight path, and its balance against lateral stability sets the character of the Dutch roll tendency: a big powerful fin damps it, a marginal one lets it wallow.',
+    spokenVersion: [
+      'Tendency to yaw back into the relative airflow, weathercock stability',
+      'The fin, behind the centre of gravity, is the main agent',
+      'In a sideslip the fin generates side force on a long arm',
+      'That swings the nose back into line',
+      'Its balance against lateral stability governs Dutch roll',
+    ],
+    mcq: {
+      options: [
+        'The tendency to return to wings level after a gust',
+        'The tendency to maintain altitude without trimming',
+        'The ability to steer straight on the runway with nosewheel steering',
+        'The tendency to yaw back into the relative airflow after a disturbance, provided mainly by the fin behind the centre of gravity',
+      ],
+      correctIndex: 3,
+    },
+    flashcardAnswer:
+      'The weathercock tendency: after a yaw disturbance the aircraft swings back into the relative airflow, mainly because the fin, well behind the centre of gravity, generates a restoring side force in the sideslip.',
+  },
+  {
+    id: 'oral-aero-29',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'Can an aircraft be statically unstable and dynamically stable?',
+    conceptExplanation:
+      'First the definitions, because the whole question lives in them. Static stability is the initial tendency after a disturbance: displace the aircraft, and does the first response push it back towards where it was, or further away? Dynamic stability is what happens over time: do the resulting motions die away, persist, or grow? The classic answer expected here is no. Dynamic stability describes how the aircraft settles back to equilibrium, and there is nothing to settle back with if the initial tendency is divergent: a statically unstable aircraft moves away from equilibrium and keeps going, so it can never be dynamically stable. The combinations that do exist: statically and dynamically stable, the ideal; statically stable but dynamically unstable, where the aircraft swings back but each oscillation grows bigger; and statically stable with neutral dynamics, oscillating forever. Worth adding for a modern interview: relaxed stability fly by wire aircraft can be flown with marginal or negative natural static stability, but there the computers are supplying artificial stability; aerodynamically the rule stands.',
+    spokenVersion: [
+      'Static: the initial tendency after a disturbance',
+      'Dynamic: how the motion behaves over time',
+      'Classic answer: no, static stability is a prerequisite for dynamic stability',
+      'Statically unstable means diverging from the start, nothing to settle back',
+      'You can be statically stable yet dynamically unstable: growing oscillations',
+      'Fly by wire can fake stability, but that is artificial, not aerodynamic',
+    ],
+    mcq: {
+      options: [
+        'Yes, most airliners are built that way',
+        'No: dynamic stability requires static stability first, since a divergent initial tendency never returns towards equilibrium',
+        'Yes, but only with the autopilot disengaged',
+        'The two terms mean the same thing, so the question does not apply',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'The classic answer is no: static stability (an initial tendency back towards equilibrium) is a prerequisite for dynamic stability (motions dying out over time). The reverse combination exists: statically stable but dynamically unstable, with growing oscillations. Fly by wire can supply artificial stability, but that is the computers, not the aerodynamics.',
+  },
+  {
+    id: 'oral-aero-30',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'How does an aircraft fly?',
+    conceptExplanation:
+      'The one-breath version of everything else in this section. An aircraft flies because its wings generate an aerodynamic force, lift, big enough to balance its weight. The wing does that by moving fast through the air: its shape and angle of attack accelerate the flow over the upper surface, dropping the pressure there below the pressure underneath, and at the same time it deflects a great mass of air downward, whose reaction pushes the wing up: two views of the same force. The speed that makes this work comes from the engines, whose thrust balances the drag that resisting air creates. So in steady flight the four forces are in equilibrium: lift against weight, thrust against drag. Control comes from the three primary flight controls rotating the aircraft about its axes, and flying is managing the balance: more speed or angle of attack for more lift, thrust and pitch together setting climb and descent. Everything else in aerodynamics is detail hanging off this frame.',
+    spokenVersion: [
+      'Wings moving fast through air generate lift to balance weight',
+      'Lower pressure above the wing, air deflected downward: one force, two views',
+      'Engines supply thrust to balance drag and keep the speed',
+      'Steady flight: four forces in equilibrium',
+      'Controls rotate it about three axes; flying is managing the balance',
+    ],
+    mcq: {
+      options: [
+        'Its wings, moving through the air, generate lift balancing weight, while engine thrust balances drag',
+        'Hot exhaust gases make it lighter than air',
+        'The propeller or fan pushes it upward directly',
+        'The pressurised cabin provides buoyancy like a balloon',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'The wings, driven through the air by engine thrust, generate lift (lower pressure above, air deflected below) that balances weight, while thrust balances drag. In steady flight the four forces are in equilibrium, and the flight controls manage the balance.',
+  },
+  {
+    id: 'oral-aero-31',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What are fences?',
+    conceptExplanation:
+      'Wing fences are the thin walls you see standing chordwise on the upper surface of some swept wings, running in line with the flight direction. They exist because of a side effect of sweep: on a swept wing the boundary layer does not flow straight back, it drifts outward along the span, piling up tired, low-energy air towards the wingtips. That build-up makes the tips prone to stalling first, which on a swept wing is the bad case: the tips sit behind the centre of gravity, so losing their lift pitches the nose up, deeper into the stall, and it takes out the ailerons at the same time. A fence is a physical dam against that spanwise drift: it stops the boundary layer migration at its station, keeping the outer wing flow fresh, the tips flying and the ailerons working to higher angles of attack. They were common on early swept jets; newer designs get the same effect more elegantly with wing twist, slats and vortex devices, but the purpose is identical.',
+    spokenVersion: [
+      'Chordwise walls on the upper surface of swept wings',
+      'Sweep makes the boundary layer drift outward along the span',
+      'Tired air piles up at the tips: tip stall risk, pitch up, ailerons lost',
+      'The fence dams the spanwise drift at its station',
+      'Keeps the tips flying and the ailerons effective longer',
+    ],
+    mcq: {
+      options: [
+        'Barriers around the airport perimeter',
+        'Chordwise walls on a swept wing that block spanwise boundary layer drift, delaying tip stall',
+        'Movable panels that increase wing area for takeoff',
+        'Guards that keep ice off the leading edge',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Wing fences are chordwise walls on a swept wing\'s upper surface that dam the spanwise drift of the boundary layer towards the tips, delaying tip stall, its pitch-up, and the loss of aileron effectiveness.',
+  },
+  {
+    id: 'oral-aero-32',
+    category: 'aerodynamics',
+    frequency: 1,
+    question: 'What is wake turbulence?',
+    conceptExplanation:
+      'Wake turbulence is the disturbed air an aircraft leaves behind it, and its dangerous core is the pair of wingtip vortices: two horizontal tornadoes of rolled-up air trailing from the tips of any wing making lift. They are strongest behind an aircraft that is heavy, slow and clean, because that is when the wing is at its highest lift coefficient and the tip spillage is fiercest, exactly the takeoff and landing phases. The vortices sink slowly behind the generating aircraft, a few hundred feet per minute at first, then level off, and they drift with the wind, which is the operational trap: a light crosswind can hold a vortex over the runway or push it onto the parallel one. For a following aircraft, flying into a vortex can mean a violent induced roll, worst when the follower is small and the leader was heavy. The defences are the wake turbulence separation minima by category, and airmanship: rotate before the leader\'s rotation point, land beyond their touchdown, stay at or above their approach path, and be patient behind a heavy in light winds.',
+    spokenVersion: [
+      'The disturbed air behind an aircraft, mainly the two trailing wingtip vortices',
+      'Strongest behind heavy, slow and clean aircraft',
+      'Vortices sink below the flight path and drift with the wind',
+      'Hazard: violent induced roll for a following aircraft',
+      'Defences: separation minima, stay above the leader\'s path, land beyond their touchdown',
+    ],
+    mcq: {
+      options: [
+        'Engine exhaust heat haze behind a departing aircraft',
+        'Turbulence from the airport buildings near the runway',
+        'The trailing wingtip vortices behind a lifting aircraft, strongest heavy, slow and clean, hazardous to following traffic',
+        'The spray thrown up from a wet runway',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'The disturbed air behind an aircraft, dominated by its trailing wingtip vortices: strongest when heavy, slow and clean, sinking behind the aircraft and drifting with the wind. It can roll a following aircraft violently, hence wake separation minima and staying above the leader\'s path.',
+  },
 
   // ---------- performance ----------
   {
@@ -615,11 +993,136 @@ const raw = [
     flashcardAnswer:
       'Screen height is the height the aircraft must reach by the end of the takeoff distance available, even engine out: 35 ft on a dry runway for a jet, reduced to 15 ft on a wet one, where a lower V1 protects the stopping case.',
   },
-  { id: 'oral-perf-05', category: 'performance', frequency: 1, question: 'What is V1?' },
-  { id: 'oral-perf-06', category: 'performance', frequency: 1, question: 'Service ceiling and absolute ceiling: define both.' },
-  { id: 'oral-perf-07', category: 'performance', frequency: 1, question: 'A heavy aircraft is landing. What happens to the landing distance and why?' },
-  { id: 'oral-perf-08', category: 'performance', frequency: 1, question: 'Landing at a high elevation airport, what happens to the landing distance?' },
-  { id: 'oral-perf-09', category: 'performance', frequency: 1, question: 'Takeoff segments: why 1500 ft?' },
+  {
+    id: 'oral-perf-05',
+    category: 'performance',
+    frequency: 1,
+    question: 'What is V1?',
+    conceptExplanation:
+      'V1 is the takeoff decision speed, and the cleanest way to define it is from both sides. Looking at stopping: V1 is the maximum speed at which the first action to reject the takeoff, closing the thrust levers, braking, can be taken and the aircraft still stopped within the accelerate-stop distance available. Looking at going: it is also the minimum speed from which, if an engine fails, the takeoff can be continued and the screen height still reached within the distance remaining. Before V1 you can stop; at and after V1 you are committed to fly, because the runway left is no longer guaranteed for stopping. That is why the V1 call is made and why hands come off the thrust levers at V1. It is not a fixed number: it is calculated for every takeoff from weight, runway length and slope, wind, temperature, pressure altitude, flap setting and runway condition, and on a wet or contaminated runway it comes down to protect the stopping case.',
+    spokenVersion: [
+      'Takeoff decision speed',
+      'Last speed at which a rejected takeoff can begin and still stop in the distance available',
+      'Also the earliest speed to continue after engine failure and make the screen height',
+      'At V1 you are committed to fly; hands off the thrust levers',
+      'Calculated every takeoff from weight, runway, wind, temperature, condition; lower when wet',
+    ],
+    mcq: {
+      options: [
+        'The speed at which the nose is raised for liftoff',
+        'The decision speed: the last point a rejected takeoff can be started and still stop within the distance available; beyond it the takeoff is continued',
+        'The minimum climb speed with an engine failed',
+        'The maximum taxi speed onto the runway',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'V1 is the takeoff decision speed: the maximum speed at which the stop action can begin and still stop within the accelerate-stop distance, and the minimum from which an engine-out takeoff can be safely continued. At V1 you are committed to fly. It is computed for every takeoff.',
+  },
+  {
+    id: 'oral-perf-06',
+    category: 'performance',
+    frequency: 1,
+    question: 'Service ceiling and absolute ceiling: define both.',
+    conceptExplanation:
+      'Both describe how high the aircraft can usefully climb, and the difference is where you draw the line. Climb performance comes from excess thrust: thrust available beyond what is needed to balance drag. As altitude increases, the engines produce less thrust in the thinning air while the drag picture worsens, so the excess shrinks and the rate of climb falls away. The absolute ceiling is the theoretical end of the road: the altitude where excess thrust has gone to zero and the rate of climb is exactly nothing. You can approach it but only asymptotically, which makes it a textbook number rather than an operational one. The service ceiling is the practical version: the altitude at which the rate of climb has fallen to a small defined value, conventionally around 100 feet per minute for piston aircraft and around 500 feet per minute for jets, though the defining figure varies with certification and type, so treat those as the customary values. Airliners in practice are limited day to day by performance ceilings for buffet margin and engine-out requirements, which sit below these.',
+    spokenVersion: [
+      'Climb comes from excess thrust; it shrinks with altitude',
+      'Absolute ceiling: rate of climb exactly zero, theoretical, approached asymptotically',
+      'Service ceiling: rate of climb down to a small defined value',
+      'Customarily about 100 fpm piston, about 500 fpm jet, definitions vary',
+      'Daily limits are really buffet and engine-out ceilings, lower still',
+    ],
+    mcq: {
+      options: [
+        'Service ceiling is the cabin altitude limit; absolute ceiling is the oxygen mask altitude',
+        'Service ceiling is where climb rate falls to a small defined value; absolute ceiling is where climb rate reaches zero',
+        'Both are the same altitude measured on different days',
+        'Service ceiling is for passengers; absolute ceiling is for cargo flights',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Absolute ceiling: the altitude where excess thrust and rate of climb reach zero, a theoretical limit. Service ceiling: the altitude where the climb rate falls to a defined small value, customarily around 100 fpm for pistons and 500 fpm for jets, definitions varying by certification.',
+  },
+  {
+    id: 'oral-perf-07',
+    category: 'performance',
+    frequency: 1,
+    question: 'A heavy aircraft is landing. What happens to the landing distance and why?',
+    conceptExplanation:
+      'The landing distance increases, and it increases through two multiplying effects. First, speed: a heavier aircraft needs more lift for the same approach, and since the approach is flown at a speed tied to the stall speed of the configuration, VREF, and stall speed rises with weight, the heavy aircraft crosses the threshold genuinely faster through the air. Second, energy: the kinetic energy the brakes must destroy is half m V squared, so it grows with the extra mass and with the square of that extra speed, a double penalty. More energy means longer ground roll, hotter brakes, and more demand on reversers and spoilers. There is a partial offset people sometimes mention, that more weight presses the wheels down and improves braking friction, but it does not come close to cancelling the energy growth: the net effect is always a longer landing distance. This is exactly why landing performance is calculated for the actual landing weight, and why overweight landings come with inspection requirements.',
+    spokenVersion: [
+      'Landing distance increases',
+      'Heavier means a higher stall speed, so a higher VREF over the threshold',
+      'Kinetic energy is half m V squared: more mass and speed squared',
+      'Brakes must destroy far more energy: longer roll, hotter brakes',
+      'Weight on wheels helps friction slightly, but nowhere near enough',
+    ],
+    mcq: {
+      options: [
+        'It decreases, because the extra weight presses the wheels down for better braking',
+        'It stays the same, because VREF does not depend on weight',
+        'It increases: the higher VREF and the extra mass mean far more kinetic energy for the brakes to destroy',
+        'It only changes if the runway is wet',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'It increases. Higher weight raises stall speed and therefore VREF, and kinetic energy grows with mass and speed squared, so the brakes must destroy much more energy: a longer ground roll and hotter brakes. The better wheel friction from extra weight nowhere near offsets it.',
+  },
+  {
+    id: 'oral-perf-08',
+    category: 'performance',
+    frequency: 1,
+    question: 'Landing at a high elevation airport, what happens to the landing distance?',
+    conceptExplanation:
+      'It gets longer. The approach is still flown at the same indicated airspeed, VREF for the weight, because the wing cares about dynamic pressure and the ASI measures exactly that. But at a high elevation airport the air is thinner, and the same indicated speed in thin air is a higher true airspeed, the same effect as the climb: roughly 2 percent more TAS per 1000 ft as a rule of thumb. Add no wind, and a higher TAS is a higher ground speed at touchdown, and since kinetic energy grows with the square of speed, the brakes have noticeably more energy to destroy and the ground roll stretches. The thin air also gives the wheels and any reverse thrust slightly less aerodynamic drag to help, and if things go wrong, the go-around performance is worse because the engines are down on thrust too. Hot days multiply the same effect, which is why hot and high airports, and there are plenty in this region, are the classic performance-limited landings.',
+    spokenVersion: [
+      'Landing distance increases',
+      'Same IAS for VREF, but thin air makes that a higher TAS',
+      'Roughly 2 percent per 1000 ft, as a rule of thumb',
+      'Higher touchdown ground speed, energy up with speed squared',
+      'Engines also give less for a go-around; hot and high stacks the effect',
+    ],
+    mcq: {
+      options: [
+        'It increases: the same indicated approach speed is a higher true airspeed and ground speed in the thin air, so there is more energy to stop',
+        'It decreases, because the thinner air produces less lift and the aircraft settles faster',
+        'It is unchanged, because VREF is the same indicated airspeed',
+        'It only increases if the runway slopes uphill',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'It increases. VREF is the same indicated airspeed, but in the thin air that is a higher true airspeed and touchdown ground speed (roughly 2 percent per 1000 ft), and stopping energy grows with speed squared. Go-around thrust is also reduced. Hot and high compounds it.',
+  },
+  {
+    id: 'oral-perf-09',
+    category: 'performance',
+    frequency: 1,
+    question: 'Takeoff segments: why 1500 ft?',
+    conceptExplanation:
+      'The takeoff segments exist to guarantee that, even with an engine failed at the worst point, the aircraft can climb away from the runway clear of obstacles. That guarantee has to end somewhere sensible, and the rules set the end of the takeoff flight path at 1500 ft above the runway, or higher if obstacles demand it. Why there? Because by 1500 ft the emergency transition is complete: the gear is long gone, the flaps have been retracted in the third segment, the aircraft has accelerated to its final segment climb speed, and thrust has been brought back from the takeoff setting to maximum continuous, which is the thrust the failed-engine climb can sustain indefinitely. In other words, at 1500 ft the aircraft is in a clean, stable, sustainable engine-out climb, and the special takeoff obstacle rules can hand over to the enroute obstacle clearance rules that cover the rest of the flight. It also sits comfortably at circuit height, from which an immediate return to land can be flown.',
+    spokenVersion: [
+      'The takeoff flight path must end somewhere: the rules set 1500 ft, or higher for obstacles',
+      'By then the transition is complete: gear up, flaps in, final segment speed',
+      'Thrust back to maximum continuous, sustainable indefinitely engine out',
+      'So takeoff obstacle rules can hand over to enroute rules',
+      'Also circuit height, from which a return can be flown',
+    ],
+    mcq: {
+      options: [
+        'Because radio contact is only possible above 1500 ft',
+        'Because passengers may unfasten seatbelts at 1500 ft',
+        'Because 1500 ft is the height of the highest obstacle in the world',
+        'Because by 1500 ft the aircraft is cleaned up, at final climb speed and on maximum continuous thrust, so the takeoff path can hand over to enroute obstacle rules',
+      ],
+      correctIndex: 3,
+    },
+    flashcardAnswer:
+      'The takeoff flight path ends at 1500 ft (or higher if obstacles require) because by then the engine-out transition is complete: clean configuration, final segment speed, maximum continuous thrust, a climb sustainable indefinitely. The takeoff obstacle rules then hand over to enroute rules.',
+  },
 
   // ---------- instruments ----------
   {
@@ -779,12 +1282,162 @@ const raw = [
     flashcardAnswer:
       'A fully blocked pitot traps its pressure, so the ASI acts like an altimeter: over-reading in the climb (dangerous, invites a pull towards the stall) and under-reading in the descent. The VSI and altimeter run on static pressure and are unaffected. Fly pitch and thrust.',
   },
-  { id: 'oral-inst-07', category: 'instruments', frequency: 1, question: 'What are the pressure instruments and how do they work?' },
-  { id: 'oral-inst-08', category: 'instruments', frequency: 1, question: 'Explain the pitot system and which pressure it uses.' },
-  { id: 'oral-inst-09', category: 'instruments', frequency: 1, question: 'What is GPWS and what are its modes?' },
-  { id: 'oral-inst-10', category: 'instruments', frequency: 1, question: 'What is TCAS? What is a TA and what is an RA?' },
-  { id: 'oral-inst-11', category: 'instruments', frequency: 1, question: 'What is TAT and what is SAT?' },
-  { id: 'oral-inst-12', category: 'instruments', frequency: 1, question: 'What is QNH and what is QFE?' },
+  {
+    id: 'oral-inst-07',
+    category: 'instruments',
+    frequency: 1,
+    question: 'What are the pressure instruments and how do they work?',
+    conceptExplanation:
+      'Three instruments live off the pitot static system, and each uses the two pressures differently. The altimeter uses static pressure alone: a sealed capsule expands as the static pressure around it falls with altitude, and the mechanism converts that into an altitude reading against whatever datum is set in the subscale, QNH, QFE or standard. The vertical speed indicator also uses only static pressure, but it measures how fast it is changing: static pressure feeds a capsule directly but reaches the case around it through a calibrated leak, so during a climb or descent a pressure difference exists between capsule and case that is proportional to the rate of change, giving rate of climb or descent; it lags slightly by design. The airspeed indicator is the one that needs both sources: it compares pitot pressure, which is static plus dynamic, against static pressure, and the difference, the dynamic pressure, is displayed as indicated airspeed. That division of labour is also the failure logic: a static problem upsets all three, a pitot problem only the ASI.',
+    spokenVersion: [
+      'Altimeter: static only, capsule expands as pressure falls, read against the set datum',
+      'VSI: rate of static change, capsule against a calibrated leak, slight lag',
+      'ASI: pitot minus static, displaying dynamic pressure as IAS',
+      'Static fault upsets all three; pitot fault only the ASI',
+    ],
+    mcq: {
+      options: [
+        'The compass, the clock and the fuel gauge',
+        'The altimeter (static), the VSI (rate of static change) and the ASI (pitot minus static)',
+        'The attitude indicator, heading indicator and turn coordinator',
+        'The EGT, N1 and fuel flow gauges',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'The altimeter (static pressure against a set datum), the VSI (rate of change of static pressure via a calibrated leak) and the ASI (pitot minus static, showing dynamic pressure as IAS). A static failure affects all three; a pitot failure only the ASI.',
+  },
+  {
+    id: 'oral-inst-08',
+    category: 'instruments',
+    frequency: 1,
+    question: 'Explain the pitot system and which pressure it uses.',
+    conceptExplanation:
+      'The pitot tube is an open-ended probe facing straight into the airflow, mounted where the air arrives clean, on the forward fuselage or a boom. Because the moving air is brought to rest inside it, the tube senses total pressure, also called pitot or stagnation pressure: the static pressure of the air plus the dynamic pressure of its motion. That total on its own is not airspeed; the useful quantity is the dynamic part, so the airspeed indicator, and in a modern aircraft the air data computer, subtracts the static pressure measured at the static ports from the pitot total, and what remains, the dynamic pressure, is displayed as indicated airspeed. Details that matter operationally: the probes are electrically heated because a pitot icing over is the classic cause of unreliable airspeed, drain holes deal with water, and airliners carry multiple independent probes feeding captain, first officer and standby instruments precisely so one bad probe can be voted out and identified.',
+    spokenVersion: [
+      'Open tube facing the airflow; the air is brought to rest in it',
+      'So it senses total pressure: static plus dynamic',
+      'ASI or air data computer subtracts static from it',
+      'The remainder, dynamic pressure, is shown as IAS',
+      'Heated against icing, drained, and fitted in independent sets',
+    ],
+    mcq: {
+      options: [
+        'A forward facing probe sensing total pressure, static plus dynamic; subtracting static pressure leaves the dynamic pressure shown as airspeed',
+        'A downward facing port sensing static pressure only, used for altitude',
+        'A heated vane measuring the angle of attack',
+        'A venturi that generates suction for the gyro instruments',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'The pitot tube faces the airflow and senses total (stagnation) pressure: static plus dynamic. The ASI or air data computer subtracts static pressure from it, leaving dynamic pressure, displayed as IAS. Probes are heated, drained and duplicated.',
+  },
+  {
+    id: 'oral-inst-09',
+    category: 'instruments',
+    frequency: 1,
+    question: 'What is GPWS and what are its modes?',
+    conceptExplanation:
+      'GPWS, the ground proximity warning system, exists to prevent controlled flight into terrain: a serviceable aircraft flown unawares into the ground. The classic system works mainly from the radio altimeter and air data, watching how the ground is approaching, and it speaks in modes. Mode 1: excessive descent rate near the ground, "sink rate", escalating to "pull up". Mode 2: excessive closure rate with rising terrain, "terrain, terrain". Mode 3: altitude loss after takeoff or go-around, "don\'t sink". Mode 4: insufficient terrain clearance while not configured to land, "too low, gear" or "too low, flaps". Mode 5: dropping below the ILS glideslope, "glideslope". Mode 6 adds altitude callouts and bank angle warnings, and mode 7 is windshear alerting. The big limitation of classic GPWS is that a radio altimeter only looks straight down, so it is blind to a wall ahead; EGPWS fixed that by adding a terrain database and GPS position, looking ahead along the flight path and painting terrain on the display. The rule it exists for: a genuine "pull up" gets the full escape manoeuvre, immediately, no debate.',
+    spokenVersion: [
+      'Protection against controlled flight into terrain, built on the radio altimeter',
+      'Mode 1 sink rate, mode 2 terrain closure, mode 3 altitude loss after takeoff',
+      'Mode 4 too low not configured, mode 5 below glideslope',
+      'Mode 6 callouts and bank angle, mode 7 windshear',
+      'EGPWS adds a terrain database and looks ahead, not just down',
+      'A real pull up warning means the escape manoeuvre, immediately',
+    ],
+    mcq: {
+      options: [
+        'A system warning of traffic conflicts, with modes TA and RA',
+        'A terrain warning system with modes for sink rate, terrain closure, altitude loss after takeoff, unsafe clearance, glideslope, callouts and windshear',
+        'An autoland system with three approach modes',
+        'A weather radar with map, weather and turbulence modes',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'GPWS guards against controlled flight into terrain using the radio altimeter. Modes: 1 sink rate, 2 terrain closure, 3 altitude loss after takeoff, 4 unsafe clearance not configured, 5 below glideslope, 6 callouts and bank angle, 7 windshear. EGPWS adds a terrain database to look ahead. A pull up warning demands the immediate escape manoeuvre.',
+  },
+  {
+    id: 'oral-inst-10',
+    category: 'instruments',
+    frequency: 1,
+    question: 'What is TCAS? What is a TA and what is an RA?',
+    conceptExplanation:
+      'TCAS, the traffic collision avoidance system, is the aircraft\'s own last line of defence against mid-air collision, deliberately independent of ATC. It interrogates the transponders of aircraft around it, works out their range, bearing and relative altitude, and projects whether any of them will pass dangerously close. Its two levels of alert do different jobs. A TA, traffic advisory, is attention: "traffic, traffic", the intruder turns amber on the display, and your job is to look and prepare, not to manoeuvre. An RA, resolution advisory, is command: the system has decided a collision risk is real, typically some tens of seconds from the closest point, and it orders a vertical escape, "climb, climb" or "descend, descend", with the required rate shown. RAs between two TCAS aircraft are coordinated through the transponder link so they choose opposite senses. The rules that make it work: follow the RA immediately and exactly, even against an ATC instruction, tell ATC as soon as possible, and RAs are inhibited close to the ground where the escape logic no longer makes sense.',
+    spokenVersion: [
+      'Independent collision avoidance, via transponder interrogation',
+      'Builds range, bearing, relative altitude and closure of surrounding traffic',
+      'TA: traffic traffic, look and prepare, do not manoeuvre',
+      'RA: commanded vertical escape, climb or descend, coordinated between aircraft',
+      'Follow the RA even against ATC, then report; inhibited near the ground',
+    ],
+    mcq: {
+      options: [
+        'A ground radar service that separates traffic in busy airspace',
+        'A collision avoidance system interrogating transponders; a TA alerts you to traffic, an RA commands a coordinated vertical avoidance manoeuvre',
+        'A navigation system showing traffic on the moving map only',
+        'An ATC frequency dedicated to traffic information',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'TCAS interrogates nearby transponders and predicts collision threats independently of ATC. A TA ("traffic, traffic") means look and prepare; an RA commands a vertical escape ("climb" or "descend"), coordinated with the other aircraft, and must be followed immediately even against ATC instructions.',
+  },
+  {
+    id: 'oral-inst-11',
+    category: 'instruments',
+    frequency: 1,
+    question: 'What is TAT and what is SAT?',
+    conceptExplanation:
+      'SAT, static air temperature, is the actual temperature of the undisturbed air the aircraft is flying through, the true outside air temperature. TAT, total air temperature, is what a probe on a fast aircraft actually measures, and it is always warmer. The reason is compression: the probe brings the oncoming air to rest, and compressing air heats it, so the sensor feels the static temperature plus a ram rise. The faster you fly, the bigger the rise; it grows with the square of Mach number, and at typical jet cruise speeds it is on the order of 25 to 30 degrees, roughly. So the chain on a modern aircraft is: the TAT probe measures total temperature, the air data computer knows the Mach number, and it computes SAT by removing the ram rise. SAT is what matters for meteorology, ISA deviation and true airspeed calculations; TAT is what matters at the probe, and, operationally, TAT is the temperature used for engine anti-ice decisions in many types since it is what the surfaces exposed to the airflow feel.',
+    spokenVersion: [
+      'SAT: the true temperature of the undisturbed air',
+      'TAT: what the probe measures, SAT plus ram rise from compression',
+      'Ram rise grows with Mach squared; roughly 25 to 30 degrees at jet cruise',
+      'ADC removes the ram rise using Mach to compute SAT',
+      'SAT for met and TAS; TAT is what exposed surfaces feel',
+    ],
+    mcq: {
+      options: [
+        'TAT is the temperature at takeoff; SAT is the temperature on a Saturday',
+        'SAT is the cabin temperature; TAT is the cargo hold temperature',
+        'SAT is the true outside air temperature; TAT is SAT plus the ram rise from bringing the air to rest at the probe',
+        'TAT is always colder than SAT because of altitude',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'SAT is the actual temperature of the undisturbed air. TAT is what the probe measures: SAT plus the ram rise from compressing the oncoming air to rest, growing with Mach squared, roughly 25 to 30 degrees at jet cruise. The air data computer derives SAT from TAT and Mach.',
+  },
+  {
+    id: 'oral-inst-12',
+    category: 'instruments',
+    frequency: 1,
+    question: 'What is QNH and what is QFE?',
+    conceptExplanation:
+      'Both are altimeter subscale settings, and the difference is simply which surface the altimeter reads zero, or its reference, from. QNH is the aerodrome pressure reduced to mean sea level: set it and the altimeter reads altitude above sea level, so on the runway it shows the published airfield elevation. That is the setting for terminal operations, because charted altitudes, airfield elevations and obstacle heights are all above sea level. QFE is the actual pressure at the aerodrome reference point: set it and the altimeter reads height above that aerodrome, zero on the runway. Some training environments and air forces like it for circuits, but airline flying uses QNH. The third member of the family is the standard setting, 1013.25 hPa, set climbing through the transition altitude, above which everyone flies flight levels on the same datum so that separation does not depend on local pressure. The classic gotcha to mention: flying from high pressure towards low on a fixed setting, the altimeter over-reads, you are lower than it says: high to low, look out below.',
+    spokenVersion: [
+      'Both are altimeter datum settings',
+      'QNH: aerodrome pressure reduced to sea level; altimeter reads altitude, elevation on the runway',
+      'QFE: actual aerodrome pressure; altimeter reads height above the field, zero on the runway',
+      'Standard 1013 above transition altitude for flight levels',
+      'High to low, look out below',
+    ],
+    mcq: {
+      options: [
+        'QNH makes the altimeter read altitude above sea level; QFE makes it read height above the aerodrome, zero on the runway',
+        'QNH is the temperature setting; QFE is the wind setting',
+        'QNH reads zero on the runway; QFE reads the airfield elevation on the runway',
+        'They are radio frequencies for the tower and approach',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'QNH is aerodrome pressure reduced to sea level: the altimeter reads altitude, showing airfield elevation on the ground. QFE is the actual aerodrome pressure: the altimeter reads height above the field, zero on the runway. Above the transition altitude everyone sets standard, 1013.25, for flight levels.',
+  },
 
   // ---------- meteorology ----------
   {
@@ -1099,27 +1752,557 @@ const raw = [
     flashcardAnswer:
       'Windshear is a marked wind change over a short distance, from storms and microbursts, fronts, inversions, low level jets or terrain. On approach: delay or divert if warned, fly stabilised with any additive, and on encountering it fly the windshear escape manoeuvre and go around; never continue the landing.',
   },
-  { id: 'oral-met-13', category: 'meteorology', frequency: 1, question: 'What is the major reason for weather changes?' },
-  { id: 'oral-met-14', category: 'meteorology', frequency: 1, question: 'What is the air composed of?' },
-  { id: 'oral-met-15', category: 'meteorology', frequency: 1, question: 'What causes wind? Explain pressure gradient and Coriolis.' },
-  { id: 'oral-met-16', category: 'meteorology', frequency: 1, question: 'Why are isobars more parallel at altitude and less so near the ground?' },
-  { id: 'oral-met-17', category: 'meteorology', frequency: 1, question: 'What is stability, what makes air stable, and which clouds form in each case?' },
-  { id: 'oral-met-18', category: 'meteorology', frequency: 1, question: 'What is an air mass?' },
-  { id: 'oral-met-19', category: 'meteorology', frequency: 1, question: 'What are the types of icing?' },
-  { id: 'oral-met-20', category: 'meteorology', frequency: 1, question: 'What are the types of fronts and what weather does each bring?' },
-  { id: 'oral-met-21', category: 'meteorology', frequency: 1, question: 'What is a temperature inversion and what is an isotherm?' },
-  { id: 'oral-met-22', category: 'meteorology', frequency: 1, question: 'High pressure versus low pressure: which is good and which is bad?' },
-  { id: 'oral-met-23', category: 'meteorology', frequency: 1, question: 'What are the lifting mechanisms?' },
-  { id: 'oral-met-24', category: 'meteorology', frequency: 1, question: 'What is a Foehn wind?' },
-  { id: 'oral-met-25', category: 'meteorology', frequency: 1, question: 'What are oktas, and what is the difference between cloud base and cloud top?' },
-  { id: 'oral-met-26', category: 'meteorology', frequency: 1, question: 'Do stratus clouds produce precipitation?' },
-  { id: 'oral-met-27', category: 'meteorology', frequency: 1, question: 'What is a gust and how does it appear in a METAR?' },
-  { id: 'oral-met-28', category: 'meteorology', frequency: 1, question: 'What is a cyclone?' },
-  { id: 'oral-met-29', category: 'meteorology', frequency: 1, question: 'What is latent heat?' },
-  { id: 'oral-met-30', category: 'meteorology', frequency: 1, question: 'What is the hazard of a volcanic eruption to aviation?' },
-  { id: 'oral-met-31', category: 'meteorology', frequency: 1, question: 'When do you need an alternate, and when would you use a METAR versus a TAF for that decision?' },
-  { id: 'oral-met-32', category: 'meteorology', frequency: 1, question: 'CAVOK: what does it mean?' },
-  { id: 'oral-met-33', category: 'meteorology', frequency: 1, question: 'What is CB and what makes it hazardous?' },
+  {
+    id: 'oral-met-13',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is the major reason for weather changes?',
+    conceptExplanation:
+      'Strip everything else away and the engine of all weather is the sun heating the earth unevenly. The equator receives far more solar energy than the poles, land heats and cools faster than sea, and deserts behave differently from forests. That uneven heating creates temperature differences, temperature differences create pressure differences, and pressure differences set air moving: wind, and the great circulations that carry warm air poleward and cold air back. Layer onto that the earth\'s rotation, which twists the moving air through the Coriolis effect, and water, which evaporates, condenses and carries huge amounts of latent heat around the system, and you have everything: air masses forming over different regions, fronts where they collide, lows and highs, jetstreams along the strongest temperature contrasts. So when the question comes, the clean answer is: unequal heating of the earth\'s surface by the sun; everything else in meteorology is the atmosphere\'s machinery for redistributing that heat.',
+    spokenVersion: [
+      'Unequal solar heating of the earth\'s surface',
+      'Equator gets more energy than the poles; land and sea heat differently',
+      'Temperature differences make pressure differences, which make wind',
+      'Rotation adds Coriolis; moisture carries latent heat around',
+      'Air masses, fronts, jets: all machinery for redistributing that heat',
+    ],
+    mcq: {
+      options: [
+        'The phases of the moon changing the tides',
+        'The unequal heating of the earth\'s surface by the sun, driving pressure differences and air movement',
+        'Volcanic activity warming the atmosphere from below',
+        'Aircraft traffic mixing the upper atmosphere',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Unequal heating of the earth\'s surface by the sun. It creates temperature and hence pressure differences that set air moving; with the earth\'s rotation and water\'s latent heat, that produces winds, air masses, fronts and all weather.',
+  },
+  {
+    id: 'oral-met-14',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is the air composed of?',
+    conceptExplanation:
+      'Dry air is a remarkably constant mixture: about 78 percent nitrogen, about 21 percent oxygen, a little under 1 percent argon, and then traces, carbon dioxide among them, all by volume. Those proportions hold essentially unchanged through the altitudes we fly at; what changes as you climb is not the recipe but the density, and with it the partial pressure of each ingredient. That is the aeromedical point hiding in this question: hypoxia at altitude is not the oxygen fraction falling, it is still 21 percent up there, it is the total pressure falling so far that 21 percent of it no longer pushes enough oxygen into the blood. The other component worth naming is the variable one: water vapour, anywhere from almost nothing over a desert to a few percent in tropical air. It is the joker in the pack, because it is what condenses into cloud, fuels storms with latent heat, and drives most of what we call weather.',
+    spokenVersion: [
+      'About 78 percent nitrogen, 21 percent oxygen, about 1 percent argon, plus traces',
+      'Proportions stay the same with altitude; density and partial pressure fall',
+      'Hypoxia is falling pressure, not a falling oxygen fraction',
+      'Water vapour is the variable extra, up to a few percent',
+      'The water is what makes the weather',
+    ],
+    mcq: {
+      options: [
+        'Mostly oxygen, with some nitrogen and helium',
+        'Equal parts oxygen and nitrogen',
+        'About 78 percent nitrogen, 21 percent oxygen, about 1 percent argon plus traces, with variable water vapour',
+        'Mostly carbon dioxide with a little oxygen',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'About 78 percent nitrogen, 21 percent oxygen, roughly 1 percent argon and trace gases, plus variable water vapour. The mix stays constant with altitude; what falls is pressure, which is why hypoxia happens even though the oxygen fraction is unchanged.',
+  },
+  {
+    id: 'oral-met-15',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What causes wind? Explain pressure gradient and Coriolis.',
+    conceptExplanation:
+      'Wind is air set moving by pressure differences. Wherever pressure is uneven, a force acts on the air from the high pressure side towards the low: the pressure gradient force, and the tighter the isobars are packed, the stronger it is and the stronger the wind. If the earth did not rotate, air would simply flow straight from high to low and fill it in. But the earth does rotate, and any air on a long journey across it is deflected: to the right in the northern hemisphere, to the left in the southern. That apparent force is the Coriolis effect, zero at the equator and strongest at the poles. Aloft, the two forces come into balance: the pressure gradient pushing towards the low, Coriolis pulling the moving air aside, and the result is the geostrophic wind, blowing not from high to low but along the isobars, low pressure on the left in the northern hemisphere, which is Buys Ballot\'s law seen from the cockpit. Near the surface, friction disturbs this balance, slowing the wind and letting it cut across the isobars towards the low.',
+    spokenVersion: [
+      'Pressure differences push air: the pressure gradient force, high towards low',
+      'Tighter isobars, stronger force, stronger wind',
+      'Coriolis, from the earth\'s rotation, deflects moving air: right in the north',
+      'Aloft the two balance: geostrophic wind along the isobars',
+      'Low on the left in the northern hemisphere; friction near the surface angles it into the low',
+    ],
+    mcq: {
+      options: [
+        'Pressure differences accelerate air from high to low, and the Coriolis effect from the earth\'s rotation deflects it until the wind flows along the isobars',
+        'The earth\'s rotation drags the atmosphere around with it, creating all wind',
+        'Temperature alone moves the air, with pressure playing no part',
+        'The tides of the ocean pull the air along with them',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Pressure differences create the pressure gradient force pushing air from high to low; the Coriolis effect of the rotating earth deflects the moving air (right in the northern hemisphere) until, aloft, the balance leaves the geostrophic wind blowing along the isobars, low pressure on the left in the north.',
+  },
+  {
+    id: 'oral-met-16',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'Why are isobars more parallel at altitude and less so near the ground?',
+    conceptExplanation:
+      'Really this is a question about what disturbs the clean balance of forces. Aloft, away from the surface, only two forces matter: the pressure gradient force and Coriolis. They settle into the geostrophic balance, the wind runs smoothly along the isobars, and the pressure pattern itself is smooth, broad highs and lows and long waves, so the isobars, and the flow following them, look clean and parallel. Near the ground that tidiness is broken up. Friction with the surface slows the wind, which weakens the Coriolis deflection and lets the wind cut across the isobars towards low pressure, at an angle of very roughly 10 to 30 degrees, more over rough land than over sea. And the surface itself stamps small-scale structure into the pressure field: uneven heating brewing local circulations like sea breezes, terrain steering and blocking the flow, and the general turbulence of the boundary layer. So the lower picture is inherently messier: the balance is disturbed by friction, and the pattern is disturbed by the surface.',
+    spokenVersion: [
+      'Aloft: only pressure gradient and Coriolis, in clean geostrophic balance',
+      'Wind and isobars run smooth and parallel',
+      'Near the ground, friction slows the wind and weakens Coriolis',
+      'So the wind cuts across the isobars towards the low, roughly 10 to 30 degrees',
+      'Surface heating and terrain add messy local structure to the pattern',
+    ],
+    mcq: {
+      options: [
+        'Because pressure does not exist near the ground',
+        'Because aircraft flying at altitude smooth the isobars out',
+        'Because aloft the flow is in clean geostrophic balance, while surface friction, heating and terrain disturb both the wind and the pressure pattern near the ground',
+        'Because the isobars are drawn by different forecasters at each level',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Aloft the wind is in clean geostrophic balance, pressure gradient against Coriolis, so flow and isobars are smooth and parallel. Near the surface, friction slows the wind and angles it across the isobars towards the low, and surface heating and terrain stamp messy local structure into the pattern.',
+  },
+  {
+    id: 'oral-met-17',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is stability, what makes air stable, and which clouds form in each case?',
+    conceptExplanation:
+      'Stability describes what the atmosphere does to a parcel of air that gets nudged upward. Lift the parcel and it cools adiabatically, at the DALR while dry, the SALR once saturated. The question is how its temperature then compares with the surrounding air, which cools with height at the environmental lapse rate. If the lifted parcel ends up colder than its surroundings, it is denser, and it sinks back: stable air. That happens when the ELR is small, less than the SALR; inversions, where temperature actually rises with height, are the extreme case. If the parcel stays warmer than its surroundings, it is buoyant and keeps accelerating upward: unstable air, which needs a steep ELR, greater than the DALR. In between, conditionally unstable air is stable while dry but unstable once condensation begins releasing latent heat. The clouds follow directly: stable air gives layered, stratiform cloud, steady precipitation, smooth but grey flying, and traps haze and fog beneath inversions; unstable air gives heaped, cumuliform cloud, showers, thermals and turbulence, cumulus through to CB when moisture and depth allow.',
+    spokenVersion: [
+      'Stability: what happens to a lifted parcel of air',
+      'Parcel cools at DALR dry, SALR saturated; compare with the ELR',
+      'Ends up colder than surroundings: sinks back, stable; inversions extreme',
+      'Stays warmer: keeps rising, unstable; conditional in between',
+      'Stable gives stratiform and steady rain; unstable gives cumuliform, showers, CB',
+    ],
+    mcq: {
+      options: [
+        'Stability is the strength of the wind; strong winds make stratus',
+        'Stability is whether a lifted parcel sinks back or keeps rising; stable air forms stratiform cloud, unstable air forms cumuliform cloud',
+        'Stability is the aircraft\'s handling quality in turbulence; clouds are unrelated',
+        'Stability is constant pressure with height; all clouds need unstable air',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Stability is whether a lifted parcel of air sinks back (stable: parcel colder than surroundings, small ELR or an inversion) or keeps rising (unstable: parcel stays warmer, ELR steeper than the DALR). Stable air builds stratiform cloud and steady precipitation; unstable air builds cumuliform cloud, showers and CB.',
+  },
+  {
+    id: 'oral-met-18',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is an air mass?',
+    conceptExplanation:
+      'An air mass is a huge body of air, spanning hundreds or thousands of kilometres, whose temperature and humidity are fairly uniform horizontally at any level. It gets that way by sitting: air that stagnates over a large, consistent region, a source region, gradually takes on that region\'s character. Air parked over the arctic becomes cold and dry; over a tropical ocean, warm and moist. The classification simply names the source: polar or tropical for temperature (with arctic as the extreme), maritime or continental for moisture, giving the working set: polar maritime, polar continental, tropical maritime, tropical continental. The reason pilots care is that an air mass carries its weather with it as it moves, modified by whatever it crosses: tropical maritime air arriving over cooler ground brings low cloud, drizzle and fog risk; polar maritime air warmed from below turns unstable and showery; tropical continental air brings heat, haze and dust. And where two different air masses meet, they do not blend politely: the boundary is a front, with its own chapter of weather.',
+    spokenVersion: [
+      'A vast body of air with fairly uniform temperature and humidity horizontally',
+      'Formed by stagnating over a source region and taking its character',
+      'Named by source: polar or tropical, maritime or continental',
+      'Carries its weather as it moves, modified along the way',
+      'Boundaries between air masses are fronts',
+    ],
+    mcq: {
+      options: [
+        'The total weight of the atmosphere above an airport',
+        'A large body of air with fairly uniform temperature and humidity, shaped by its source region, carrying its weather as it moves',
+        'A single large cloud covering a whole country',
+        'The block of air displaced by an aircraft in flight',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'A vast body of air with fairly uniform horizontal temperature and humidity, acquired by stagnating over a source region: polar or tropical, maritime or continental. It carries its characteristic weather as it moves, and the boundary where two air masses meet is a front.',
+  },
+  {
+    id: 'oral-met-19',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What are the types of icing?',
+    conceptExplanation:
+      'Airframe icing comes from supercooled water: liquid droplets colder than zero that freeze onto whatever hits them. Clear ice, or glaze, is the nasty one: large supercooled drops, typically in cumuliform cloud or freezing rain, spread back over the surface before freezing into a heavy, transparent, hard-to-see sheet that distorts the wing profile and can extend beyond the protected areas; freezing rain ahead of a warm front is its worst case. Rime ice comes from small droplets that freeze instantly on impact, trapping air: white, brittle, opaque, building forward into the airflow on leading edges; lighter than clear ice but still a lift-killer. Mixed ice is both together, common where drop sizes vary. Beyond those three, hoar frost forms by sublimation on a cold-soaked airframe in moist clear air, on the ground or descending into warm moist air, and engine icing, including piston carburettor icing which can occur well above freezing, has its own rules. Icing is generally a threat from around zero down to about minus 20, roughly, with the big supercooled drops, and the worst accretion, nearer the warm end of that band.',
+    spokenVersion: [
+      'From supercooled liquid droplets freezing on impact',
+      'Clear ice: large drops spread then freeze; heavy, transparent, worst in freezing rain',
+      'Rime: small drops freeze instantly; white, brittle, on leading edges',
+      'Mixed: both together',
+      'Plus hoar frost by sublimation, and engine or carb icing',
+      'Roughly zero to minus 20 band, worst near the warm end',
+    ],
+    mcq: {
+      options: [
+        'Clear ice, rime ice and mixed ice from supercooled droplets, plus hoar frost and engine icing',
+        'Dry ice, wet ice and packed ice',
+        'Only carburettor icing affects aircraft',
+        'Snow, hail and sleet on the runway',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'Clear (glaze) ice from large supercooled drops spreading before freezing, worst in freezing rain; rime ice from small drops freezing instantly, white and brittle on leading edges; mixed ice combining both; plus hoar frost by sublimation and engine or carburettor icing. Main band roughly 0 to minus 20.',
+  },
+  {
+    id: 'oral-met-20',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What are the types of fronts and what weather does each bring?',
+    conceptExplanation:
+      'A front is the boundary where two different air masses meet, and its type is named for which one is winning. A warm front is warm air advancing over retreating cold air, sliding up a very shallow slope, so its weather announces itself far in advance: cirrus first, the cloud thickening and lowering through cirrostratus and altostratus to nimbostratus, with prolonged steady rain, poor visibility, a low cloud base, and frontal fog possible ahead of it; icing in the layered cloud, and freezing rain possible where rain falls into cold air below. A cold front is cold air driving under warm air, a steep and faster boundary: the lifting is abrupt, giving a narrower band of heavier weather, convective cloud up to CB, showers, squalls and thunderstorms, then a sharp wind veer, a temperature drop and rapidly clearing, brighter, showery air behind. An occluded front is a cold front that has caught the warm front up, lifting the warm air off the ground: a mix of both characters. A stationary front barely moves, with the boundary and its dreary weather lingering. Crossing any front, expect a wind shift and a pressure trough.',
+    spokenVersion: [
+      'A front is the boundary between two air masses',
+      'Warm front: shallow slope, cloud lowering for hours, long steady rain, poor vis',
+      'Cold front: steep and fast, CB and showers, squalls, then clearing behind',
+      'Occlusion: cold front catches the warm one, mixed character',
+      'Stationary: barely moves, weather lingers',
+      'Any front: wind shift and a pressure trough',
+    ],
+    mcq: {
+      options: [
+        'Sea fronts, land fronts and mountain fronts, named for the surface below',
+        'Warm (layered cloud, long steady rain), cold (convective cloud, showers then clearing), occluded (mixed) and stationary (lingering) fronts',
+        'High fronts and low fronts, named for their altitude',
+        'Only cold fronts exist; warm air cannot form a boundary',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Fronts are air mass boundaries. Warm front: shallow, slow, layered cloud thickening to nimbostratus, prolonged steady rain, poor visibility. Cold front: steep, fast, convective cloud and showers or thunderstorms, then clearing. Occluded: the two combined. Stationary: persistent lingering weather. All bring a wind shift.',
+  },
+  {
+    id: 'oral-met-21',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is a temperature inversion and what is an isotherm?',
+    conceptExplanation:
+      'Normally temperature falls as you climb through the troposphere. A temperature inversion is a layer where that reverses: temperature increases with height through the layer. Inversions form several ways: radiation inversions on clear calm nights as the ground chills the air touching it; subsidence inversions under highs, where descending air warms and caps the layer below; and frontal inversions where warm air lies over cold. Whatever the cause, an inversion is an extremely stable lid: it traps haze, smoke, moisture and pollution beneath it, giving that murky brown layer with sparkling clear air above, and it can hold fog down through a morning. For handling, the air is smooth, but the top of an inversion is a shear surface: wind can jump in speed and direction crossing it, and a nocturnal low-level jet can sit just above one, so expect possible shear climbing or descending through. An isotherm is simpler: a line on a chart joining points of equal temperature, exactly as isobars join equal pressure; and an isothermal layer is one where temperature holds constant with height, itself very stable.',
+    spokenVersion: [
+      'Inversion: a layer where temperature rises with height instead of falling',
+      'From night radiation, subsidence under highs, or warm air over cold',
+      'Very stable lid: traps haze, smog, fog beneath it',
+      'Shear possible at its top, including nocturnal low level jets',
+      'Isotherm: a chart line of equal temperature; isothermal layer: constant with height',
+    ],
+    mcq: {
+      options: [
+        'An inversion is a layer where temperature increases with height, acting as a stable lid; an isotherm is a line of equal temperature on a chart',
+        'An inversion is upside-down cloud; an isotherm is a thermometer error',
+        'An inversion is a wind reversal at the surface; an isotherm is a line of equal wind speed',
+        'An inversion is falling pressure; an isotherm is a line of equal humidity',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'A temperature inversion is a layer where temperature rises with height, a very stable lid that traps haze and fog and can hide windshear or a low-level jet at its top. An isotherm is a line joining points of equal temperature on a chart; an isothermal layer holds constant temperature with height.',
+  },
+  {
+    id: 'oral-met-22',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'High pressure versus low pressure: which is good and which is bad?',
+    conceptExplanation:
+      'The broad answer: high pressure is the good one for flying, low pressure the troublemaker, with one seasonal caveat worth naming. In a high, an anticyclone, air is slowly subsiding, warming as it descends, which suppresses cloud growth and often builds a subsidence inversion: the result is settled weather, light winds, little vertical development. In a low, a depression, air converges and rises, and rising air is the raw material of weather: cloud, precipitation, fronts swinging around the centre, stronger winds around the tighter pressure gradient, and in unstable air, showers and thunderstorms. The caveat on highs: that same subsidence inversion that keeps the sky clear also traps moisture and dirt in the lowest layer, so winter anticyclones deliver the classic persistent fog or a grim grey lid of stratus that can sit for days, and in this part of the world a stagnant high traps dust and haze. So: highs mean settled conditions but watch visibility under the inversion; lows mean active weather, wind and cloud, and that is where most of the operational challenges live.',
+    spokenVersion: [
+      'High: descending air, warming, cloud suppressed, settled, light winds',
+      'Generally the good one for flying',
+      'But its inversion traps fog, stratus, dust and haze, especially in winter',
+      'Low: converging, rising air: cloud, rain, fronts, stronger wind',
+      'Generally the bad one: active weather lives in lows',
+    ],
+    mcq: {
+      options: [
+        'Lows give settled clear weather; highs bring storms',
+        'Highs generally give settled weather from subsiding air, though fog and haze can be trapped under the inversion; lows give rising air, cloud, precipitation and wind',
+        'Both give identical weather; pressure only matters to the altimeter',
+        'Highs always mean strong winds; lows always mean calm',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'High pressure: subsiding, warming air suppresses cloud, settled weather and light winds, but the inversion can trap fog, stratus and haze, especially in winter. Low pressure: converging, rising air builds cloud, precipitation, fronts and wind. Broadly, highs good, lows bad.',
+  },
+  {
+    id: 'oral-met-23',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What are the lifting mechanisms?',
+    conceptExplanation:
+      'Cloud needs moist air lifted and cooled, so the lifting mechanisms are simply the list of things that can force air upward, and it is worth being able to reel them off. Convection: the sun heats the surface, the surface heats the air touching it, and buoyant thermals rise, the daytime engine of cumulus and, with enough instability and moisture, thunderstorms. Orographic lifting: wind meets rising terrain and has no choice but to climb it, giving hill fog, lee waves and, on the windward side, enhanced cloud and rain. Frontal lifting: at a warm front the warm air slides up over the cold wedge, at a cold front it is shoved upward, either way large-scale lifting along the boundary. Convergence: where airflows meet, over a low centre, along a sea breeze front, in the intertropical convergence zone, the accumulating air can only go up. Some lists add turbulent or mechanical mixing, the stirring of the lowest layer over rough ground, which can lift moist air to condensation and form stratus. Whether the lifted air keeps going is then the stability question.',
+    spokenVersion: [
+      'Convection: surface heating, buoyant thermals',
+      'Orographic: wind forced up rising terrain',
+      'Frontal: air lifted along an air mass boundary',
+      'Convergence: airflows meeting, with nowhere to go but up',
+      'Plus turbulent mixing of the lowest layer',
+      'Stability then decides whether the lifted air keeps rising',
+    ],
+    mcq: {
+      options: [
+        'Convection, orographic lifting, frontal lifting and convergence',
+        'Gravity, magnetism and friction',
+        'Evaporation, condensation and precipitation',
+        'Jetstreams, trade winds and sea breezes only',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'The ways air gets forced upward: convection from surface heating, orographic lifting over terrain, frontal lifting along air mass boundaries, and convergence where airflows meet, plus turbulent mixing of the lowest layer. Stability decides what the lifted air does next.',
+  },
+  {
+    id: 'oral-met-24',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is a Foehn wind?',
+    conceptExplanation:
+      'A Foehn wind is the warm, dry wind that pours down the lee side of a mountain range, and it is a beautiful application of the two lapse rates. Moist air is forced up the windward slope, cooling at the dry rate until it saturates, then at the slower saturated rate, around 1.8 degrees per 1000 ft, because condensation is releasing latent heat; the moisture falls out as cloud and rain on the windward side. Coming down the far slope, the now-dried air warms at the full dry rate, 3 degrees per 1000 ft, the whole way down. Slow cooling up, fast warming down: the air arrives in the lee valley markedly warmer and much drier than it started at the same level on the other side. The lee side gets sudden temperature rises, very low humidity, cloudless skies, rapid snowmelt and fire risk; for flying, expect turbulence and mountain wave activity to leeward, while the windward side sits under cloud and rain. The Chinook of the Rockies is the same wind by another name.',
+    spokenVersion: [
+      'Warm dry wind descending the lee side of mountains',
+      'Air climbs the windward side: DALR, then SALR once saturated, rain falls out',
+      'Descends the lee side warming at the full DALR',
+      'Slow cooling up, fast warming down: arrives warmer and drier',
+      'Lee side: warmth, clear skies, turbulence and mountain waves',
+    ],
+    mcq: {
+      options: [
+        'A cold damp wind blowing up the windward slope',
+        'A sea breeze that reverses at night',
+        'A warm dry wind descending the lee of mountains, after moisture is lost windward and the air warms at the dry rate coming down',
+        'The outflow from a dissipating thunderstorm',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'A warm, dry wind descending the lee of a mountain range: air cools at the slower saturated rate going up (raining out its moisture), then warms at the full dry rate coming down, arriving warmer and drier. Expect lee-side warmth, clear skies, turbulence and mountain waves.',
+  },
+  {
+    id: 'oral-met-25',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What are oktas, and what is the difference between cloud base and cloud top?',
+    conceptExplanation:
+      'Oktas are the units of cloud amount: the sky is treated as eight slices, and the report says how many are covered. The reporting bands are the ones you see in every METAR: FEW is 1 to 2 oktas, scattered 3 to 4, broken 5 to 7, overcast the full 8, and sky clear is zero. The operationally loaded word is broken: 5 oktas or more counts as a ceiling, which is what your approach minima conversations are about. Cloud base and top are simply the two surfaces of the cloud layer: the base is the height of its lowest part, and in METARs and TAFs it is given above aerodrome level, which is what matters when you break out on an approach; the top is the upper surface, which reports generally do not give you, though forecast charts and pilots do. The gap between them, the cloud\'s depth, is worth respecting: a deep cloud from a low base to a high top is a lot of climbing or descending inside cloud, with the icing band likely somewhere in it.',
+    spokenVersion: [
+      'Oktas: cloud amount in eighths of the sky',
+      'FEW 1 to 2, SCT 3 to 4, BKN 5 to 7, OVC 8',
+      'Broken or more is a ceiling, the number that bites on approaches',
+      'Base: lowest surface, reported above aerodrome level',
+      'Top: upper surface, from charts and pilot reports, not METARs',
+    ],
+    mcq: {
+      options: [
+        'Oktas measure visibility in kilometres; base and top are runway markings',
+        'Oktas are eighths of sky covered by cloud; the base is the lowest surface of a layer, reported above aerodrome level, and the top is its upper surface',
+        'Oktas are wind speeds in eights of a knot; base and top are pressure levels',
+        'Oktas count the number of cloud layers; base and top are the first and last layers',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Oktas are eighths of sky covered: FEW 1 to 2, SCT 3 to 4, BKN 5 to 7 (a ceiling), OVC 8. Cloud base is the lowest surface of the layer, reported above aerodrome level; the top is its upper surface, known from charts and pilot reports rather than METARs.',
+  },
+  {
+    id: 'oral-met-26',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'Do stratus clouds produce precipitation?',
+    conceptExplanation:
+      'Very little, and knowing why is the real answer. Stratus is a shallow, layered cloud of stable air, formed by gentle lifting or mixing, and its droplets stay small because there are no strong updrafts to keep them suspended long enough to grow. Small droplets fall out as drizzle at most, or snow grains in the cold; you will not get proper rain out of genuine stratus. If steady, persistent rain is falling from a grey layered sky, the cloud doing the work is nimbostratus, the thick, deep rain-bearing layer of a warm front, often with ragged stratus beneath it catching the blame. And if the precipitation is showery, starting and stopping with conviction, it is coming from convective cloud, cumulus congestus or CB, regardless of what else is in the sky. That is the tidy rule of thumb: drizzle from stratus, steady rain from nimbostratus, showers from convective cloud. Operationally stratus is less about precipitation and more about ceilings: a low sheet of it is what turns an approach into a minima discussion.',
+    spokenVersion: [
+      'At most drizzle, or snow grains: not proper rain',
+      'Stable, shallow cloud, weak lifting, so droplets stay small',
+      'Steady rain from a layered sky is nimbostratus doing the work',
+      'Showers come from convective cloud',
+      'Stratus\'s real operational issue is low ceilings',
+    ],
+    mcq: {
+      options: [
+        'Yes, stratus gives heavy showers and thunderstorms',
+        'Yes, stratus produces the steadiest heavy rain of any cloud',
+        'At most drizzle or snow grains; steady rain comes from nimbostratus and showers from convective cloud',
+        'No cloud type produces precipitation except cumulonimbus',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'Genuine stratus gives at most drizzle or snow grains: its stable, shallow structure keeps droplets too small for rain. Steady rain from a layered sky is nimbostratus; showery precipitation is convective cloud. Stratus\'s real menace is the low ceiling.',
+  },
+  {
+    id: 'oral-met-27',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is a gust and how does it appear in a METAR?',
+    conceptExplanation:
+      'A gust is a brief, sharp increase in wind speed above the mean, lasting seconds, caused by turbulence in the airflow near the surface: mechanical stirring over rough ground, thermals punching through, or the outflow of convective weather. In a METAR the wind group carries it after a G: 24015G28KT reads as wind from 240 at a mean of 15 knots, gusting 28. The convention is that gusts are appended when they exceed the mean speed by a meaningful margin, 10 knots or more being the usual reporting criterion, so the presence of a G in the report is itself information: the wind is not steady, expect it to be rough down low. Operationally, gusts feed the crosswind assessment, since the gust value against the limit is the conservative check, and they shape the approach: the classic technique is carrying a speed additive based on part of the gust factor, per the aircraft\'s procedures, and expecting the airspeed swings and late-flare lurch that gusty air delivers.',
+    spokenVersion: [
+      'A brief sharp jump of wind speed above the mean, seconds long',
+      'From low level turbulence, thermals or convective outflow',
+      'METAR: after a G, like 24015G28KT, mean 15 gusting 28',
+      'Reported when gusts exceed the mean by around 10 kt or more',
+      'Use the gust for crosswind checks and speed additives on approach',
+    ],
+    mcq: {
+      options: [
+        'A wind that blows for exactly one hour, shown as W in the METAR',
+        'A brief sharp increase of wind above the mean, shown after a G in the wind group, like 24015G28KT',
+        'The average wind over the day, shown at the end of the METAR',
+        'A change of wind direction only, shown with a V between directions',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'A gust is a brief sharp increase in wind speed above the mean, from low-level turbulence or convective outflow. In a METAR it follows a G in the wind group: 24015G28KT means mean 15 kt gusting 28, appended when gusts exceed the mean by roughly 10 kt or more. Use gust values for crosswind checks and approach additives.',
+  },
+  {
+    id: 'oral-met-28',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is a cyclone?',
+    conceptExplanation:
+      'The word has a general meaning and a fiercer specific one, and a good answer gives both. Generally, a cyclone is simply a region of low pressure with the air circulating around it, anticlockwise in the northern hemisphere and clockwise in the southern, converging and rising at the centre; in that sense every mid-latitude depression crossing Europe is a cyclone, with its fronts, cloud and rain, and the anticyclone is its settled opposite. The specific meaning is the tropical cyclone: an intense, warm-cored storm born over very warm ocean, feeding on the latent heat of evaporated seawater, with sustained winds above hurricane force, spiral bands of CB, torrential rain and a calm central eye ringed by the violent eyewall. It is the same beast called a hurricane in the Atlantic, a typhoon in the northwest Pacific, and a cyclone in the Indian Ocean and around Arabia, which is the name relevant to this region. Operationally a tropical cyclone is a no-go area: aviation responds by rerouting broadly around it and airports in its path shut down.',
+    spokenVersion: [
+      'General: a low pressure system with air circulating and rising, anticlockwise in the north',
+      'The everyday depression with fronts, cloud and rain',
+      'Specific: the tropical cyclone, an intense warm-cored ocean storm',
+      'Hurricane force winds, spiral CB bands, torrential rain, a calm eye',
+      'Same storm: hurricane, typhoon, or cyclone around the Indian Ocean',
+    ],
+    mcq: {
+      options: [
+        'A region of high pressure with descending air and clear skies',
+        'A low pressure system with circulating rising air; in the tropics, an intense warm-cored storm with hurricane force winds',
+        'A line of thunderstorms along a cold front only',
+        'A rotating dust devil on a hot airfield',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Generally, a low pressure system with air circulating (anticlockwise in the northern hemisphere) and rising: the ordinary depression. Specifically, a tropical cyclone: an intense warm-cored storm over warm ocean with hurricane-force winds, spiral CB bands and an eye; called hurricane, typhoon or cyclone by region.',
+  },
+  {
+    id: 'oral-met-29',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is latent heat?',
+    conceptExplanation:
+      'Latent heat is the energy absorbed or released when water changes phase without any change of temperature: it is hidden energy, which is what latent means. Evaporating water absorbs heat from its surroundings, which is why evaporation cools; condensation hands exactly that energy back, warming the surrounding air; freezing releases a smaller amount and melting absorbs it. The reason a weather answer keeps coming back to this: latent heat is the atmosphere\'s fuel line. When moist air is lifted and its vapour condenses, the released heat keeps the rising parcel warmer than its surroundings, which is precisely why the saturated lapse rate is gentler than the dry one, around 1.8 against 3 degrees per 1000 ft, and why moist air is so much more prone to instability. It is what powers a thunderstorm\'s updrafts and what a tropical cyclone runs on. And in the other direction, evaporative cooling under a rain shaft is part of what accelerates a downdraft into a microburst. One concept, threaded through half of meteorology.',
+    spokenVersion: [
+      'Energy absorbed or released in a phase change, with no temperature change',
+      'Evaporation absorbs heat and cools; condensation releases it and warms',
+      'Why the SALR is gentler than the DALR',
+      'The fuel of thunderstorms and tropical cyclones',
+      'Evaporative cooling also drives downdrafts and microbursts',
+    ],
+    mcq: {
+      options: [
+        'The heat trapped in the cabin after a long taxi',
+        'The energy absorbed or released when water changes phase without changing temperature',
+        'The warmth left in the runway after sunset',
+        'The heat generated by air friction on the airframe',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'The energy absorbed or released when water changes phase with no temperature change: evaporation absorbs it and cools, condensation releases it and warms. It is why the SALR is gentler than the DALR, and it fuels thunderstorms, tropical cyclones and microburst downdrafts.',
+  },
+  {
+    id: 'oral-met-30',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is the hazard of a volcanic eruption to aviation?',
+    conceptExplanation:
+      'The killer hazard is the ash cloud. Volcanic ash is not soft dust: it is pulverised rock and glass, and a jet engine is the worst possible place for it. The core temperature of the engine is above the ash\'s melting point, so ingested ash melts, then solidifies as glass on the turbine nozzles and blades, choking the flow until the engines surge and flame out; the infamous BA 747 over Indonesia lost all four before relighting them outside the cloud. Beyond the engines, ash sandblasts the windscreen opaque and erodes leading edges, clogs pitot probes giving unreliable airspeed, contaminates bleed air, packs, and every filter, and the cloud itself is effectively invisible at night and does not paint on weather radar, which sees water, not rock. The defence is entirely strategic: volcanic ash advisories from the VAAC network, SIGMETs and NOTAMs, and routing that avoids contaminated airspace with a wide margin. If caught, the drill is a 180 degree turn out, engines gently handled, and the classic memory items.',
+    spokenVersion: [
+      'Ash: pulverised rock and glass, invisible to weather radar',
+      'Melts in the hot section, coats turbines as glass: surge and flameout',
+      'Sandblasts windscreens, blocks pitots, contaminates bleed air and filters',
+      'Avoidance is everything: VAAC advisories, SIGMETs, wide rerouting',
+      'If caught: turn 180 and get out',
+    ],
+    mcq: {
+      options: [
+        'Only the lava flow closing runways near the volcano',
+        'The noise of the eruption disturbing communications',
+        'The ash cloud: it melts in engines causing flameout, sandblasts surfaces, blocks pitots, and is invisible to weather radar',
+        'The heat of the eruption creating strong thermals',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'The ash cloud: pulverised rock and glass that melts in the engine hot section and re-solidifies on the turbines, causing surge and flameout, while sandblasting windscreens, blocking pitot probes and contaminating systems. It does not show on weather radar, so avoidance via VAAC advisories and SIGMETs is everything.',
+  },
+  {
+    id: 'oral-met-31',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'When do you need an alternate, and when would you use a METAR versus a TAF for that decision?',
+    conceptExplanation:
+      'For airline IFR operations the starting rule is that you plan with a destination alternate, an airport you can divert to if the destination does not work out, with fuel to reach it and hold. The rules then allow exceptions and additions: an alternate can be dropped in specific cases, broadly a sufficiently equipped destination with two usable runways and a solidly good forecast around arrival time, and a second alternate is required when the destination forecast is marginal or unavailable; takeoff alternates cover the case where you could not return to your departure airport. The exact criteria live in the operations manual and national rules, so quote the principle, not chapter and verse. The METAR versus TAF logic is about time. Planning happens hours before arrival, so the planning decision runs on the TAF, the forecast valid for your arrival window, checked against the alternate planning minima. The METAR is the present tense: it validates the forecast as the flight progresses and drives the tactical decision at the point of diversion. Rule of thumb: TAF to plan, METAR to act.',
+    spokenVersion: [
+      'Baseline: plan a destination alternate, with fuel to reach and hold',
+      'Exceptions exist: strong destination and forecast can drop it; marginal forecast demands two',
+      'Details are ops manual and state rules: quote the principle',
+      'TAF: the forecast for your arrival window, used for planning',
+      'METAR: current weather, used to verify enroute and decide the actual diversion',
+      'TAF to plan, METAR to act',
+    ],
+    mcq: {
+      options: [
+        'An alternate is only needed when the captain requests one; both reports are interchangeable',
+        'An alternate is planned per the operational rules, using the TAF for the planning decision at the arrival window and the METAR for the tactical decision in flight',
+        'An alternate is needed only for night flights, decided from the METAR alone',
+        'An alternate is chosen after landing, using the TAF alone',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Airline IFR planning starts from carrying a destination alternate, with rule-based exceptions (a strong destination and forecast) and additions (two alternates for marginal forecasts). Use the TAF, the forecast for your arrival window, for the planning decision, and the METAR, the current observation, to verify and act in flight: TAF to plan, METAR to act.',
+  },
+  {
+    id: 'oral-met-32',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'CAVOK: what does it mean?',
+    conceptExplanation:
+      'CAVOK, spoken "cav-okay", stands for ceiling and visibility OK, and it replaces the visibility, weather and cloud groups of a METAR when four conditions are all met at once. Visibility ten kilometres or more. No cloud below 5000 feet, or below the minimum sector altitude if that is higher, so a report cannot hide cloud that matters to terrain clearance behind a cheerful CAVOK. No cumulonimbus or towering cumulus at any level, because convective cloud is significant whatever its height. And no significant weather: no precipitation, thunderstorms, fog, dust, and so on. So CAVOK is a compact promise: good visibility, no operationally significant cloud, no convective menace, nothing falling out of the sky. Worth saying in an interview: CAVOK is not a wind statement, the wind group still stands, so a CAVOK report can still carry a howling crosswind, and it says nothing about turbulence either. It is ceilings and visibility it clears, not the whole operation.',
+    spokenVersion: [
+      'Ceiling and visibility OK, replacing vis, weather and cloud groups',
+      'Visibility 10 km or more',
+      'No cloud below 5000 ft or below the MSA, whichever is higher',
+      'No CB or towering cumulus at any level, no significant weather',
+      'Says nothing about wind: the crosswind can still be howling',
+    ],
+    mcq: {
+      options: [
+        'Visibility 10 km or more, no cloud below 5000 ft or MSA, no CB or TCU at any level, and no significant weather',
+        'Calm wind and a dry runway for the next hour',
+        'Clear skies guaranteed for the whole day',
+        'The airport is open and all approaches are available',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'CAVOK replaces the visibility, weather and cloud groups when: visibility is 10 km or more, no cloud below 5000 ft (or below the MSA if higher), no CB or TCU at any level, and no significant weather. It says nothing about wind.',
+  },
+  {
+    id: 'oral-met-33',
+    category: 'meteorology',
+    frequency: 1,
+    question: 'What is CB and what makes it hazardous?',
+    conceptExplanation:
+      'CB is cumulonimbus, the thunderstorm cloud: the fully developed convective tower, built by strong instability, plentiful moisture and a trigger, with a base down in the low levels and a top that can drive to the tropopause and flatten into the anvil. It is the most dangerous cloud in aviation because it packs every major hazard into one place. Severe turbulence from the updrafts and downdrafts coexisting inside it, capable of exceeding structural limits. Windshear and microbursts underneath and around it, the killers of the approach and departure phases. Hail, which can be thrown out the top and sides into clear air miles from the cloud. Severe icing in its huge load of supercooled water. Lightning, heavy rain that can flood engines and ruin visibility, and in the worst cells, tornadoes. The operational logic follows: you do not fly through a CB, you avoid it, using weather radar, by a wide margin, the customary guidance being on the order of 20 nautical miles around severe cells and never through the gap between close cells, and you respect the anvil and the clear air beneath the base as part of the storm.',
+    spokenVersion: [
+      'Cumulonimbus: the fully developed thunderstorm cloud, base low, top to the tropopause',
+      'Every hazard at once: severe turbulence from paired updrafts and downdrafts',
+      'Windshear and microbursts beneath, hail thrown into clear air',
+      'Severe icing, lightning, torrential rain',
+      'Avoid by radar with a wide margin, around 20 NM for severe cells, roughly',
+      'The anvil and the air under the base are part of the storm',
+    ],
+    mcq: {
+      options: [
+        'Cirrus cloud at high level, hazardous because of poor visibility',
+        'A cloud base measurement, hazardous when below minima',
+        'Cumulonimbus, the thunderstorm cloud, combining severe turbulence, windshear, hail, icing and lightning in one cell',
+        'A stable layer cloud producing drizzle',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'CB is cumulonimbus, the thunderstorm cloud, towering from a low base up to the tropopause anvil. It combines severe turbulence, windshear and microbursts, hail (even in nearby clear air), severe icing, lightning and torrential rain, so it is avoided by radar with a wide margin, customarily around 20 NM for severe cells.',
+  },
 
   // ---------- navigation ----------
   {
@@ -1227,19 +2410,344 @@ const raw = [
     flashcardAnswer:
       'RNAV is the capability to navigate point to point between waypoints using available sensors; GPS is satellite ranging (four satellites for a 3D fix, RAIM for integrity) and is the main sensor today. RNAV and RNP charts define waypoint-based SIDs, STARs and approaches with the required accuracy and minima.',
   },
-  { id: 'oral-nav-05', category: 'navigation', frequency: 1, question: 'What is the point of equal time?' },
-  { id: 'oral-nav-06', category: 'navigation', frequency: 1, question: 'What is DME and what is slant range?' },
-  { id: 'oral-nav-07', category: 'navigation', frequency: 1, question: 'What are the VOR errors?' },
-  { id: 'oral-nav-08', category: 'navigation', frequency: 1, question: 'What is an NDB and what are its errors, including coastal refraction and static?' },
-  { id: 'oral-nav-09', category: 'navigation', frequency: 1, question: 'What is a false glideslope?' },
-  { id: 'oral-nav-10', category: 'navigation', frequency: 1, question: 'What is TCH and why does it differ from runway elevation?' },
-  { id: 'oral-nav-11', category: 'navigation', frequency: 1, question: 'Where do we use HF frequencies?' },
-  { id: 'oral-nav-12', category: 'navigation', frequency: 1, question: 'Where do we use VHF?' },
-  { id: 'oral-nav-13', category: 'navigation', frequency: 1, question: 'Explain how radio waves travel.' },
-  { id: 'oral-nav-14', category: 'navigation', frequency: 1, question: 'Explain the night effect.' },
-  { id: 'oral-nav-15', category: 'navigation', frequency: 1, question: 'Which is more accurate, GPS or VOR?' },
-  { id: 'oral-nav-16', category: 'navigation', frequency: 1, question: 'What is MLS?' },
-  { id: 'oral-nav-17', category: 'navigation', frequency: 1, question: 'What does it mean to level off at a flight level, and what is an airway?' },
+  {
+    id: 'oral-nav-05',
+    category: 'navigation',
+    frequency: 1,
+    question: 'What is the point of equal time?',
+    conceptExplanation:
+      'The point of equal time, also called the equal time point or critical point, is the position along your route from which it takes exactly the same time to continue to the destination as to turn back to the departure point, or more generally between any two suitable airfields you are flying between. Its job is decision-making: if something goes wrong, an engine failure, a medical emergency, a depressurisation, the PET tells you instantly which way is quicker to help; before it, turning back wins on time, after it, pressing on does. The wind is what makes it interesting: in still air the PET sits at the halfway point, but with wind it always moves into the wind, towards the headwind side, because the return against a tailwind-turned-headwind is slow, so you reach the "equal" point earlier. The classic formula: distance to the PET equals total distance times groundspeed home, divided by groundspeed on plus groundspeed home. It pairs with the point of safe return, which is about fuel rather than time; on ETOPS sectors these calculations are done for the engine-out and depressurised cases too.',
+    spokenVersion: [
+      'The point where continuing and turning back take equal time',
+      'Its purpose: instant diversion decisions, which way is quicker to help',
+      'Still air: halfway. With wind it always moves into the wind',
+      'Distance to PET = D times GS home over GS on plus GS home',
+      'Cousin of the PSR, which is about fuel; key on ETOPS sectors',
+    ],
+    mcq: {
+      options: [
+        'The halfway point of the route by distance, regardless of wind',
+        'The point from which continuing to destination and returning to departure take equal time, moving into wind, used for diversion decisions',
+        'The time at which fuel runs below reserve',
+        'The point where two airways cross at the same level',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'The position from which continuing and turning back take the same time: before it, turning back is quicker, after it, continuing is. In still air it is halfway; wind always shifts it towards the headwind side. Distance to PET = D x GS home / (GS on + GS home). Used for engine failure and medical diversion decisions.',
+  },
+  {
+    id: 'oral-nav-06',
+    category: 'navigation',
+    frequency: 1,
+    question: 'What is DME and what is slant range?',
+    conceptExplanation:
+      'DME, distance measuring equipment, gives you your distance from a ground station, and it does it by timing radio round trips. The aircraft interrogator transmits pulse pairs on UHF; the ground transponder receives them, waits a fixed known delay, and replies; the aircraft measures the total time, subtracts the fixed delay, and converts the remainder to distance at the speed of light. Because it needs that two-way exchange, a DME station serves a limited number of aircraft and replies on a different frequency than it listens on, and DME channels are paired with VOR and ILS frequencies so tuning the navaid tunes the distance too. Slant range is the honest name for what DME measures: the straight-line distance from aircraft to station through space, not the horizontal distance over the ground. The difference is negligible far from the station but grows as you approach, and the limiting case makes it vivid: directly overhead, DME cannot read zero, it reads your height above the station converted to distance, so at 36,000 ft overhead the box shows about 6 NM. The practical habit: treat DME close to a station, or at great height, with that correction in mind.',
+    spokenVersion: [
+      'Distance by timing radio round trips: interrogation, fixed delay, reply',
+      'UHF, channels paired with VOR and ILS frequencies',
+      'It measures slant range: the straight line through space, not over the ground',
+      'Error negligible far out, grows near the station',
+      'Overhead it reads your height: about 6 NM at 36,000 ft',
+    ],
+    mcq: {
+      options: [
+        'A radar that measures your ground speed only',
+        'Equipment timing interrogation and reply pulses to give distance; it measures slant range, the straight line to the station, reading your height when overhead',
+        'A beacon transmitting its own position for the FMS',
+        'A system measuring the runway distance remaining',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'DME times pulse round trips between the aircraft interrogator and a ground transponder (UHF, paired with VOR/ILS frequencies) to give distance. It measures slant range, the straight line through space, so overhead the station it reads your height, about 6 NM at 36,000 ft, and it slightly over-reads ground distance close-in.',
+  },
+  {
+    id: 'oral-nav-07',
+    category: 'navigation',
+    frequency: 1,
+    question: 'What are the VOR errors?',
+    conceptExplanation:
+      'The VOR is the workhorse VHF radial beacon, and its errors fall into tidy groups. Site and propagation errors: the signal reflects off terrain, buildings and even vehicles near the station, bending the radials, an effect called scalloping when the needle weaves as reflections interfere; hilly country makes it worse. Line of sight limits: being VHF, the signal does not follow the earth, so range depends on your altitude and the station elevation, and low altitude means short range and possible shadowing by terrain. The cone of confusion: directly over the station the radial geometry collapses and the indication becomes momentarily useless until you fly through it. Equipment errors: the ground station has a small alignment tolerance, and the aircraft receiver adds its own, which is why there are published limits and receiver checks; the overall system is customarily held to be accurate to within about five degrees, and a bearing error in degrees grows into miles with distance, one degree being roughly one mile at sixty. Add ordinary human errors, wrong ident, wrong radial, and that is the family. It is exactly these errors that GPS-based navigation largely designed out.',
+    spokenVersion: [
+      'Site errors: reflections from terrain and buildings, scalloping',
+      'Line of sight: range depends on altitude, terrain can shadow it',
+      'Cone of confusion overhead the station',
+      'Ground alignment and receiver tolerances: about 5 degrees system accuracy, roughly',
+      'Degrees become miles with distance: about 1 NM per degree at 60 NM',
+    ],
+    mcq: {
+      options: [
+        'Site reflections and scalloping, line of sight range limits, the cone of confusion overhead, and ground plus receiver tolerances',
+        'Coastal refraction, night effect and thunderstorm static',
+        'Slant range error and height error only',
+        'Magnetic deviation from the aircraft compass only',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'VOR errors: site and propagation errors (reflections and scalloping from terrain), line of sight range limits, the cone of confusion overhead, and ground station plus receiver tolerances, customarily about 5 degrees overall. Bearing error grows with distance: roughly 1 NM per degree at 60 NM.',
+  },
+  {
+    id: 'oral-nav-08',
+    category: 'navigation',
+    frequency: 1,
+    question: 'What is an NDB and what are its errors, including coastal refraction and static?',
+    conceptExplanation:
+      'An NDB, non-directional beacon, is the simplest navaid: a ground transmitter in the LF and MF bands radiating in all directions, and the aircraft\'s ADF simply points its needle at the strongest signal direction, giving a bearing to the station. That simplicity is why it survives at small airfields, and its long list of errors is why everything else replaced it. Coastal refraction: the ground wave travels at slightly different speeds over land and over sea, so a signal crossing a coastline at an angle bends, and a bearing taken across a coast is displaced, the classic statement being that the error pulls the apparent bearing towards the coastline; it is worst for an inland station and a shallow crossing angle, and least when you cross perpendicular. Night effect: at night, sky waves returning from the ionosphere contaminate the ground wave, and the needle wanders, worst around dawn and dusk. Thunderstorm static: a CB is a huge radio transmitter, and the ADF may point at the storm instead of the beacon. Add quadrantal error from the airframe bending the incoming wave, mountain reflections, and plain interference between stations at night, and the lesson writes itself: treat ADF bearings with suspicion, especially at night, near storms and along coasts.',
+    spokenVersion: [
+      'LF and MF beacon radiating all directions; the ADF needle points at it',
+      'Coastal refraction: waves bend crossing a coast at an angle, bearing pulled towards the coastline; cross perpendicular to minimise',
+      'Night effect: sky waves contaminate the ground wave, needle wanders, worst at dawn and dusk',
+      'Thunderstorm static: the needle points at the CB',
+      'Plus quadrantal error from the airframe and mountain reflections',
+    ],
+    mcq: {
+      options: [
+        'A satellite beacon with no known errors',
+        'A VHF beacon with radial scalloping and a cone of confusion',
+        'An LF or MF beacon the ADF needle points to; errors include coastal refraction, night effect from sky waves, thunderstorm static and quadrantal error',
+        'A runway light system for low visibility approaches',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'An NDB is an LF/MF beacon radiating in all directions; the ADF points at it. Errors: coastal refraction (bearings bend crossing a coast at an angle, pulled towards the coastline), night effect (sky wave contamination, worst at dawn and dusk), thunderstorm static (the needle points at the CB), quadrantal error and terrain reflections.',
+  },
+  {
+    id: 'oral-nav-09',
+    category: 'navigation',
+    frequency: 1,
+    question: 'What is a false glideslope?',
+    conceptExplanation:
+      'The ILS glideslope antenna cannot help producing more than one path. The way its signal lobes combine with reflections off the ground in front of the antenna creates repeats of the guidance at multiples of the true angle: for a standard three degree glideslope, the first and strongest false glideslope appears at roughly twice the angle, around six degrees, with another near nine. They exist above the true path, never below it, which is the saving grace. An aircraft that arrives high and captures a false slope gets a descent path roughly twice as steep as intended, and on some false lobes the fly-up and fly-down sense can be reversed or erratic, so the autopilot may chase nonsense. The defences are procedural and simple: intercept the glideslope from below, at the platform altitude, so the first slope you meet is the real one; and cross-check the descent against the published altitude versus DME or distance table on the chart, plus the outer marker or equivalent fix crossing altitude. If the numbers do not match the chart, the slope is lying: go around or fly the non-precision profile.',
+    spokenVersion: [
+      'Spurious repeats of the glideslope from antenna lobes and ground reflection',
+      'At multiples of the real angle: about 6 and 9 degrees for a 3 degree slope',
+      'Always above the true path, never below',
+      'Roughly double the descent angle, indications may reverse',
+      'Defence: intercept from below and check altitude against distance on the chart',
+    ],
+    mcq: {
+      options: [
+        'A glideslope that fails and shows a flag',
+        'A spurious glideslope signal at a multiple of the true angle, around 6 degrees, always above the real path, avoided by intercepting from below and checking altitude against distance',
+        'The glidepath of the parallel runway received by mistake',
+        'A glideslope moved by strong winds to a shallower angle',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'A false glideslope is a spurious repeat of the ILS glidepath created by the antenna\'s signal lobes, at multiples of the true angle, about 6 and 9 degrees for a 3 degree slope, always above the real one. Guard against it by intercepting from below and cross-checking altitude against DME or fix distances.',
+  },
+  {
+    id: 'oral-nav-10',
+    category: 'navigation',
+    frequency: 1,
+    question: 'What is TCH and why does it differ from runway elevation?',
+    conceptExplanation:
+      'TCH, threshold crossing height, is the height at which the glidepath, the ILS glideslope or a published vertical path, crosses the runway threshold. For most instrument runways it is on the order of fifty feet, roughly, and it is printed on the approach chart. Its purpose is geometry: the glidepath cannot aim at the very start of the pavement, or the main wheels, which hang well below and behind the antenna on a big aircraft, would be skimming the approach lights; aiming the path to cross the threshold around fifty feet up puts the touchdown point comfortably down the runway, near the aiming markings, with safe wheel clearance over the threshold. The reason it differs from runway elevation is that they are different kinds of number answering different questions. Runway or threshold elevation is an absolute figure: height of the surface above mean sea level, what your altimeter relates to. TCH is a relative figure: how far above that threshold the guidance path passes. So on a threshold at 200 ft elevation with a 50 ft TCH, the aircraft on the glidepath crosses at about 250 ft on the QNH altimeter; the radio altimeter reads the fifty.',
+    spokenVersion: [
+      'The height at which the glidepath crosses the runway threshold',
+      'Typically around 50 ft, printed on the chart',
+      'Ensures wheel clearance and a touchdown near the aiming point',
+      'Runway elevation is absolute, above sea level; TCH is relative, above the threshold',
+      'On the glidepath at the threshold: altimeter reads elevation plus TCH',
+    ],
+    mcq: {
+      options: [
+        'The height of the control tower above the airport',
+        'The altitude at which the approach must be stabilised',
+        'The height of the glidepath above the runway threshold, typically about 50 ft; it is a relative height, while runway elevation is an absolute height above sea level',
+        'The maximum crossing height for vehicles near the runway',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'TCH is the height at which the glidepath crosses the runway threshold, typically around 50 ft, ensuring wheel clearance and a touchdown near the aiming point. It differs from runway elevation because TCH is relative to the threshold while elevation is an absolute height above mean sea level.',
+  },
+  {
+    id: 'oral-nav-11',
+    category: 'navigation',
+    frequency: 1,
+    question: 'Where do we use HF frequencies?',
+    conceptExplanation:
+      'HF, the high frequency band from 3 to 30 MHz, is aviation\'s long-distance voice: we use it wherever the aircraft is beyond the reach of VHF ground stations, which means oceanic airspace, polar routes, deserts and other remote continental regions. The physics that makes it work is sky wave propagation: HF signals refract off the ionosphere and return to earth far beyond the horizon, and with multiple hops they can span thousands of miles, which no line-of-sight VHF station can do. The price of that reach is quality and reliability: the ionosphere changes between day and night and with solar activity, so working frequencies must change too, higher by day, lower by night as a rule of thumb, and the audio is noisy and fading, which is why oceanic HF procedures lean on SELCAL, letting the crew stop actively listening to static until the ground station triggers their code. In practice today HF sits alongside satellite communication and datalink, CPDLC position reporting having taken much of the load, but HF remains the required and universal backup across oceanic airspace.',
+    spokenVersion: [
+      'Long range comms: oceanic, polar, remote and desert airspace',
+      'Sky waves refract off the ionosphere, going far beyond the horizon',
+      'Beyond line of sight, where VHF cannot reach',
+      'Ionosphere shifts day to night, so frequencies change; noisy, hence SELCAL',
+      'Now paired with satcom and CPDLC, but still the oceanic backbone',
+    ],
+    mcq: {
+      options: [
+        'Only for talking to the company at the gate',
+        'For long range communication beyond VHF line of sight, over oceans, poles and remote areas, using ionospheric sky wave propagation',
+        'For the ILS localizer and glideslope',
+        'For short range tower communication at busy airports',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'HF (3 to 30 MHz) is used for long range communication beyond VHF line of sight: oceanic, polar and remote airspace. Its sky waves refract off the ionosphere to travel far beyond the horizon, at the cost of noise and day-night frequency changes, managed with SELCAL and now backed by satcom and CPDLC.',
+  },
+  {
+    id: 'oral-nav-12',
+    category: 'navigation',
+    frequency: 1,
+    question: 'Where do we use VHF?',
+    conceptExplanation:
+      'VHF is the everyday band of aviation, and it appears in two roles. Communication uses 118 to about 137 MHz: tower, ground, approach, area control, ATIS, company frequencies, essentially all routine voice within range of a ground station. Navigation sits just below, 108 to 118 MHz, where the VORs and ILS localizers live. The character of VHF is line of sight: the waves travel essentially straight, neither following the earth like low frequencies nor returning from the ionosphere like HF, so range is set by geometry, how high you are and how high the antenna is, plus terrain in between. From altitude that is generous, a couple of hundred nautical miles at cruise levels as a rough figure, and the rule-of-thumb range formula runs on the square roots of the two heights. Within that range the quality is exactly why we use it: clear, quiet, reliable audio, day or night, largely indifferent to the ionosphere. Domestic and continental operations can live entirely on VHF; it is only when the ground stations run out, over oceans and wilderness, that HF and satcom take over.',
+    spokenVersion: [
+      'The everyday band: comms 118 to 137 MHz, nav 108 to 118 for VOR and localizer',
+      'All routine ATC voice: tower, approach, area, ATIS',
+      'Line of sight: range set by aircraft and antenna height, plus terrain',
+      'Roughly 200 NM from cruise levels, as a rough figure',
+      'Clear and reliable within range; beyond it, HF and satcom take over',
+    ],
+    mcq: {
+      options: [
+        'Only over oceans, beyond the horizon',
+        'For short and medium range line of sight communication with ATC (118 to 137 MHz) and for VOR and localizer navigation (108 to 118 MHz)',
+        'Only for emergency transmissions',
+        'For interrogating transponders and TCAS',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'VHF carries everyday line of sight operations: ATC and ATIS voice on 118 to 137 MHz, and VOR plus ILS localizer navigation on 108 to 118 MHz. Range depends on heights and terrain, roughly a couple of hundred NM from cruise level, with clear reliable audio; beyond ground station reach, HF and satcom take over.',
+  },
+  {
+    id: 'oral-nav-13',
+    category: 'navigation',
+    frequency: 1,
+    question: 'Explain how radio waves travel.',
+    conceptExplanation:
+      'Radio energy gets from transmitter to receiver by three main paths, and which one dominates is a matter of frequency. Ground waves, also called surface waves, follow the curvature of the earth: the lower the frequency, the better the wave hugs the surface and the farther it reaches, which is why LF and MF signals, the NDB band, are usable well beyond the horizon at the cost of needing big transmitters. Sky waves travel up to the ionosphere, the electrified layers of the upper atmosphere, and are refracted back down to earth a long way from the transmitter; this is the HF story, thousands of miles by successive hops, with the catch that the ionosphere changes between day and night, which is behind both HF frequency management and the NDB night effect. Space waves, or direct waves, travel in essentially straight lines from antenna to antenna: this is VHF and everything above it, clean and predictable but limited to line of sight, so range comes from height. The tidy summary: low frequencies bend and follow, high frequencies bounce off the sky, very high frequencies fly straight.',
+    spokenVersion: [
+      'Three paths, chosen mainly by frequency',
+      'Ground waves follow the earth: LF and MF, the NDB band, beyond the horizon',
+      'Sky waves refract off the ionosphere: HF, huge ranges, day-night changes',
+      'Space waves go straight, line of sight: VHF and above, range from height',
+      'Low bends, high bounces, very high flies straight',
+    ],
+    mcq: {
+      options: [
+        'All radio waves follow the earth\'s surface equally at every frequency',
+        'As ground waves following the surface at low frequencies, sky waves refracted by the ionosphere at HF, and line of sight space waves at VHF and above',
+        'Radio waves only travel in straight lines regardless of frequency',
+        'They travel through the ground between buried antennas',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Three modes by frequency: ground waves hug the earth\'s curvature (LF and MF, the NDB band), sky waves refract off the ionosphere and return far beyond the horizon (HF), and space waves travel line of sight (VHF and above, range set by height). Low bends, high bounces, very high flies straight.',
+  },
+  {
+    id: 'oral-nav-14',
+    category: 'navigation',
+    frequency: 1,
+    question: 'Explain the night effect.',
+    conceptExplanation:
+      'The night effect is the degradation of NDB and ADF bearings at night, and it comes from the ionosphere changing shape after sunset. By day, the lowest ionospheric layer absorbs most of the sky wave energy at NDB frequencies, so the receiver hears an almost pure ground wave and the ADF needle points steadily. At night that absorbing layer fades, and sky waves at LF and MF survive the trip up and come back down from the ionosphere. The receiver now hears two versions of the same signal, the steady ground wave and a sky wave that has travelled a different path with shifting phase and, arriving from a reflection, a corrupted apparent direction. The two interfere, and the needle wanders, swings and settles on errors of many degrees; the effect is worst around dawn and dusk when the ionosphere is actively reorganising, worse at greater ranges where the ground wave is weak, and worse for bearings involving long sky wave paths. The operational conclusions: treat night ADF bearings sceptically, average the needle\'s swings rather than chasing them, prefer closer beacons, and back everything up with other aids.',
+    spokenVersion: [
+      'Night degradation of NDB and ADF bearings',
+      'By day the low ionosphere absorbs sky waves; needle gets clean ground wave',
+      'At night sky waves return and interfere with the ground wave',
+      'Needle wanders, errors of many degrees; worst around dawn and dusk, and at range',
+      'So: distrust night ADF bearings, average the swings, cross-check other aids',
+    ],
+    mcq: {
+      options: [
+        'The runway lights dazzling the pilots on final at night',
+        'The VOR cone of confusion growing larger after dark',
+        'Sky waves returning from the night ionosphere interfering with the NDB ground wave, making ADF bearings wander, worst around dawn and dusk',
+        'Radio silence enforced at night over cities',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'At night the ionospheric layer that absorbs LF/MF sky waves by day fades, so sky waves return and interfere with the NDB\'s ground wave. The ADF needle wanders with errors of many degrees, worst around dawn and dusk and at long range: distrust night bearings, average the swings, cross-check.',
+  },
+  {
+    id: 'oral-nav-15',
+    category: 'navigation',
+    frequency: 1,
+    question: 'Which is more accurate, GPS or VOR?',
+    conceptExplanation:
+      'GPS, and it is not close. A VOR gives you an angle, and its system accuracy is customarily held to be within about five degrees; because it is angular, the position error grows with distance, roughly a mile per degree at sixty miles, so a legally serviceable VOR can have you miles off the radial centreline at range. GPS gives you a position directly, and a modern receiver is accurate to a few metres, tightened further by augmentation systems; its error does not grow with distance from anything. That accuracy gap is why RNAV and RNP procedures, which demand accuracies measured in fractions of a mile, are built on GPS, and why VOR airway widths are as generous as they are. The honest caveat belongs in the answer: GPS accuracy comes with dependence on faint satellite signals, so its weaknesses are jamming, interference and outages, which is why receivers run integrity monitoring, RAIM, why augmentation exists, and why states keep a minimum backbone of VORs and ILS as reversion. Precise but occasionally deniable, against coarse but sturdy: that is the real comparison.',
+    spokenVersion: [
+      'GPS, by a wide margin',
+      'VOR is angular, about 5 degrees: error grows with range, a mile per degree at 60 NM',
+      'GPS is a direct position, a few metres, independent of range',
+      'That is why RNAV and RNP are built on it',
+      'Caveat: GPS can be jammed or degraded, hence RAIM and a VOR/ILS backbone',
+    ],
+    mcq: {
+      options: [
+        'GPS: it fixes position to a few metres, while VOR\'s angular error of about 5 degrees grows into miles with distance',
+        'VOR: satellites are too far away to be accurate',
+        'They are identical in accuracy by regulation',
+        'Neither can be used for instrument approaches',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'GPS, decisively: metres of position error versus VOR\'s roughly 5 degree angular accuracy, which becomes miles at range. That is why RNAV and RNP procedures are GPS-based. The caveat is GPS\'s vulnerability to jamming and outages, covered by RAIM, augmentation and a retained VOR/ILS backbone.',
+  },
+  {
+    id: 'oral-nav-16',
+    category: 'navigation',
+    frequency: 1,
+    question: 'What is MLS?',
+    conceptExplanation:
+      'MLS, the microwave landing system, was designed to be the ILS\'s successor. Instead of the ILS\'s two fixed, narrow beams, MLS transmits scanning beams in the microwave band: a beam sweeps to and fro across a wide arc in azimuth, another sweeps vertically for elevation, and the airborne receiver times the passes of the beam to compute exactly where it sits within the coverage, with precision DME providing range. That architecture buys real advantages: guidance across a broad volume rather than a single approach corridor, so curved and segmented approaches and multiple glidepath angles become possible; many more channels than the ILS\'s crowded forty; and far less sensitivity to the siting problems, terrain and reflections that bend ILS beams and force protected critical areas. So why is it a footnote instead of the standard? Timing. Just as MLS matured in the 1990s, satellite navigation arrived and promised most of the same benefits without ground equipment at every runway. Adoption never reached critical mass; a handful of installations, London Heathrow the famous one for low visibility operations, and military use, are its legacy, and GPS-based approaches with augmentation took the future MLS was built for.',
+    spokenVersion: [
+      'The intended ILS successor: scanning microwave beams',
+      'Sweeps in azimuth and elevation; receiver times the passes for its position, DME for range',
+      'Wide coverage: curved approaches, multiple glidepaths, many channels',
+      'Far fewer siting and reflection problems than ILS',
+      'Overtaken by GPS approaches; only rare installations remain',
+    ],
+    mcq: {
+      options: [
+        'A medium range surveillance radar for approach control',
+        'The microwave landing system: scanning beams giving azimuth and elevation over a wide area, meant to replace ILS but overtaken by satellite navigation',
+        'A military-only navigation satellite constellation',
+        'The marker beacon system of the ILS',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'MLS is the microwave landing system: scanning beams in azimuth and elevation, timed by the receiver, plus precision DME, giving guidance over a wide volume with curved approach capability and fewer siting problems than ILS. It was the intended ILS successor but satellite navigation overtook it; installations are rare.',
+  },
+  {
+    id: 'oral-nav-17',
+    category: 'navigation',
+    frequency: 1,
+    question: 'What does it mean to level off at a flight level, and what is an airway?',
+    conceptExplanation:
+      'A flight level is an altitude flown on the standard pressure setting: climbing through the transition altitude, every aircraft winds 1013.25 hPa into the altimeter, and from then on levels are named in hundreds of feet indicated, FL350 being 35,000 ft on the standard setting. Levelling off at a flight level means capturing and holding that indicated level on 1013. The point of the convention is separation: local QNH varies from place to place, and if everyone flew on their own local setting, two aircraft showing the same altitude could be at genuinely different heights; on a common datum, everyone\'s errors match, so a thousand feet of indicated difference is a real thousand feet between aircraft. The trade is that flight levels drift relative to the ground as pressure changes, which is why terrain clearance near the ground uses QNH and why the transition altitude exists. An airway is a charted corridor of controlled airspace joining navaids and waypoints, with a defined width, customarily on the order of ten nautical miles, and defined base and upper levels; you fly it by clearance, at semicircular or ATC-assigned levels, with its centreline, minimum enroute altitudes and reporting points printed on the enroute chart.',
+    spokenVersion: [
+      'Flight level: altitude on the standard setting 1013.25, in hundreds of feet',
+      'Set climbing through the transition altitude; FL350 is 35,000 ft indicated',
+      'Common datum means everyone\'s errors match: reliable separation',
+      'QNH below transition for terrain; flight levels drift with pressure',
+      'Airway: charted controlled corridor between waypoints, defined width and levels',
+    ],
+    mcq: {
+      options: [
+        'A flight level is the aircraft\'s exact height above the ground; an airway is any direct route',
+        'A flight level is an indicated altitude on the standard 1013 setting, giving a common datum for separation; an airway is a charted controlled airspace corridor with defined width and levels',
+        'A flight level is the cabin altitude; an airway is the taxi route to the runway',
+        'A flight level is set on QFE; an airway is the space above an airport',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Levelling at a flight level means holding an indicated altitude on the standard setting, 1013.25 hPa, set above the transition altitude; the shared datum makes separation reliable even as local pressure varies. An airway is a charted corridor of controlled airspace between navaids and waypoints, with defined width and vertical limits.',
+  },
 
   // ---------- general ----------
   {
@@ -1294,9 +2802,85 @@ const raw = [
     flashcardAnswer:
       'A NOTAM is a time-critical notice of temporary or recent changes affecting flight: runway closures, navaid outages, procedure changes, obstacles, airspace restrictions, each with a validity period. Crews check NOTAMs for departure, destination, alternates and route in the preflight briefing.',
   },
-  { id: 'oral-gen-03', category: 'general', frequency: 1, question: 'Tell me something about the engine.' },
-  { id: 'oral-gen-04', category: 'general', frequency: 1, question: 'What is hypoxia, what does it cause, and what is the time of useful consciousness at 30,000 ft?' },
-  { id: 'oral-gen-05', category: 'general', frequency: 1, question: 'What is a stopbar?' },
+  {
+    id: 'oral-gen-03',
+    category: 'general',
+    frequency: 1,
+    question: 'Tell me something about the engine.',
+    conceptExplanation:
+      'The open question, so have a clean story ready. A modern airliner engine is a high bypass turbofan, and the whole cycle fits in four words: suck, squeeze, burn, blow. Air comes in through the big fan; a small share continues into the core, where the compressor stages squeeze it to many times atmospheric pressure; fuel is added and burned in the combustion chamber; and the hot expanding gas drives the turbines on its way out. The turbines are the heart of the arrangement: they extract the energy that spins the compressor and, crucially, the fan at the front. And here is the modern part: most of the thrust does not come from the hot exhaust at all. The fan pushes a huge mass of air around the core rather than through it, the bypass flow, five to ten times the core flow or more on current engines, and accelerating a large mass of air slightly is far more efficient, and far quieter, than accelerating a small mass violently. That is why engines keep growing in diameter, and why fuel burn per seat keeps falling.',
+    spokenVersion: [
+      'High bypass turbofan: suck, squeeze, burn, blow',
+      'Fan in, compressor squeezes, fuel burns, turbines extract the energy',
+      'Turbines drive the compressor and the big fan',
+      'Most thrust is the fan\'s bypass air, not the hot core exhaust',
+      'Big slow-ish airflow beats small violent one: efficient and quiet',
+    ],
+    mcq: {
+      options: [
+        'A high bypass turbofan: the compressor squeezes air, fuel burns, turbines drive the fan, and the fan\'s bypass flow provides most of the thrust',
+        'A piston engine turning a propeller through a gearbox',
+        'A rocket carrying its own oxygen supply for the burn',
+        'An electric fan powered by the aircraft batteries',
+      ],
+      correctIndex: 0,
+    },
+    flashcardAnswer:
+      'A modern airliner engine is a high bypass turbofan: suck, squeeze, burn, blow. The compressor squeezes the core air, fuel burns, turbines extract energy to drive compressor and fan, and the fan\'s large bypass flow around the core provides most of the thrust, efficiently and quietly.',
+  },
+  {
+    id: 'oral-gen-04',
+    category: 'general',
+    frequency: 1,
+    question: 'What is hypoxia, what does it cause, and what is the time of useful consciousness at 30,000 ft?',
+    conceptExplanation:
+      'Hypoxia is the body running short of usable oxygen, and at altitude the mechanism is pressure, not composition: the air is still 21 percent oxygen, but with total pressure so low, the partial pressure of that oxygen is no longer enough to load the blood properly. What makes it a killer in aviation is how it presents. It is insidious: the early symptoms, a mild euphoria, overconfidence, degraded judgement and slowed thinking, are exactly the symptoms that stop you noticing you have symptoms. Alongside come blue-tinged lips and fingertips, tingling, headache, deteriorating vision, and eventually unconsciousness. The metric that captures the urgency is the time of useful consciousness: not time to death but the window in which you can still act competently, get a mask on, start a descent. At 30,000 ft it is commonly quoted as around one to two minutes for a resting person, and a rapid decompression roughly halves it, because the lungs dump their oxygen in the pressure drop. Which is the whole logic of the memory drill: masks on first, one hundred percent oxygen, establish crew communication, then the emergency descent; the masks come first because thirty seconds of fumbling at that altitude is a meaningful slice of your window.',
+    spokenVersion: [
+      'Insufficient usable oxygen: at altitude the partial pressure is too low, not the percentage',
+      'Insidious: euphoria and poor judgement mask the onset',
+      'Then blue lips, tingling, tunnelling vision, unconsciousness',
+      'TUC at 30,000 ft: commonly quoted around 1 to 2 minutes, roughly',
+      'Rapid decompression roughly halves it',
+      'Hence: masks on first, then the emergency descent',
+    ],
+    mcq: {
+      options: [
+        'Overbreathing causing dizziness, cured by breathing into a bag, with hours of useful consciousness',
+        'Oxygen deficiency in the body: insidious euphoria and impaired judgement leading to unconsciousness, with a TUC at 30,000 ft of around 1 to 2 minutes',
+        'Carbon monoxide poisoning from the engines, with unlimited useful consciousness',
+        'Cold shock from the cabin temperature falling',
+      ],
+      correctIndex: 1,
+    },
+    flashcardAnswer:
+      'Hypoxia is oxygen starvation, at altitude caused by low partial pressure. It is insidious: euphoria and impaired judgement first, then cyanosis and unconsciousness. Time of useful consciousness at 30,000 ft is commonly quoted around 1 to 2 minutes, roughly halved by rapid decompression: masks on first, then descend.',
+  },
+  {
+    id: 'oral-gen-05',
+    category: 'general',
+    frequency: 1,
+    question: 'What is a stopbar?',
+    conceptExplanation:
+      'A stopbar is a row of red lights set into the taxiway surface across its full width at a runway holding position, usually paired with elevated red lights at the edges. It is the airfield\'s equivalent of a red traffic light guarding the runway, and it exists chiefly for low visibility operations, when the tower cannot see the holding points and pilots cannot see much of anything. The rule attached to it is absolute and worth stating exactly: never cross an illuminated stopbar, even if you have received a clearance to enter or cross the runway. The clearance and the lights must agree; when the controller clears you, they extinguish the stopbar, and typically the green lead-on centreline lights beyond it come alive to draw you through. Lights still red, you stop and query, every time, because a lit stopbar with a verbal clearance means somebody is wrong, and the stakes on the other side of that bar are a runway incursion, the kind of error behind the worst accident in aviation history. One tidy exception exists for a failed stopbar stuck on, crossed only under an explicit specific procedure with ATC.',
+    spokenVersion: [
+      'A row of red lights across the taxiway at a runway holding position',
+      'A red traffic light for the runway, key in low visibility ops',
+      'Never cross a lit stopbar, even with a verbal clearance',
+      'Controller switches it off, green lead-on lights come on, then you go',
+      'Lights against clearance: stop and query; incursion protection',
+    ],
+    mcq: {
+      options: [
+        'The painted holding position markings on the taxiway',
+        'A barrier lowered across closed runways',
+        'A row of red lights across the taxiway at a runway holding position that must never be crossed while illuminated, even with a clearance',
+        'The final section of the runway used for stopping',
+      ],
+      correctIndex: 2,
+    },
+    flashcardAnswer:
+      'A stopbar is a row of red lights across the taxiway at a runway holding position, central to low visibility operations. Never cross it while lit, even with a verbal clearance: ATC extinguishes it (green lead-on lights come on) to authorise entry. If lights and clearance disagree, stop and query.',
+  },
 ]
 
 // A question is complete only when every content field is written and well
