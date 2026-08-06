@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getSettings, saveSettings } from './storage/storage.js'
 import Home from './screens/Home.jsx'
 import ModeSelect from './screens/ModeSelect.jsx'
@@ -8,6 +8,7 @@ import Settings from './screens/Settings.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
 import PersonalityBriefing from './screens/PersonalityBriefing.jsx'
 import PersonalityDrill from './screens/PersonalityDrill.jsx'
+import HomeButton from './components/HomeButton.jsx'
 import Stats from './screens/Stats.jsx'
 import Landing from './screens/Landing.jsx'
 import OralHub from './screens/OralHub.jsx'
@@ -24,6 +25,32 @@ export default function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = settings.theme === 'dark' ? 'dark' : 'light'
   }, [settings.theme])
+
+  // Browser history integration so back gestures (mobile swipe, desktop back
+  // button) walk backwards through the app's screens instead of leaving the
+  // site. Every in-app navigation pushes an entry; popstate restores it.
+  const fromPop = useRef(false)
+  const firstRender = useRef(true)
+  useEffect(() => {
+    window.history.replaceState({ screen: 'landing' }, '')
+    const onPop = (e) => {
+      fromPop.current = true
+      setView(e.state ?? { screen: 'landing' })
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
+    if (fromPop.current) {
+      fromPop.current = false
+      return
+    }
+    window.history.pushState(view, '')
+  }, [view])
 
   const goHome = () => setView({ screen: 'home' })
   const goLanding = () => setView({ screen: 'landing' })
@@ -50,13 +77,13 @@ export default function App() {
       )
       break
     case 'oral-textbook':
-      screen = <OralTextbook onBack={goOralHub} />
+      screen = <OralTextbook onBack={goOralHub} onHome={goLanding} />
       break
     case 'oral-exam':
-      screen = <OralExam onBack={goOralHub} />
+      screen = <OralExam onBack={goOralHub} onHome={goLanding} />
       break
     case 'oral-sdt':
-      screen = <OralSdtDrill onBack={goOralHub} />
+      screen = <OralSdtDrill onBack={goOralHub} onHome={goLanding} />
       break
     case 'home':
       screen = (
@@ -132,6 +159,7 @@ export default function App() {
   return (
     <>
       {screen}
+      {view.screen !== 'landing' && <HomeButton onClick={goLanding} />}
       <ThemeToggle theme={settings.theme} onToggle={toggleTheme} />
     </>
   )

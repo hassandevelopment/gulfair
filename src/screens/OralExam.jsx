@@ -199,7 +199,7 @@ function FlashRun({ onDone, onExit }) {
 
 // ---------- shell ----------
 
-export default function OralExam({ onBack }) {
+export default function OralExam({ onBack, onHome }) {
   // phase: 'setup' | 'mcq' | 'flash' | { summary }
   const [phase, setPhase] = useState('setup')
   const [summary, setSummary] = useState(null)
@@ -245,7 +245,8 @@ export default function OralExam({ onBack }) {
                     : 'No answers are written yet. The exam unlocks once answers pass review.'}
                 </p>
               </div>
-              <div className="mt-2">
+              <div className="mt-2 flex items-center gap-2.5">
+                {onHome && <Btn onClick={onHome}>Menu</Btn>}
                 <Btn onClick={onBack} kbd="Esc">Back</Btn>
               </div>
             </header>

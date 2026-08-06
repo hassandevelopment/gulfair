@@ -12,7 +12,7 @@ const LEVELS = [
 
 // Spoken mental math drill. Reuses the psychometric SDT generator but hides
 // the options: read the prompt, say the answer out loud, then reveal.
-export default function OralSdtDrill({ onBack }) {
+export default function OralSdtDrill({ onBack, onHome }) {
   const rng = useMemo(() => createRng(), [])
   const [level, setLevel] = useState(2)
   const [q, setQ] = useState(() => genSdtSection(rng, 2))
@@ -44,7 +44,8 @@ export default function OralSdtDrill({ onBack }) {
             <h1 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight">Say It Out Loud</h1>
             <p className="mt-3 text-mut">Work it out in your head and say the answer before revealing.</p>
           </div>
-          <div className="mt-2">
+          <div className="mt-2 flex items-center gap-2.5">
+            {onHome && <Btn onClick={onHome}>Menu</Btn>}
             <Btn onClick={onBack} kbd="Esc">Back</Btn>
           </div>
         </header>

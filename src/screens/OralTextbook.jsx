@@ -90,7 +90,7 @@ function Entry({ q, expanded, onToggle }) {
   )
 }
 
-export default function OralTextbook({ onBack }) {
+export default function OralTextbook({ onBack, onHome }) {
   const [freq, setFreq] = useState('all')
   const [category, setCategory] = useState('all')
   const [expandedId, setExpandedId] = useState(null)
@@ -120,7 +120,8 @@ export default function OralTextbook({ onBack }) {
                 {written} of {oralBank.length} answers written.
               </p>
             </div>
-            <div className="mt-2">
+            <div className="mt-2 flex items-center gap-2.5">
+              {onHome && <Btn onClick={onHome}>Menu</Btn>}
               <Btn onClick={onBack} kbd="Esc">Back</Btn>
             </div>
           </div>
