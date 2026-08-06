@@ -22,8 +22,8 @@ npm run preview
 
 1. Create the repo https://github.com/hassandevelopment/gulfair (the name must be exactly `gulfair`).
 2. Push this project to `main`.
-3. On GitHub: Settings, then Pages, then set Source to "GitHub Actions".
-4. Every push to `main` now builds and deploys automatically via `.github/workflows/deploy.yml`.
+3. On GitHub: Settings, then Pages, then set Source to "Deploy from a branch" and pick `gh-pages` (root).
+4. Every push to `main` now builds and pushes `dist` to the `gh-pages` branch automatically via `.github/workflows/deploy.yml`.
 
 ## Repo name must match the base path
 
