@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "verbal-review": "node scripts/verbal-review.mjs",
     "oral-review": "node scripts/oral-review.mjs",
+    "oral-pdf": "node scripts/oral-pdf.mjs",
     "sanity": "node scripts/sanity.mjs"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "@vitejs/plugin-react": "^4.6.0",
+    "pdfkit": "^0.19.1",
     "tailwindcss": "^4.1.11",
     "vite": "^7.0.0"
   }
