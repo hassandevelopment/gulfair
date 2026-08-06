@@ -66,7 +66,9 @@ export default function Home({ onSection, onSettings, onStats }) {
                   : 'border-line/60 bg-surface/50 opacity-55'
               }`}
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-dim">Section {s.num}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-dim">
+                {s.kicker ?? `Section ${s.num}`}
+              </p>
               <p className="mt-1.5 text-lg font-medium text-ink">{s.name}</p>
               <p className="mt-1 text-sm text-mut">{s.ready ? s.blurb : 'Coming next'}</p>
             </button>

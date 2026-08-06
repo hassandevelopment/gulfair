@@ -6,6 +6,7 @@ import { quantPool } from '../src/generators/quant/index.js'
 import { logicalPool } from '../src/generators/logical/index.js'
 import { attentionPool } from '../src/generators/attention/index.js'
 import { abstractPool } from '../src/generators/abstract/index.js'
+import { sdtPool } from '../src/generators/sdt/index.js'
 import { canonical } from '../src/generators/abstract/shapes.js'
 import { verbalBank } from '../src/data/verbalBank.js'
 import { personalityItems, TRAITS } from '../src/data/personalityItems.js'
@@ -59,6 +60,7 @@ function checkQuestion(q, name, { numeric = false } = {}) {
 const rng = createRng(12345)
 const pools = [
   ['quant', quantPool, { numeric: true }],
+  ['sdt', sdtPool, { numeric: true }],
   ['logical', logicalPool, {}],
   ['attention', attentionPool, {}],
   ['abstract', abstractPool, {}],
