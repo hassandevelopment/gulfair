@@ -11,6 +11,7 @@ const TIMES = [
   { h: 1, label: '1 hour', speedHint: 'one hour, so speed equals distance', minLevel: 1 },
   { h: 1.5, label: '1.5 hours', speedHint: 'one and a half hours: two thirds of the distance per hour', minLevel: 3 },
   { h: 2, label: '2 hours', speedHint: 'two hours, so divide by 2', minLevel: 1 },
+  { h: 2.5, label: '2.5 hours', speedHint: 'two and a half hours: double the distance and time, then divide by 5', minLevel: 3 },
   { h: 3, label: '3 hours', speedHint: 'three hours, so divide by 3', minLevel: 2 },
 ]
 const SPEEDS = [40, 60, 80, 100, 120, 160, 200, 240, 300, 400, 480, 600]

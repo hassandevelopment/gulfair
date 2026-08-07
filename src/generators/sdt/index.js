@@ -3,13 +3,15 @@ import { nextId } from '../../engine/rng.js'
 
 // Dedicated Speed Distance Time section. Every question is solvable in the
 // head: parameters are picked so all divisions and conversions land clean.
-// Level 1: one-step whole hours. Level 2: minutes and unit conversions.
-// Level 3: two legs, averages, closing speeds, catch-up, remaining distance.
+// Level 1: one-step whole hours. Level 2: minutes, unit conversions and
+// half-hour times (150 km/h for 2.5 hours: double it, then add half).
+// Level 3: two legs, averages, closing speeds, catch-up, remaining distance,
+// half-hour speeds, round trips and wind corrections.
 
 const KINDS = {
   1: ['distance', 'speed', 'time'],
-  2: ['minSpeed', 'minDistance', 'minTime', 'perMinute'],
-  3: ['twoLeg', 'avgSpeed', 'closing', 'catchUp', 'remaining'],
+  2: ['minSpeed', 'minDistance', 'minTime', 'perMinute', 'halfDistance', 'halfTime'],
+  3: ['twoLeg', 'avgSpeed', 'closing', 'catchUp', 'remaining', 'halfDistance', 'halfSpeed', 'roundTrip', 'wind'],
 }
 
 const fmtKm = (v) => `${v} km`
@@ -157,6 +159,93 @@ export function genSdtSection(rng, level = 2) {
       fmtKmh,
       `There are 60 minutes in an hour: ${k} x 60 = ${60 * k} km/h.`,
       { step: 60 },
+    )
+  }
+
+  if (kind === 'halfDistance') {
+    const s = rng.pick([40, 60, 80, 100, 120, 140, 150, 160, 180, 200, 240, 300])
+    const t = rng.pick([1.5, 2.5, 3.5])
+    const whole = Math.floor(t)
+    const d = s * t
+    return q(
+      'halfDistance',
+      `${vehicleFor(rng, s)} travels at ${s} km/h for ${t} hours. How far does it travel?`,
+      d,
+      [s * (t + 0.5), s * (t - 0.5), s * (whole + 1), d + s / 2],
+      fmtKm,
+      `${t} hours is ${whole} ${whole === 1 ? 'hour' : 'hours'} plus half an hour: ${s} x ${whole} = ${s * whole}, plus half of ${s} = ${s / 2}, gives ${d} km.`,
+      { step: 10 },
+    )
+  }
+
+  if (kind === 'halfTime') {
+    const s = rng.pick([40, 60, 80, 100, 120])
+    const t = rng.pick([1.5, 2.5, 3.5])
+    const d = s * t
+    return q(
+      'halfTime',
+      `${vehicleFor(rng, s)} needs to cover ${d} km at ${s} km/h. How long does it take?`,
+      t,
+      [t + 0.5, t - 0.5, t + 1, t * 2],
+      fmtH,
+      `${d} / ${s} = ${t} hours: the whole hours cover ${s * Math.floor(t)} km, and the last ${d - s * Math.floor(t)} km is half an hour at ${s} km/h.`,
+      { step: 0.5, min: 0.5 },
+    )
+  }
+
+  if (kind === 'halfSpeed') {
+    const s = rng.pick([60, 80, 100, 120, 140, 150, 160, 180, 200])
+    const t = rng.pick([1.5, 2.5])
+    const d = s * t
+    return q(
+      'halfSpeed',
+      `${vehicleFor(rng, s)} covers ${d} km in ${t} hours. What is its speed?`,
+      s,
+      [Math.round(d / (t + 0.5)), Math.round(d / (t - 0.5)), s + 20, s - 20],
+      fmtKmh,
+      `Double both: ${d * 2} km in ${t * 2} hours, so ${d * 2} / ${t * 2} = ${s} km/h.`,
+      { step: 10 },
+    )
+  }
+
+  if (kind === 'roundTrip') {
+    const [d, sOut, sBack] = rng.pick([
+      [120, 60, 40],
+      [200, 100, 50],
+      [240, 120, 80],
+      [180, 90, 60],
+      [160, 80, 40],
+      [300, 100, 60],
+    ])
+    const tOut = d / sOut
+    const tBack = d / sBack
+    const total = tOut + tBack
+    return q(
+      'roundTrip',
+      `${vehicleFor(rng, sOut)} goes ${d} km out at ${sOut} km/h and returns the same way at ${sBack} km/h. How long does the whole round trip take?`,
+      total,
+      [total - 1, total + 1, tOut * 2, total + 2],
+      fmtH,
+      `Out: ${d} / ${sOut} = ${fmtH(tOut)}. Back: ${d} / ${sBack} = ${fmtH(tBack)}. Total ${tOut} + ${tBack} = ${fmtH(total)}.`,
+      { min: 1 },
+    )
+  }
+
+  if (kind === 'wind') {
+    const s = rng.pick([300, 400, 500, 600])
+    const w = rng.pick([50, 100])
+    const tail = rng.chance(0.5)
+    const gs = tail ? s + w : s - w
+    const t = rng.randInt(1, 3)
+    const d = gs * t
+    return q(
+      'wind',
+      `An aircraft cruises at ${s} km/h in still air with a ${w} km/h ${tail ? 'tailwind' : 'headwind'}. How far does it travel in ${fmtH(t)}?`,
+      d,
+      [s * t, (tail ? s - w : s + w) * t, d + 100, d - 100],
+      fmtKm,
+      `Ground speed = ${s} ${tail ? '+' : '-'} ${w} = ${gs} km/h, so ${gs} x ${t} = ${d} km.`,
+      { step: 50 },
     )
   }
 
