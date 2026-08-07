@@ -6,7 +6,8 @@ import { quantPool } from '../src/generators/quant/index.js'
 import { logicalPool } from '../src/generators/logical/index.js'
 import { attentionPool } from '../src/generators/attention/index.js'
 import { abstractPool } from '../src/generators/abstract/index.js'
-import { sdtPool } from '../src/generators/sdt/index.js'
+import { sdtPool, genSdtSection } from '../src/generators/sdt/index.js'
+import { genSdt } from '../src/generators/quant/sdt.js'
 import { canonical } from '../src/generators/abstract/shapes.js'
 import { verbalBank } from '../src/data/verbalBank.js'
 import { personalityItems, TRAITS } from '../src/data/personalityItems.js'
@@ -93,6 +94,28 @@ for (const item of personalityItems) {
 const reversedShare = personalityItems.filter((i) => i.reversed).length / personalityItems.length
 if (reversedShare < 0.4 || reversedShare > 0.6) fail(`personality: reversed share off balance (${reversedShare})`, {})
 console.log(`personalityItems: ${personalityItems.length} unique items ok (${Math.round(reversedShare * 100)}% reverse-keyed)`)
+
+// SDT prompts must stay physically plausible: no ground vehicle that flies,
+// no aircraft that drives, and speeds that match the vehicle.
+function checkSdtPlausibility(q, name) {
+  const p = q.prompt
+  if (/\b(car|bus|train|truck|ferry)\b/i.test(p) && /\bflies\b/i.test(p)) fail(`${name}: ground vehicle flies`, q)
+  if (/\b(plane|aircraft|flight)\b/i.test(p) && /\b(drives|sails)\b/i.test(p)) fail(`${name}: aircraft drives or sails`, q)
+  const speeds = [...p.matchAll(/(?:at|doing|of) (\d+) km\/h/g)].map((m) => Number(m[1]))
+  for (const s of speeds) {
+    if (/\b(car|bus)\b/i.test(p) && s > 130) fail(`${name}: car or bus at ${s} km/h`, q)
+    if (/\btrain\b/i.test(p) && s > 320) fail(`${name}: train at ${s} km/h`, q)
+    if (/\b(plane|aircraft)\b/i.test(p) && s < 150) fail(`${name}: aircraft at only ${s} km/h`, q)
+  }
+}
+for (const [fn, fnName] of [[genSdtSection, 'sdt/plausibility'], [genSdt, 'quant-sdt/plausibility']]) {
+  for (const level of [1, 2, 3]) {
+    for (let i = 0; i < RUNS; i++) {
+      checkSdtPlausibility(fn(rng, level), `${fnName} L${level}`)
+    }
+  }
+}
+console.log('sdt plausibility: vehicles, verbs and speeds consistent')
 
 const oralIds = new Set(oralBank.map((q) => q.id))
 if (oralIds.size !== oralBank.length) fail('oral: duplicate ids', {})

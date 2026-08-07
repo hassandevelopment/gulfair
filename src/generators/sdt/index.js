@@ -25,6 +25,15 @@ const MIN_METHOD = {
   45: 'divide the distance by 3, then multiply by 4',
 }
 
+// Vehicle is chosen from the speed so the scenario stays plausible: no bus
+// doing 600 km/h and no aircraft crawling at 40. Verbs stay neutral
+// (travels, covers) so no vehicle ever "flies" or "drives" wrongly.
+function vehicleFor(rng, speed) {
+  if (speed >= 200) return rng.pick(['A plane', 'An aircraft'])
+  if (speed >= 140) return 'A train'
+  return rng.pick(['A car', 'A bus', 'A train'])
+}
+
 let activeRng = null
 function q(type, prompt, correct, candidates, format, explanation, opts = {}) {
   const { options, correctIndex } = finalizeOptions(activeRng, correct, candidates, {
@@ -46,7 +55,6 @@ function q(type, prompt, correct, candidates, format, explanation, opts = {}) {
 export function genSdtSection(rng, level = 2) {
   activeRng = rng
   const kind = rng.pick(KINDS[level] ?? KINDS[2])
-  const vehicle = rng.pick(['A car', 'A bus', 'A train', 'A plane', 'A ferry'])
 
   if (kind === 'distance') {
     const s = rng.pick([40, 50, 60, 80, 100, 120])
@@ -54,7 +62,7 @@ export function genSdtSection(rng, level = 2) {
     const d = s * t
     return q(
       'distance',
-      `${vehicle} travels at ${s} km/h for ${fmtH(t)}. How far does it travel?`,
+      `${vehicleFor(rng, s)} travels at ${s} km/h for ${fmtH(t)}. How far does it travel?`,
       d,
       [s * (t + 1), s * (t - 1), s + t, d + 10],
       fmtKm,
@@ -69,7 +77,7 @@ export function genSdtSection(rng, level = 2) {
     const d = s * t
     return q(
       'speed',
-      `${vehicle} covers ${d} km in ${fmtH(t)}. What is its speed?`,
+      `${vehicleFor(rng, s)} covers ${d} km in ${fmtH(t)}. What is its speed?`,
       s,
       [s + 10, s - 10, s * 2, d - t],
       fmtKmh,
@@ -84,7 +92,7 @@ export function genSdtSection(rng, level = 2) {
     const d = s * t
     return q(
       'time',
-      `${vehicle} needs to cover ${d} km at ${s} km/h. How long does it take?`,
+      `${vehicleFor(rng, s)} needs to cover ${d} km at ${s} km/h. How long does it take?`,
       t,
       [t + 1, t - 1, t + 2, t * 2],
       fmtH,
@@ -102,7 +110,7 @@ export function genSdtSection(rng, level = 2) {
     if (kind === 'minSpeed') {
       return q(
         'minSpeed',
-        `${vehicle} covers ${d} km in ${m} minutes. What is its speed in km/h?`,
+        `${vehicleFor(rng, s)} covers ${d} km in ${m} minutes. What is its speed in km/h?`,
         s,
         [d * (60 / 30), s / 2, s + 20, s - 20, d],
         fmtKmh,
@@ -112,7 +120,7 @@ export function genSdtSection(rng, level = 2) {
     }
     return q(
       'minDistance',
-      `${vehicle} flies at ${s} km/h. How far does it get in ${m} minutes?`,
+      `${vehicleFor(rng, s)} travels at ${s} km/h. How far does it get in ${m} minutes?`,
       d,
       [s, d * 2, d / 2, d + 10],
       fmtKm,
@@ -160,7 +168,7 @@ export function genSdtSection(rng, level = 2) {
     const total = s1 * t1 + s2 * t2
     return q(
       'twoLeg',
-      `${vehicle} drives ${fmtH(t1)} at ${s1} km/h, then ${fmtH(t2)} at ${s2} km/h. What total distance does it cover?`,
+      `${vehicleFor(rng, Math.max(s1, s2))} travels ${fmtH(t1)} at ${s1} km/h, then ${fmtH(t2)} at ${s2} km/h. What total distance does it cover?`,
       total,
       [s1 * t2 + s2 * t1, total + 20, total - 20, s1 + s2],
       fmtKm,
@@ -179,7 +187,7 @@ export function genSdtSection(rng, level = 2) {
     const avg = (s1 + s2) / 2
     return q(
       'avgSpeed',
-      `${vehicle} travels ${fmtH(t)} at ${s1} km/h and then ${fmtH(t)} at ${s2} km/h. What is its average speed?`,
+      `${vehicleFor(rng, Math.max(s1, s2))} travels ${fmtH(t)} at ${s1} km/h and then ${fmtH(t)} at ${s2} km/h. What is its average speed?`,
       avg,
       [s1 + s2, avg + 10, avg - 10, Math.max(s1, s2)],
       fmtKmh,
